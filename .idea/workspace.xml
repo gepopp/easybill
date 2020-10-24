@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +172,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603570613709</updated>
-      <workItem from="1603570614729" duration="5857000" />
+      <workItem from="1603570614729" duration="6502000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1603576131712</created>
@@ -195,7 +195,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603577296133</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="initial commit">
+      <created>1603577675546</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1603577675546</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,10 +243,10 @@
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
     <state width="498" height="446" key="SwitcherDM/-1920.357.1920.1050/0.0.3440.1410@0.0.3440.1410" timestamp="1603577209118" />
-    <state x="1312" y="425" key="Vcs.Push.Dialog.v2" timestamp="1603577299711">
+    <state x="1312" y="425" key="Vcs.Push.Dialog.v2" timestamp="1603577677214">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
-    <state x="1312" y="425" key="Vcs.Push.Dialog.v2/-1920.357.1920.1050/0.0.3440.1410@0.0.3440.1410" timestamp="1603577299711" />
+    <state x="1312" y="425" key="Vcs.Push.Dialog.v2/-1920.357.1920.1050/0.0.3440.1410@0.0.3440.1410" timestamp="1603577677214" />
     <state x="1383" y="317" width="672" height="678" key="search.everywhere.popup" timestamp="1603572853025">
       <screen x="0" y="0" width="3440" height="1410" />
     </state>
