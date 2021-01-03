@@ -37,7 +37,7 @@
     <table class="table-auto w-full">
         <tr>
             <td valign="bottom">
-                <p class="text-xs">Abs: {{ $settings['company_name'] }}, {{ $settings['address'] }}</p>
+                <p class="text-xs" style="font-size: .5rem">Abs: {{ $settings['company_name'] }}, {{ $settings['address'] }}</p>
                 {!! $bill->customer->getAddressHtml() !!}
             </td>
             <td>

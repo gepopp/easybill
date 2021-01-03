@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use PDF;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -89,4 +91,37 @@ class Bill extends Model
         }
         return number_format($brutto, 2, ',', '.');
     }
+
+    public function getPDF()
+    {
+
+        if ($this->document == null) {
+            ini_set('max_execution_time', 300); // 300 seconds = 5 minutes
+            set_time_limit(0);
+
+            // share data to view
+            $pdf = PDF::loadView('bill.showpdf', ['bill' => $this, 'settings' => $this->getSettings()]);
+
+            $path = "bills/pdf/RE{$this->bill_number}.pdf";
+
+            Storage::put($path, $pdf->output());
+
+            $this->update([
+                'document' => $path,
+            ]);
+        }
+
+
+        // download PDF file with download method
+        return Storage::temporaryUrl($this->document, now()->addMinutes(1));
+    }
+
+    public function getSettings()
+    {
+        $settings = BillSetting::all()->pluck('setting_value', 'setting_name');
+        $settings['headertext'] = view(['template' => htmlspecialchars_decode($settings['headertext'])], ['bill' => $this, 'settings' => $settings]);
+        $settings['footertext'] = view(['template' => htmlspecialchars_decode($settings['footertext'])], ['bill' => $this, 'settings' => $settings]);
+        return $settings;
+    }
+
 }
