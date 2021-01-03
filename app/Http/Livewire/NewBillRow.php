@@ -29,6 +29,8 @@ class NewBillRow extends Component
         $data = $this->validate();
         BillPosition::create($data['row']);
         $this->emit('unsetNewRow');
+        $this->emit('refreshTotals');
+
 
     }
 

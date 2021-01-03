@@ -31,11 +31,15 @@ class BillRow extends Component
 
        $this->row->update($data['row']);
        $this->emit('resetOrderNumber');
+       $this->emit('refreshTotals');
+
     }
 
     public function deleteRow(){
         $this->row->delete();
         $this->emit('resetOrderNumber');
+        $this->emit('refreshTotals');
+
     }
 
     public function getNettoTotalProperty(){

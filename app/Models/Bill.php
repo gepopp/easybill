@@ -67,7 +67,7 @@ class Bill extends Model
         foreach($this->positions as $position){
            $netto += $position->netto * $position->amount;
         }
-        return $netto;
+        return number_format($netto, 2, ',', '.');
     }
 
     public function getVatTotalAttribute()
@@ -77,7 +77,7 @@ class Bill extends Model
         foreach($this->positions as $position){
             $vat += ( ($position->netto * $position->amount) * $position->vat) / 100;
         }
-        return $vat;
+        return number_format($vat, 2, ',', '.');
     }
 
     public function getBruttoTotalAttribute()
@@ -87,6 +87,6 @@ class Bill extends Model
         foreach($this->positions as $position){
             $brutto += ( ($position->netto * $position->amount ) + ( ( ( $position->netto * $position->amount) * $position->vat) / 100));
         }
-        return $brutto;
+        return number_format($brutto, 2, ',', '.');
     }
 }

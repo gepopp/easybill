@@ -20,6 +20,7 @@ class AddBillPosition extends Component
 
         BillPosition::find($id)->delete();
         $this->bill->refresh();
+        $this->emit('refreshTotals');
 
     }
 

@@ -14,14 +14,14 @@ class BillSumm extends Component
     public $vat;
     public $brutto;
 
-    protected $listeners = ['resetOrderNumber'];
+    protected $listeners = ['refreshTotals'];
 
 
     public function mount(){
         $this->calculate();
     }
 
-    public function resetOrderNumber(){
+    public function refreshTotals(){
 
         $this->netto = 0;
         $this->vat = 0;

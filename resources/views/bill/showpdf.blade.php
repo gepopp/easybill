@@ -107,18 +107,18 @@
         <tr>
             <td class="w-1/2"></td>
             <td class="w-1/4 text-left">Netto gesamt:</td>
-            <td class="w-1/4 text-right">{{ number_format($bill->nettoTotal, 2, ',','.')  }} €</td>
+            <td class="w-1/4 text-right">{{ $bill->nettoTotal  }} €</td>
         </tr>
 
         <tr>
             <td class="w-1/2"></td>
             <td class="w-1/4 text-left">MwSt.:</td>
-            <td class="w-1/4 text-right">{{ number_format($bill->vatTotal, 2, ',','.')  }} €</td>
+            <td class="w-1/4 text-right">{{ $bill->vatTotal  }} €</td>
         </tr>
         <tr>
             <td class="w-1/2"></td>
             <td class="w-1/4 text-left font-bold">Rechnungsbetrag:</td>
-            <td class="w-1/4 text-right font-bold">{{ number_format($bill->bruttoTotal, 2, ',','.') }} €</td>
+            <td class="w-1/4 text-right font-bold">{{ $bill->bruttoTotal}} €</td>
         </tr>
     </table>
     <p>{{ $settings['footertext'] }}</p>
