@@ -109,7 +109,7 @@ class BillController extends Controller
         $pdf = PDF::loadView('bill.showpdf', [ 'bill' =>  $bill, 'settings' => $this->getSettings($bill)]);
 
         // download PDF file with download method
-        return $pdf->stream('pdf_file.pdf');
+        return $pdf->stream("RE{$bill->bill_number}.pdf");
     }
 
     public function getSettings($bill){
