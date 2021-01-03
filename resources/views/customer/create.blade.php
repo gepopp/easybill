@@ -29,11 +29,11 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="first_name">Geschlecht</label>
                             <label>
                                 <input class=""
-                                       name="is_female" value="1" type="radio" @if($customer->is_female) checked="checked" @endif> Frau
+                                       name="is_female" value="1" type="radio"> Frau
                             </label>
                             <label>
                                 <input class=""
-                                       name="is_female" value="0" type="radio" @if(!$customer->is_female) checked="checked" @endif> Mann
+                                       name="is_female" value="0" type="radio"> Mann
                             </label>                            @error('is_female')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>
                             @enderror
