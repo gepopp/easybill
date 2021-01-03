@@ -121,7 +121,7 @@
             <td class="w-1/4 text-right font-bold">{{ $bill->bruttoTotal}} €</td>
         </tr>
     </table>
-    <p>{{ $settings['footertext'] }}</p>
+    <p class="mt-16">{{ $settings['footertext'] }}</p>
 </main>
 </body>
 </html>

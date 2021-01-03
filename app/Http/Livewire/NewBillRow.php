@@ -40,7 +40,6 @@ class NewBillRow extends Component
     }
 
 
-
     public function render()
     {
         return view('livewire.new-bill-row');
