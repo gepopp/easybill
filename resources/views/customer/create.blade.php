@@ -26,10 +26,15 @@
                     <div class="flex flex-wrap -mx-3 mb-6">
 
                         <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="first_name">Titel</label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('academic_degree') border-red-500 @enderror"
-                                   id="academic_degree" name="academic_degree" value="{{ old('academic_degree') }}" type="text">
-                            @error('academic_degree')
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="first_name">Geschlecht</label>
+                            <label>
+                                <input class=""
+                                       name="is_female" value="1" type="radio" @if($customer->is_female) checked="checked" @endif> Frau
+                            </label>
+                            <label>
+                                <input class=""
+                                       name="is_female" value="0" type="radio" @if(!$customer->is_female) checked="checked" @endif> Mann
+                            </label>                            @error('is_female')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>
                             @enderror
                         </div>
