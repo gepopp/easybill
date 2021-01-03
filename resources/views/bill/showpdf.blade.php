@@ -121,6 +121,7 @@
             <td class="w-1/4 text-right font-bold">{{ number_format($bill->bruttoTotal, 2, ',','.') }} €</td>
         </tr>
     </table>
+    <p>{{ $settings['footertext'] }}</p>
 </main>
 </body>
 </html>

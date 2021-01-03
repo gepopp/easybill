@@ -84,6 +84,7 @@
                         <span>Rechnungsbetrag:</span><span>{{ $bill->bruttoTotal  }}</span>
                     </p>
                 </div>
+                <p>{{ $settings['footertext'] }}</p>
                 <hr class="">
                 <div class="grid grid-cols-3 gap-4 pt-5 pb-20 text-sm">
                     <div>
