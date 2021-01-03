@@ -1,20 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/BillController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/BillPositionController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/BillSettingController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/AddBillPosition.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/BillRow.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Billsettings/SenderAddress.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/NewBillRow.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Bill.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/BillPosition.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/BillSetting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/dompdf.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/livewire.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/BillFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/BillPositionFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/BillSettingFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_26_072629_create_bill_settings_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_27_114154_create_bills_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_01_192508_create_bill_positions_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_02_090046_add_gender_to_customer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/BillPositionSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/BillSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/BillSettingSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/positions)" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/bill/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/bill/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/bill/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/bill/notes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/bill/settings.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/bill/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/bill/showpdf.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/customer/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/add-bill-position.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/bill-row.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/billsettings/sender-address.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/new-bill-row.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/debugbar/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/easybill.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/easybill.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_203121_create_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_203121_create_customers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -137,18 +226,35 @@
       <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-aws-s3-v3" />
+      <path value="$PROJECT_DIR$/vendor/mtdowling/jmespath.php" />
+      <path value="$PROJECT_DIR$/vendor/aws/aws-sdk-php" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/laravel-lang/lang" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/flynsarmy/db-blade-compiler" />
+      <path value="$PROJECT_DIR$/vendor/wpb/string-blade-compiler" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jL5ctXA68zZf3FxB0EpiDtEC5X" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../branchenkalender" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -157,6 +263,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\views\customer" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -172,7 +283,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603570613709</updated>
-      <workItem from="1603570614729" duration="6502000" />
+      <workItem from="1603570614729" duration="25959000" />
+      <workItem from="1603742820660" duration="18167000" />
+      <workItem from="1604517749867" duration="2391000" />
+      <workItem from="1604597637551" duration="151000" />
+      <workItem from="1604605978905" duration="1629000" />
+      <workItem from="1606154440094" duration="1046000" />
+      <workItem from="1609232195824" duration="2095000" />
+      <workItem from="1609524646520" duration="74700000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1603576131712</created>
@@ -202,54 +320,36 @@
       <option name="project" value="LOCAL" />
       <updated>1603577675546</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="initial commit">
+      <created>1603578309735</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1603578309735</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="initial commit" />
     <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1500" y="460" key="FileChooserDialogImpl" timestamp="1603576089679">
-      <screen x="0" y="0" width="3440" height="1410" />
-    </state>
-    <state x="1500" y="460" key="FileChooserDialogImpl/-1920.357.1920.1050/0.0.3440.1410@0.0.3440.1410" timestamp="1603576089679" />
-    <state width="3441" height="427" key="GridCell.Tab.0.bottom" timestamp="1603570798955">
-      <screen x="0" y="0" width="3440" height="1410" />
-    </state>
-    <state width="3441" height="427" key="GridCell.Tab.0.bottom/-1920.357.1920.1050/0.0.3440.1410@0.0.3440.1410" timestamp="1603570798955" />
-    <state width="3441" height="427" key="GridCell.Tab.0.center" timestamp="1603570798955">
-      <screen x="0" y="0" width="3440" height="1410" />
-    </state>
-    <state width="3441" height="427" key="GridCell.Tab.0.center/-1920.357.1920.1050/0.0.3440.1410@0.0.3440.1410" timestamp="1603570798955" />
-    <state width="3441" height="427" key="GridCell.Tab.0.left" timestamp="1603570798955">
-      <screen x="0" y="0" width="3440" height="1410" />
-    </state>
-    <state width="3441" height="427" key="GridCell.Tab.0.left/-1920.357.1920.1050/0.0.3440.1410@0.0.3440.1410" timestamp="1603570798955" />
-    <state width="3441" height="427" key="GridCell.Tab.0.right" timestamp="1603570798955">
-      <screen x="0" y="0" width="3440" height="1410" />
-    </state>
-    <state width="3441" height="427" key="GridCell.Tab.0.right/-1920.357.1920.1050/0.0.3440.1410@0.0.3440.1410" timestamp="1603570798955" />
-    <state x="1554" y="628" key="NewPhpFileDialog" timestamp="1603574157875">
-      <screen x="0" y="0" width="3440" height="1410" />
-    </state>
-    <state x="1554" y="628" key="NewPhpFileDialog/-1920.357.1920.1050/0.0.3440.1410@0.0.3440.1410" timestamp="1603574157875" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1603577209118">
-      <screen x="0" y="0" width="3440" height="1410" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/-1920.357.1920.1050/0.0.3440.1410@0.0.3440.1410" timestamp="1603577209118" />
-    <state x="1312" y="425" key="Vcs.Push.Dialog.v2" timestamp="1603577677214">
-      <screen x="0" y="0" width="3440" height="1410" />
-    </state>
-    <state x="1312" y="425" key="Vcs.Push.Dialog.v2/-1920.357.1920.1050/0.0.3440.1410@0.0.3440.1410" timestamp="1603577677214" />
-    <state x="1383" y="317" width="672" height="678" key="search.everywhere.popup" timestamp="1603572853025">
-      <screen x="0" y="0" width="3440" height="1410" />
-    </state>
-    <state x="1383" y="317" width="672" height="678" key="search.everywhere.popup/-1920.357.1920.1050/0.0.3440.1410@0.0.3440.1410" timestamp="1603572853025" />
   </component>
 </project>

@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         @livewireStyles
-
+        @stack('styles')
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
     </head>
@@ -36,9 +36,6 @@
 
         @stack('modals')
         @livewireScripts
-
-        @if(config('app.env') == 'local')
-            <script src="http://easybill.test:35729/livereload.js"></script>
-        @endif
+        @stack('scripts')
     </body>
 </html>

@@ -18,6 +18,10 @@
                     <x-jet-nav-link href="{{ route('customers.index') }}" :active="request()->routeIs('customers')">
                         {{ __('Kunden') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('bills.index') }}" :active="request()->routeIs('bills')">
+                        {{ __('Rechnungen') }}
+                    </x-jet-nav-link>
+
                 </div>
             </div>
 
@@ -50,6 +54,10 @@
 
                         <x-jet-dropdown-link href="{{ route('profile.show') }}">
                             {{ __('Profile') }}
+                        </x-jet-dropdown-link>
+
+                        <x-jet-dropdown-link href="{{ route('billsettings') }}">
+                            {{ __('Rechnungseinstellungen') }}
                         </x-jet-dropdown-link>
 
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -126,6 +134,10 @@
             <x-jet-responsive-nav-link href="{{ route('customers.index') }}" :active="request()->routeIs('customers')">
                 {{ __('Kunden') }}
             </x-jet-responsive-nav-link>
+            <x-jet-nav-link href="{{ route('bills.index') }}" :active="request()->routeIs('bills')">
+                {{ __('Rechnungen') }}
+            </x-jet-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->

@@ -64,4 +64,12 @@ class User extends Authenticatable
         return $this->hasMany(Customer::class);
     }
 
+    public function billsettings(){
+        return $this->hasMany(BillSetting::class);
+    }
+
+    public function bills(){
+        return $this->hasMany(Bill::class);
+    }
+
 }

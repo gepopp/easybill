@@ -19343,6 +19343,10 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+window.setTwoNumberDecimal = function (el) {
+  el.value = parseFloat(el.value).toFixed(2);
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -19384,8 +19388,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/code/easybill/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/code/easybill/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Users\gerha\PhpstormProjects\easybill\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\gerha\PhpstormProjects\easybill\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

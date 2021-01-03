@@ -23,4 +23,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::resource('customers', \App\Http\Controllers\CustomerController::class);
+    Route::resource('bills', \App\Http\Controllers\BillController::class);
+    Route::get('bill/{bill}/create', '\App\Http\Controllers\BillController@createBill')->name('createBill');
+    Route::get('bill/{bill}/pdf', '\App\Http\Controllers\BillController@createPDF')->name('createPDF');
+
+    Route::get('billsettings', '\App\Http\Controllers\BillSettingController@edit')->name('billsettings');
 });
