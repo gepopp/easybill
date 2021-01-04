@@ -7,6 +7,7 @@ use App\Models\Bill;
 use App\Models\Customer;
 use App\Models\BillSetting;
 use Illuminate\Http\Request;
+use App\Notifications\SendBill;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Storage;
@@ -64,11 +65,23 @@ class BillController extends Controller
      */
     public function show(Bill $bill)
     {
+        $bill->getPDF();
+
         if ($bill->generated_at == null) {
-            $bill->update(['generated_at' => Carbon::now()]);
+            $bill->update(['generated_at' => Carbon::now(), 'bill_status' => 'generated']);
         }
 
         return view('bill.show')->with(['bill' => $bill, 'settings' => $bill->getSettings()]);
+
+    }
+
+    public function send(Bill $bill){
+
+        if($bill->sent_at == null){
+            $bill->customer->notify(new SendBill($bill));
+            $bill->update([ 'sent_at' => now(), 'bill_status' => 'sent' ]);
+        }
+        return redirect()->route('bills.index')->with('bills', Bill::all());
 
     }
 

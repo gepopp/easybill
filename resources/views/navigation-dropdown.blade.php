@@ -21,6 +21,9 @@
                     <x-jet-nav-link href="{{ route('bills.index') }}" :active="request()->routeIs('bills')">
                         {{ __('Rechnungen') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products')">
+                        {{ __('Produkte') }}
+                    </x-jet-nav-link>
 
                 </div>
             </div>
@@ -136,6 +139,9 @@
             </x-jet-responsive-nav-link>
             <x-jet-nav-link href="{{ route('bills.index') }}" :active="request()->routeIs('bills')">
                 {{ __('Rechnungen') }}
+            </x-jet-nav-link>
+            <x-jet-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products')">
+                {{ __('Produkte') }}
             </x-jet-nav-link>
 
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Product;
 use App\Models\BillPosition;
 
 class NewBillRow extends Component
@@ -10,6 +11,8 @@ class NewBillRow extends Component
 
     public $data;
     public $index;
+    public $products = false;
+
 
     public BillPosition $row;
 
@@ -24,7 +27,28 @@ class NewBillRow extends Component
         'row.description'  => 'string',
     ];
 
-    public function updated(){
+    public function searchProducts()
+    {
+        if (strlen($this->row->name) >= 2){
+            $this->products = Product::where('name', 'like', '%'.$this->row->name.'%')->get();
+        }
+    }
+
+    public function fillIn($index){
+        $this->row->name = $this->products[$index]->name;
+        $this->row->netto = $this->products[$index]->netto;
+        $this->row->unit = $this->products[$index]->unit;
+        $this->row->description = $this->products[$index]->description;
+
+
+        $this->products = false;
+        $this->updated();
+        $this->emit('focus', 'amount');
+    }
+
+
+    public function updated()
+    {
 
         $data = $this->validate();
         BillPosition::create($data['row']);

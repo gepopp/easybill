@@ -6,6 +6,10 @@
                     $wire.update()
                 }
             },500);
+
+            $wire.on('focus', (field) => {
+                    document.getElementsByName(field)[0].focus()
+                })
         })"
     >
     <td valign="top">
@@ -20,7 +24,14 @@
         </p>
     </td>
     <td>
-        <input type="number"  class="border my-2 w-full max-w-full p-2" wire:model.defer="row.amount" step="0.01" pattern="[0-9]+([,\.][0-9]+)?" x-on:focusin="focused = true" x-on:focusout="focused = false">
+        <input
+            type="number"
+            class="border my-2 w-full max-w-full p-2"
+            wire:model.defer="row.amount"
+            step="0.01"
+            pattern="[0-9]+([,\.][0-9]+)?"
+            x-on:focusin="focused = true"
+            x-on:focusout="focused = false">
         <p class="h-10">
             @error('row.amount') <span class="text-xs text-red-700">{{ $message }}</span> @enderror
         </p>

@@ -21,7 +21,21 @@
     <table class="table-fixed text-xs w-full">
         <tr>
             <td>
-                {!! $settings['footercol_1'] !!}
+                <table>
+                    <tr>
+                        <td valign="bottom">
+                            <img src="{{ asset('logo-icon-ohne-hg.png')  }}" class="pt-2" style="max-width: auto; width: 1cm">
+                        </td>
+                        <td>
+                            <a href="https://mybilling.at">
+                                <p style="font-size: .5rem">Erstellt mit:</p>
+                                <h1 class="text-xl font-bold" style="color: #42A626">mybilling.at</h1>
+                                <h3 class="leading-none text-xs" style="color: #D2D90B">Dein kosnteloses Rechnungstool</h3>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                {{--                {!! $settings['footercol_1'] !!}--}}
             </td>
             <td class="text-center">
                 {!! $settings['footercol_2'] !!}
