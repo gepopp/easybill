@@ -91,13 +91,13 @@ class CustomerController extends Controller
     {
 
         $customer->update($request->validate([
-            'company_name'     => 'string|max:50|nullable',
+            'company_name'     => 'string|nullable',
             'is_female'        => 'required|boolean',
             'academic_degree'  => 'string|max:50|nullable',
             'first_name'       => 'string|max:50',
             'last_name'        => 'string|max:50',
-            'address'          => 'string|max:50',
-            'address_addition' => 'string|max:50|nullable',
+            'address'          => 'string|',
+            'address_addition' => 'string|nullable',
             'zip'              => 'string|max:50',
             'city'             => 'string|max:50',
             'email'            => 'email|required',
