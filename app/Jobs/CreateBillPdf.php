@@ -70,7 +70,7 @@ class CreateBillPdf implements ShouldQueue
 
     public function failed(){
 
-        \Auth::login($this->user, false);
+        Illuminate\Support\Facades\Auth::login($this->user, false);
 
         $bill = $this->bill->refresh();
 
