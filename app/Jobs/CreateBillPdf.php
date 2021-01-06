@@ -5,8 +5,8 @@ namespace App\Jobs;
 use PDF;
 use App\Models\Bill;
 use App\Models\User;
+use App\Models\Customer;
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -39,11 +39,11 @@ class CreateBillPdf implements ShouldQueue
      */
     public function handle()
     {
-        Auth::login($this->user, false);
+        $bill = $this->bill;
 
-        $bill = $this->bill->refresh();
 
         Bill::withoutEvents(function () use ($bill) {
+            unset($bill->bill_status_formatted);
             $bill->update([
                 'document' => 'processing',
             ]);
@@ -52,8 +52,14 @@ class CreateBillPdf implements ShouldQueue
         if ($this->bill->document != null) {
             Storage::delete($this->bill->document);
         }
+
         // share data to view
-        $pdf = PDF::loadView('bill.showpdf', ['bill' => $this->bill, 'settings' => $this->bill->getSettings()]);
+        $pdf = PDF::loadView('bill.showpdf',
+            [
+                'bill'     => $this->bill,
+                'settings' => $this->bill->getSettings($this->user),
+                'customer' => Customer::withoutGlobalScope('owns')->find($this->bill->customer_id),
+            ]);
 
         $path = "bills/pdf/RE{$this->bill->bill_number}.pdf";
 
@@ -68,7 +74,8 @@ class CreateBillPdf implements ShouldQueue
     }
 
 
-    public function failed(){
+    public function failed()
+    {
 
 //        Auth::login($this->user, false);
 

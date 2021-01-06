@@ -25,7 +25,7 @@
             <td class=" p-1 text-right">{{ $bill->vatTotal }} €</td>
             <td class=" p-1 text-right">{{ $bill->bruttoTotal }} €</td>
             <td class=" p-1 text-right">{{ $bill->paid }} €</td>
-            <td class=" p-1 text-right">{!! $bill->bill_status_formatted !!}</td>
+            <td class=" p-1 text-right">{!! $bill->formatedStatus !!}</td>
             <td class="p-1 text-right">
                 <a href="{{ route('bills.show', $bill) }}" class="underline">Zur Rechnung</a>
             </td>

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use PDF;
+use App\Traits\FormatTextSnippet;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Bill extends Model
 {
-    use HasFactory;
+    use HasFactory, FormatTextSnippet;
 
     protected $guarded = [];
 
@@ -44,6 +45,31 @@ class Bill extends Model
     public function payments()
     {
         return $this->hasMany(BillPayment::class);
+    }
+
+
+    public function getFormatedStatusAttribute($key)
+    {
+        switch ($this->bill_status){
+            case 'draft':
+                $status = '<span class="text-gray-600">Entwurf</span>';
+                break;
+            case 'generated':
+                $status = '<span class="text-logo-light">erzeugt</span>';
+                break;
+            case 'sent':
+                $status = '<span class="text-logo-terciary">gesendet</span>';
+                break;
+            case 'paid':
+                $status = '<span class="text-logo-primary">bezahlt</span>';
+                break;
+            case 'overdue':
+                $status = '<span class="text-red-600">überfällig</span>';
+                break;
+            default:
+                break;
+        }
+        return $status;
     }
 
 
@@ -139,8 +165,12 @@ class Bill extends Model
         return Storage::temporaryUrl($this->document, now()->addMinutes(1));
     }
 
-    public function getSettings()
+    public function getSettings(User $user = null)
     {
+        if($user == null){
+            $user = Auth::user();
+        }
+
         $defaults = [
             'logo'            => asset('logo-icon.png'),
             'address'         => '',
@@ -158,11 +188,11 @@ class Bill extends Model
             'footercol_3'     => '',
             'desired_respite' => 7,
         ];
-        $settings = BillSetting::all()->pluck('setting_value', 'setting_name')->toArray();
+        $settings = BillSetting::withoutGlobalScopes()->where('user_id', $user->id)->pluck('setting_value', 'setting_name')->toArray();
         $settings = array_merge($defaults, $settings);
 
-        $settings['headertext'] = view(['template' => htmlspecialchars_decode($settings['headertext'])], ['bill' => $this, 'settings' => $settings]);
-        $settings['footertext'] = view(['template' => htmlspecialchars_decode($settings['footertext'])], ['bill' => $this, 'settings' => $settings]);
+        $settings['headertext'] = $this->formatBillSnippet($settings['headertext']);
+        $settings['footertext'] = $this->formatBillSnippet($settings['footertext']);
         return $settings;
     }
 

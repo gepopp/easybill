@@ -22,7 +22,7 @@
                         <p class="flex justify-between">
                             <strong>Fälig am:</strong> {{ \Carbon\Carbon::parse($bill->billing_date)->addDays($bill->respite)->format('d.m.Y') }}
                         </p>
-                        <p class="flex justify-between"><strong>Status:</strong> {!! $bill->bill_status_formatted !!}
+                        <p class="flex justify-between"><strong>Status:</strong> {!! $bill->formatedStatus !!}
                         </p>
                         <p class="flex justify-between"><strong>Netto:</strong><span>{{ $bill->nettoTotal }} €</span>
                         </p>
@@ -41,8 +41,10 @@
                                     @csrf
                                     @method('DELETE')
                                 </form>
+                            @else
+                                <livewire:bill-payments-list :bill="$bill"/>
                             @endif
-                            <livewire:bill-payments-list :bill="$bill"/>
+
                         </div>
                     </div>
                 </div>

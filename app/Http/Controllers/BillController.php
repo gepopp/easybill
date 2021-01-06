@@ -102,7 +102,7 @@ class BillController extends Controller
     public function update(Request $request, Bill $bill){
 
         $bill->update([
-            'updated_at' => now()
+            'generated_at' => now()
         ]);
         return redirect()->route('bills.show', $bill);
     }

@@ -28,6 +28,21 @@ class Customer extends Model
     }
 
 
+    public function getFullnameAttribute(){
+
+        if(isset($this->academic_degree)){
+            $name = $this->academic_degree . ' ';
+        }else{
+            $name = '';
+        }
+        $name .= $this->first_name . ' ';
+        $name .= $this->last_name;
+
+        return $name;
+
+    }
+
+
     public function getAddressHtml()
     {
         ob_start();

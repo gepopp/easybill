@@ -52,7 +52,7 @@
         <tr>
             <td valign="bottom">
                 <p class="text-xs" style="font-size: .5rem">Abs: {{ $settings['company_name'] }}, {{ $settings['address'] }}</p>
-                {!! $bill->customer->getAddressHtml() !!}
+                {!! $customer->getAddressHtml() !!}
             </td>
             <td>
                 <p class="text-right text-xs leading-normal">{{ $settings['company_name'] }}</p>
@@ -61,15 +61,19 @@
                 <p class="text-right text-xs leading-normal">{{ $settings['contactemail'] }}</p>
                 <p class="text-right text-xs leading-normal">{{ $settings['contactphone'] }}</p>
                 <p class="text-right text-xs leading-normal">{{ $settings['uid'] }}</p>
-                <p class="text-right text-xs leading-normal">Rechnungsdatum: {{ \Carbon\Carbon::parse($bill->billing_date)->format('d.m.Y') }}</p>
-                <p class="text-right text-xs leading-normal mb-24">Fälling am: {{ \Carbon\Carbon::parse($bill->billing_date)->addDays($settings['desired_respite'])->format('d.m.Y') }}</p>
+                <p class="text-right text-xs leading-normal">
+                    Rechnungsdatum: {{ \Carbon\Carbon::parse($bill->billing_date)->format('d.m.Y') }}
+                </p>
+                <p class="text-right text-xs leading-normal mb-24">
+                    Fälling am: {{ \Carbon\Carbon::parse($bill->billing_date)->addDays($bill->respite)->format('d.m.Y') }}
+                </p>
             </td>
         </tr>
     </table>
 
     <div class="mt-10">
-        <p class="font-bold text-lg">Rechnung: {{ $settings['prefix'] ?? '' }} {{ $bill->bill_number }} </p>
-        <p>{{ $settings['headertext'] }}</p>
+        <p class="font-bold text-lg">Rechnung: {{ $bill->prefix }} {{ $bill->bill_number }} </p>
+        <p>{!! $settings['headertext'] !!}</p>
     </div>
     <table class="table-auto w-full mt-10">
         <thead class="border-b">
@@ -87,14 +91,30 @@
         <tbody>
         @foreach( $bill->positions as $position )
             <tr class="py-3">
-                <td class="py-2 pr-1 whitespace-no-wrap" valign="top">{{ $position->order_number }}</td>
-                <td class="py-2 pr-1 whitespace-no-wrap">{{ $position->name }}</td>
-                <td class="py-2 pr-1 whitespace-no-wrap text-center">{{ $position->amount }}</td>
-                <td class="py-2 pr-1 whitespace-no-wrap text-center">{{ $position->unit }}</td>
-                <td class="py-2 pr-1 whitespace-no-wrap text-right">{{ number_format($position->netto, 2,',','.') }} €</td>
-                <td class="py-2 pr-1 whitespace-no-wrap" align="right">{{ number_format( ($position->netto * $position->amount), 2,',','.') }} €</td>
-                <td class="py-2 pr-1 whitespace-no-wrap" align="right">{{ number_format( ( $position->vat ), 0,',','.') }} %</td>
-                <td class="py-2 whitespace-no-wrap" align="right">{{ number_format(($position->netto * $position->amount ) + ((( $position->netto * $position->amount ) * $position->vat)/100), 2, ',', '.') }} €</td>
+                <td class="py-2 pr-1 whitespace-no-wrap" valign="top">
+                    {{ $position->order_number }}
+                </td>
+                <td class="py-2 pr-1 whitespace-no-wrap">
+                    {{ $position->name }}
+                </td>
+                <td class="py-2 pr-1 whitespace-no-wrap text-center">
+                    {{ $position->amount }}
+                </td>
+                <td class="py-2 pr-1 whitespace-no-wrap text-center">
+                    {{ $position->unit }}
+                </td>
+                <td class="py-2 pr-1 whitespace-no-wrap text-right">
+                    {{ number_format($position->netto, 2,',','.') }} €
+                </td>
+                <td class="py-2 pr-1 whitespace-no-wrap" align="right">
+                    {{ number_format( ($position->netto * $position->amount), 2,',','.') }} €
+                </td>
+                <td class="py-2 pr-1 whitespace-no-wrap" align="right">
+                    {{ number_format( ( $position->vat ), 0,',','.') }} %
+                </td>
+                <td class="py-2 whitespace-no-wrap" align="right">
+                    {{ number_format(($position->netto * $position->amount ) + ((( $position->netto * $position->amount ) * $position->vat)/100), 2, ',', '.') }} €
+                </td>
             </tr>
             <tr class="border-b border-b-2">
                 <td></td>
@@ -135,7 +155,7 @@
             <td class="w-1/4 text-right font-bold">{{ $bill->bruttoTotal}} €</td>
         </tr>
     </table>
-    <p class="mt-16">{{ $settings['footertext'] }}</p>
+    <p class="mt-16">{!! $settings['footertext'] !!}</p>
 </main>
 </body>
 </html>

@@ -36,29 +36,9 @@ class BillObserver
                 $bill->bill_status = 'overdue';
             }
         }
-
-
         $bill->update(['bill_status' => $bill->bill_status]);
 
-        switch ($bill->bill_status){
-            case 'draft':
-                $bill->bill_status_formatted = '<span class="text-gray-600">Entwurf</span>';
-                break;
-            case 'generated':
-                $bill->bill_status_formatted = '<span class="text-logo-light">erzeugt</span>';
-                break;
-            case 'sent':
-                $bill->bill_status_formatted = '<span class="text-logo-terciary">gesendet</span>';
-                break;
-            case 'paid':
-                $bill->bill_status_formatted = '<span class="text-logo-primary">bezahlt</span>';
-                break;
-            case 'overdue':
-                $bill->bill_status_formatted = '<span class="text-red-600">überfällig</span>';
-                break;
-            default:
-                break;
-        }
+
 
     }
 
@@ -71,12 +51,13 @@ class BillObserver
     public function updated(Bill $bill)
     {
         Bill::withoutEvents(function () use ($bill) {
+
+            unset($bill->bill_status_formatted);
             $bill->update([
                 'document' => 'onqueue',
             ]);
+
         });
-
-
         dispatch(new CreateBillPdf($bill, Auth::user()));
     }
 
