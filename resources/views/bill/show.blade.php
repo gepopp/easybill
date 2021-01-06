@@ -35,6 +35,7 @@
 
                         <div class="flex flex-col space-y-4 mt-10">
                             @if($bill->sent_at == null)
+                                <a href="{{ route('bill.send', $bill) }}" class="button-primary">jetzt senden</a>
                                 <a href="{{ route('bills.edit', $bill) }}" class="button-primary">bearbeiten</a>
                                 <a onclick="document.getElementById('delete-{{ $bill->id }}').submit()" class="button-primary cursor-pointer">löschen</a>
                                 <form action="{{ route('bills.destroy', $bill ) }}" method="post" id="delete-{{ $bill->id }}">
