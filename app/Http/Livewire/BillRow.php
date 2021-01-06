@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Bill;
 use Livewire\Component;
+use App\Models\Product;
 use App\Models\BillPosition;
 
 class BillRow extends Component
@@ -11,6 +12,9 @@ class BillRow extends Component
 
     public Bill $bill;
     public BillPosition $row;
+
+    public $products = [];
+    public $products_json = '[]';
 
     protected $listeners = ['resetOrderNumber'];
 
@@ -24,6 +28,34 @@ class BillRow extends Component
         'row.vat'          => 'required',
         'row.description'  => 'string',
     ];
+
+
+    public function fillIn($index)
+    {
+        $this->row->name = $this->products[$index]->name;
+        $this->row->netto = $this->products[$index]->netto;
+        $this->row->unit = $this->products[$index]->unit;
+        $this->row->description = $this->products[$index]->description;
+        $this->products_json = '[]';
+        $this->update();
+    }
+
+
+    public function updated($propertyName)
+    {
+        if($propertyName == 'row.name'){
+            if (strlen($this->row->name) <= 2) {
+                $this->products_json = '[]';
+            }
+            $this->products_json = $this->products = Product::where('name', 'like', '%' . $this->row->name . '%')->get();
+            if (count($this->products_json) == 0) {
+                $this->products_json = '[]';
+            } else {
+                $this->products_json->toJson(JSON_PRETTY_PRINT);
+            }
+        }
+    }
+
 
     public function update()
     {

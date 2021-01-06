@@ -15,6 +15,8 @@ class CreateBillPaymentsTable extends Migration
     {
         Schema::create('bill_payments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('bill_id');
+            $table->float('amount');
             $table->timestamps();
         });
     }

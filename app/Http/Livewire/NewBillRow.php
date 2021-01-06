@@ -11,7 +11,7 @@ class NewBillRow extends Component
 
     public $data;
     public $index;
-    public $products = false;
+    public $products = '[]';
 
 
     public BillPosition $row;
@@ -27,14 +27,24 @@ class NewBillRow extends Component
         'row.description'  => 'string',
     ];
 
+
+
     public function searchProducts()
     {
-        if (strlen($this->row->name) >= 2){
-            $this->products = Product::where('name', 'like', '%'.$this->row->name.'%')->get();
+        if (strlen($this->row->name) <= 2) {
+            return '[]';
+        }
+        $products = $this->products = Product::where('name', 'like', '%' . $this->row->name . '%')->get();
+        if (count($products) == 0) {
+            return '[]';
+        } else {
+            return $products->toJson(JSON_PRETTY_PRINT);
         }
     }
 
-    public function fillIn($index){
+
+    public function fillIn($index)
+    {
         $this->row->name = $this->products[$index]->name;
         $this->row->netto = $this->products[$index]->netto;
         $this->row->unit = $this->products[$index]->unit;

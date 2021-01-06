@@ -26,7 +26,7 @@ class SendBill extends Notification
      */
     public function __construct($bill)
     {
-        $this->settings = BillSetting::all()->pluck('setting_value', 'setting_name');
+        $this->settings = $bill->getSettings();
         $this->bill = $bill;
     }
 

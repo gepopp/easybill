@@ -148,6 +148,9 @@ return [
     */
 
     'attributes' => [
+        'amount'          => 'Betrag',
+        'bill_number'     => 'Rechnungsnummer',
+        'respite'         => 'Zahlungsziel',
         'row.name'        => 'Name',
         'row.amount'      => 'Menge',
         'row.unit'        => 'Einheit',

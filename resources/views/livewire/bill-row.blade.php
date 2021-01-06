@@ -17,11 +17,30 @@
         <input type="hidden" wire:model="row.order_number">
         <input type="hidden" wire:model="row.id">
     </td>
-    <td>
-        <input type="text" class="border my-2 w-full max-w-full p-2" wire:model.defer="row.name" x-on:focusin="focused = true" x-on:focusout="focused = false">
+    <td x-data="{ highlight : 0, products : {{ $this->products_json }} }" x-init="$watch('products', (products) => console.log(products))" class="relative">
+        <input type="text" class="border my-2 w-full max-w-full p-2" wire:model="row.name" x-on:focusin="focused = true" x-on:focusout="focused = false"
+               x-on:keydown.arrow-down="highlight = Math.min(products.length - 1, highlight + 1); console.log(highlight)"
+               x-on:keydown.arrow-up="highlight = Math.max( 0, highlight - 1); console.log(highlight)"
+               x-on:keydown.enter="
+                       $wire.fillIn(highlight);
+                   "
+        >
         <p class="h-10">
             @error('row.name') <span class="text-xs text-red-700">{{ $message }}</span> @enderror
         </p>
+        <div class="absolute top-0 left-0 mt-16 p-5 shadow-lg bg-white w-full" x-show="products.length > 0">
+            <ul>
+                <template x-for="(item, index) in products" x-key="item.id">
+                    <li class="py-3 hover:bg-gray-50 cursor-pointer list-none"
+                        x-on:click="
+                               $wire.fillIn(index);
+                            "
+                        :class="{'bg-gray-50': index == highlight }">
+                        <p class="text-sm font-bold" x-text="item.name"></p>
+                    </li>
+                </template>
+            </ul>
+        </div>
     </td>
     <td>
         <input

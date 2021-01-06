@@ -20,9 +20,62 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentAccountController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/AddBillPaymentModal.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/BillIndexTable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/BillPDFButtons.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/BillPaymentListItem.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/BillPaymentsList.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/CustomerSelect.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/NewBilModalForm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Jobs/CreateBillPdf.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/PaymentAccount.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Observers/BillObserver.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/PaymentAccountFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_05_005205_create_jobs_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_06_114351_create_payment_accounts_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/PaymentAccountSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/add-bill-payment-modal.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/bill-index-table.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/bill-p-d-f-buttons.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/bill-payment-list-item.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/bill-payments-list.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/customer-select.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/new-bil-modal-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/easybill.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/easybill.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BillController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BillController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillDateField.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/BillDateField.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillRow.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/BillRow.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/NewBillRow.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/NewBillRow.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Bill.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bill.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/BillPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BillPayment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/SendBill.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/SendBill.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_203121_create_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_203121_create_customers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_04_174246_create_bill_payments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_04_174246_create_bill_payments_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_04_180605_alter_customer_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_06_120427_add_payment_date_to_bill_payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/de/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/de/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bill/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bill/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bill/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill-date-field.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill-date-field.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill-row.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill-row.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/new-bill-row.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/new-bill-row.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/confirmation-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/confirmation-modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/dialog-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/dialog-modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/nav-link.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/nav-link.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +236,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/vendor/campaignmonitor/createsend-php" />
+      <path value="$PROJECT_DIR$/vendor/predis/predis" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jL5ctXA68zZf3FxB0EpiDtEC5X" />
@@ -238,7 +292,8 @@
       <workItem from="1604605978905" duration="1629000" />
       <workItem from="1606154440094" duration="1046000" />
       <workItem from="1609232195824" duration="2095000" />
-      <workItem from="1609524646520" duration="112324000" />
+      <workItem from="1609524646520" duration="129481000" />
+      <workItem from="1609841956963" duration="42563000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1603576131712</created>
@@ -373,7 +428,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609784276009</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="install analytics">
+      <created>1609784671925</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1609784671925</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,6 +460,7 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="massive update" />
     <MESSAGE value="update customer create" />
-    <option name="LAST_COMMIT_MESSAGE" value="update customer create" />
+    <MESSAGE value="install analytics" />
+    <option name="LAST_COMMIT_MESSAGE" value="install analytics" />
   </component>
 </project>

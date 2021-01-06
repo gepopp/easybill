@@ -13,6 +13,7 @@ class Customer extends Model
 
     protected $guarded = [];
 
+
     protected static function booted()
     {
         static::addGlobalScope('owns', function (Builder $builder) {

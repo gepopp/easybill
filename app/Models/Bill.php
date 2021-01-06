@@ -15,7 +15,7 @@ class Bill extends Model
 
     protected $guarded = [];
 
-    protected $with = ['customer', 'positions'];
+    protected $with = ['customer', 'positions', 'payments'];
 
 
     protected static function booted()
@@ -41,6 +41,78 @@ class Bill extends Model
         return $this->hasMany(BillPosition::class);
     }
 
+    public function payments()
+    {
+        return $this->hasMany(BillPayment::class);
+    }
+
+
+    public function getPaidAttribute()
+    {
+
+        return number_format($this->getUnformatedPaidAttribute(), 2, ',', '.');
+
+    }
+
+    public function getUnformatedPaidAttribute()
+    {
+
+        $amount = 0;
+        foreach ($this->payments as $payment) {
+            $amount += $payment->amount;
+        }
+        return $amount;
+
+    }
+
+
+    public function getNettoTotalAttribute()
+    {
+        return number_format($this->getUnformatedNettoTotalAttribute(), 2, ',', '.');
+    }
+
+    public function getUnformatedNettoTotalAttribute()
+    {
+        $netto = 0;
+
+        foreach ($this->positions as $position) {
+            $netto += $position->netto * $position->amount;
+        }
+        return round($netto, 2 );
+    }
+
+
+    public function getVatTotalAttribute()
+    {
+        return number_format($this->getUnformatedVatTotalAttribute(), 2, ',', '.');
+    }
+
+    public function getUnformatedVatTotalAttribute()
+    {
+        $vat = 0;
+
+        foreach ($this->positions as $position) {
+            $vat += (($position->netto * $position->amount) * $position->vat) / 100;
+        }
+        return round($vat, 2 );
+    }
+
+
+    public function getBruttoTotalAttribute()
+    {
+        return number_format($this->getUnformatedBruttoTotalAttribute(), 2, ',', '.');
+    }
+
+    public function getUnformatedBruttoTotalAttribute()
+    {
+        $brutto = 0;
+
+        foreach ($this->positions as $position) {
+            $brutto += (($position->netto * $position->amount) + ((($position->netto * $position->amount) * $position->vat) / 100));
+        }
+        return round($brutto, 2 );
+    }
+
 
     public static function getNextBillNumber()
     {
@@ -52,7 +124,7 @@ class Bill extends Model
             $maxBill = $query->setting_value;
         }
 
-        if(empty($maxBill)){
+        if (empty($maxBill)) {
             $maxBill = 1000;
         }
 
@@ -62,63 +134,33 @@ class Bill extends Model
 
     }
 
-    public function getNettoTotalAttribute()
+    public function createPdf()
     {
-        $netto = 0;
-
-        foreach($this->positions as $position){
-           $netto += $position->netto * $position->amount;
-        }
-        return number_format($netto, 2, ',', '.');
-    }
-
-    public function getVatTotalAttribute()
-    {
-        $vat = 0;
-
-        foreach($this->positions as $position){
-            $vat += ( ($position->netto * $position->amount) * $position->vat) / 100;
-        }
-        return number_format($vat, 2, ',', '.');
-    }
-
-    public function getBruttoTotalAttribute()
-    {
-        $brutto = 0;
-
-        foreach($this->positions as $position){
-            $brutto += ( ($position->netto * $position->amount ) + ( ( ( $position->netto * $position->amount) * $position->vat) / 100));
-        }
-        return number_format($brutto, 2, ',', '.');
-    }
-
-    public function getPDF()
-    {
-
-        if ($this->document == null) {
-            ini_set('max_execution_time', 300); // 300 seconds = 5 minutes
-            set_time_limit(0);
-
-            // share data to view
-            $pdf = PDF::loadView('bill.showpdf', ['bill' => $this, 'settings' => $this->getSettings()]);
-
-            $path = "bills/pdf/RE{$this->bill_number}.pdf";
-
-            Storage::put($path, $pdf->output());
-
-            $this->update([
-                'document' => $path,
-            ]);
-        }
-
-
-        // download PDF file with download method
         return Storage::temporaryUrl($this->document, now()->addMinutes(1));
     }
 
     public function getSettings()
     {
-        $settings = BillSetting::all()->pluck('setting_value', 'setting_name');
+        $defaults = [
+            'logo'            => asset('logo-icon.png'),
+            'address'         => '',
+            'contactperson'   => '',
+            'contactphone'    => '',
+            'contactemail'    => '',
+            'uid'             => '',
+            'headertext'      => '',
+            'footertext'      => '',
+            'prefix'          => 'RE',
+            'bill_number'     => 1000,
+            'company_name'    => '',
+            'footercol_1'     => '',
+            'footercol_2'     => '',
+            'footercol_3'     => '',
+            'desired_respite' => 7,
+        ];
+        $settings = BillSetting::all()->pluck('setting_value', 'setting_name')->toArray();
+        $settings = array_merge($defaults, $settings);
+
         $settings['headertext'] = view(['template' => htmlspecialchars_decode($settings['headertext'])], ['bill' => $this, 'settings' => $settings]);
         $settings['footertext'] = view(['template' => htmlspecialchars_decode($settings['footertext'])], ['bill' => $this, 'settings' => $settings]);
         return $settings;

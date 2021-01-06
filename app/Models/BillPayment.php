@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class BillPayment extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function bill(){
+        return $this->belongsTo(Bill::class);
+    }
 }

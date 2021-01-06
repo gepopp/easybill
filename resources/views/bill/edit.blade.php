@@ -10,19 +10,15 @@
                 <div class="flex flex-col items-end">
                     <img src="{{ Storage::temporaryUrl($settings['logo'], now()->addMinutes(5)) }}">
                     <div class="mt-12 p-10">
-                        <p>{{ $settings['company_name'] }}</p>
-                        <p class="mb-5">{{ $settings['address'] }}</p>
-                        <p>{{ $settings['contactperson'] }}</p>
-                        <p>{{ $settings['contactemail'] }}</p>
-                        <p class="mb-5">{{ $settings['contactphone'] }}</p>
-                        <p class="">{{ $settings['uid'] }}</p>
+                        <p>{{ $settings['company_name'] ?? '' }}</p>
+                        <p class="mb-5">{{ $settings['address'] ?? '' }}</p>
+                        <p>{{ $settings['contactperson'] ?? '' }}</p>
+                        <p>{{ $settings['contactemail'] ?? '' }}</p>
+                        <p class="mb-5">{{ $settings['contactphone'] ?? '' }}</p>
+                        <p class="">{{ $settings['uid'] ?? '' }}</p>
                         <div class="flex">
-
-                            <span class="mr-1">Rechnungsdatum:</span>
                             <livewire:bill-date-field :bill="$bill"/>
                         </div>
-                        <p class="">Fälling am: {{ \Carbon\Carbon::parse($bill->billing_date)->addDays($settings['desired_respite'])->format('d.m.Y') }}</p>
-
                     </div>
                 </div>
                 <div class="-mt-24">
@@ -34,42 +30,40 @@
                         {{  $settings['headertext']  }}
                     </div>
                 </div>
-
                 <livewire:add-bill-position :bill="$bill">
-
-                    <hr class="">
-
-                    <livewire:bill-summ :bill="$bill"/>
-
-                    <hr class="mt-24">
-                    {{ $settings['footertext'] }}
-                    <div class="grid grid-cols-3 gap-4 pt-5 pb-20 text-sm">
-                        <div>
-                            {!! $settings['footercol_1'] !!}
-                        </div>
-                        <div class="text-center">
-                            {!! $settings['footercol_2'] !!}
-                        </div>
-                        <div class="text-right">
-                            {!! $settings['footercol_3'] !!}
-                        </div>
+                <hr>
+                <livewire:bill-summ :bill="$bill"/>
+                <hr class="mt-24">
+                {{ $settings['footertext'] }}
+                <div class="grid grid-cols-3 gap-4 pt-5 pb-20 text-sm">
+                    <div>
+                        {!! $settings['footercol_1'] !!}
                     </div>
-                    <div class="flex justify-end"
-                        x-data="{ show: true }"
-                        x-init="
-                            Livewire.on('new_row', (event) => {
-                                show = !event;
-                            });
-                            $watch('show', (value)=>{ console.log(value) })
-                        ">
-                        <a :href="!show ? 'javascript:void(0)': '{{ route('bills.show', $bill) }}'"
-                                x-bind:disabled="show"
-                                class="bg-red-800 p-3 text-white text-center font-semibold"
+                    <div class="text-center">
+                        {!! $settings['footercol_2'] !!}
+                    </div>
+                    <div class="text-right">
+                        {!! $settings['footercol_3'] !!}
+                    </div>
+                </div>
+                <div class="flex justify-end"
+                     x-data="{ show: true }"
+                     x-init="
+                        Livewire.on('new_row', (event) => {
+                            show = !event;
+                        });
+                        $watch('show', (value)=>{ console.log(value) })
+                    ">
+                    <form action="{{ route('bills.update', $bill) }}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit"
+                                class="button-primary"
                                 :class="{ 'bg-opacity-50 cursor-not-allowed' : show == false }"
-                        >
-                            Rechnung erzeugen
-                        </a>
-                    </div>
+                        >speichern
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

@@ -22,7 +22,9 @@ class BillController extends Controller
      */
     public function index()
     {
-        return view('bill.index')->with('bills', Bill::all());
+        $bills = Bill::all();
+
+        return view('bill.index')->with('bills', $bills);
     }
 
     /**
@@ -65,21 +67,13 @@ class BillController extends Controller
      */
     public function show(Bill $bill)
     {
-        $bill->getPDF();
-
-        if ($bill->generated_at == null) {
-            $bill->update(['generated_at' => Carbon::now(), 'bill_status' => 'generated']);
-        }
-
         return view('bill.show')->with(['bill' => $bill, 'settings' => $bill->getSettings()]);
-
     }
 
     public function send(Bill $bill){
 
         if($bill->sent_at == null){
             $bill->customer->notify(new SendBill($bill));
-            $bill->update([ 'sent_at' => now(), 'bill_status' => 'sent' ]);
         }
         return redirect()->route('bills.index')->with('bills', Bill::all());
 
@@ -93,27 +87,24 @@ class BillController extends Controller
      */
     public function edit(Bill $bill)
     {
-
-        if ($bill->generated_at != null) {
+        if ($bill->sent_at != null) {
             return redirect(route('bills.show', $bill));
         }
-
         return view('bill.edit')->with(['bill' => $bill])->with('settings', $bill->getSettings());
     }
 
 
     /**
-     * Remove the specified resource from storage.
+     * update the bill
      *
-     * @param \App\Models\Bill $bill
-     * @return \Illuminate\Http\Response
+     * @param Bill $bill
      */
-    public function destroy(Bill $bill)
-    {
-        //
+    public function update(Request $request, Bill $bill){
+
+        $bill->update([
+            'updated_at' => now()
+        ]);
+        return redirect()->route('bills.show', $bill);
     }
-
-
-
 
 }

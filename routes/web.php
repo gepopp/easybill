@@ -33,7 +33,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::resource('customers', \App\Http\Controllers\CustomerController::class);
     Route::resource('bills', \App\Http\Controllers\BillController::class);
-    Route::get('bill/{bill}/send', '\App\Http\Controllers\BillController@send')->name('bill.send');
     Route::resource('products', \App\Http\Controllers\ProductController::class);
+    Route::resource('paymentaccounts', \App\Models\PaymentAccount::class);
+    Route::get('bill/{bill}/send', '\App\Http\Controllers\BillController@send')->name('bill.send');
     Route::get('billsettings', '\App\Http\Controllers\BillSettingController@edit')->name('billsettings');
 });

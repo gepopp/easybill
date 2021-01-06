@@ -5,27 +5,30 @@
         <input type="hidden" wire:model="row.id">
     </td>
     <td>
-        <div class="relative">
-            <input type="text" class="border my-2 w-full max-w-full p-2" wire:model="row.name" wire:keydown="searchProducts">
+        <div class="relative" x-data="{ highlight : 0, products : {{ $this->searchProducts() }} }" x-init="$watch('products', (products) => console.log(products))">
+            <input type="text" class="border my-2 w-full max-w-full p-2" wire:model="row.name" wire:keydown="searchProducts"
+                   x-on:keydown.arrow-down="highlight = Math.min(products.length - 1, highlight + 1); console.log(highlight)"
+                   x-on:keydown.arrow-up="highlight = Math.max( 0, highlight - 1); console.log(highlight)"
+                   x-on:keydown.enter="
+                       $wire.fillIn(highlight);
+                   "
+            >
             <p class="h-10">
                 @error('row.name') <span class="text-xs text-red-700">{{ $message }}</span> @enderror
             </p>
-            @if($products)
-                <div class="absolute top-0 left-0 mt-16 p-5 shadow-lg bg-white w-full">
-                    <ul>
-                        @foreach($products as $index => $product)
-                            <li class="py-3 hover:bg-gray-50 cursor-pointer" wire:click="fillIn({{$index}})" >
-                                <p class="text-sm font-bold">{{ $product->name }}</p>
-                                <p class="text-xs flex justify-between">
-                                    <span>{{ number_format($product->netto, 2, ',','.') }} €</span>
-                                    <span>{{ number_format($product->vat, 2, ',', '.') }} %</span>
-                                    <span>{{ $product->unit }}</span>
-                                </p>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            <div class="absolute top-0 left-0 mt-16 p-5 shadow-lg bg-white w-full" x-show="products.length > 0">
+                <ul>
+                    <template x-for="(item, index) in products" x-key="item.id">
+                        <li class="py-3 hover:bg-gray-50 cursor-pointer list-none"
+                            x-on:click="
+                               $wire.fillIn(index);
+                            "
+                            :class="{'bg-gray-50': index == highlight }">
+                            <p class="text-sm font-bold" x-text="item.name"></p>
+                        </li>
+                    </template>
+                </ul>
+            </div>
         </div>
 
     </td>

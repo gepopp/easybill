@@ -1,3 +1,17 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+table.striped tr:nth-child(even) {
+    @apply bg-logo-gray;
+}
+
+.button-primary {
+    @apply rounded-xl w-full bg-gradient-to-r from-logo-primary via-logo-secondary to-logo-terciary p-3 text-center text-white font-semibold;
+}
+.button-primary:hover {
+    @apply bg-logo-light bg-gradient-to-l from-logo-terciary;
+}
+.button-primary:focus {
+    @apply outline-none;
+}
