@@ -39,6 +39,10 @@ class BillObserver
         $bill->update(['bill_status' => $bill->bill_status]);
 
 
+        if(!Storage::exists($bill->document)){
+            dispatch(new CreateBillPdf($bill, Auth::user()));
+        }
+
 
     }
 
