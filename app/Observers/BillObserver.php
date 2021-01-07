@@ -36,6 +36,12 @@ class BillObserver
                 $bill->bill_status = 'overdue';
             }
         }
+
+        if($bill->has_storno){
+            $bill->status = 'paid';
+        }
+
+
         $bill->update(['bill_status' => $bill->bill_status]);
 
     }
