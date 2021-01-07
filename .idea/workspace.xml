@@ -20,23 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CMTransactionalController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/CMTransactional.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/CMTransactionalFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_07_014508_create_c_m_transactionals_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_07_073557_add_storno_id_to_bill.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/CMTransactionalSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BillController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BillController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Bill.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bill.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/SendBill.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/SendBill.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Observers/BillObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/BillObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bill/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bill/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill-index-table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill-index-table.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/billsettings/sender-address.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/billsettings/sender-address.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -255,7 +239,7 @@
       <workItem from="1606154440094" duration="1046000" />
       <workItem from="1609232195824" duration="2095000" />
       <workItem from="1609524646520" duration="129481000" />
-      <workItem from="1609841956963" duration="67671000" />
+      <workItem from="1609841956963" duration="68281000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1603576131712</created>
@@ -460,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609973782071</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="added duplicate &amp;&amp; storno to bill">
+      <created>1610010828546</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1610010828546</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,6 +478,7 @@
     <MESSAGE value="update customer create" />
     <MESSAGE value="install analytics" />
     <MESSAGE value="Rechungen v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rechungen v2" />
+    <MESSAGE value="added duplicate &amp;&amp; storno to bill" />
+    <option name="LAST_COMMIT_MESSAGE" value="added duplicate &amp;&amp; storno to bill" />
   </component>
 </project>
