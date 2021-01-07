@@ -26,7 +26,17 @@
                     {!! $bill->customer->getAddressHtml() !!}
 
                     <div class="mt-24">
-                        <p class="font-bold text-xl">Rechnung: {{ $settings['prefix'] ?? '' }} {{ $bill->bill_number }} </p>
+                        <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-10">
+                            @if($bill->is_storno_of)
+                                {{ __('Stornorechung') }}
+                            @else
+                                {{ __('Rechung') }}
+                            @endif
+                            {{ $bill->prefix }} {{ $bill->bill_number }}
+                            @if($bill->is_storno_of)
+                                {{ $bill->is_storno_of->prefix }} {{ $bill->is_storno_of->bill_number }}
+                            @endif
+                        </h2>
                         {{  $settings['headertext']  }}
                     </div>
                 </div>

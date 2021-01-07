@@ -16,7 +16,7 @@ class Bill extends Model
 
     protected $guarded = [];
 
-    protected $with = ['customer', 'positions', 'payments'];
+    protected $with = ['customer', 'positions', 'payments', 'is_storno_of'];
 
 
     protected static function booted()
@@ -47,6 +47,13 @@ class Bill extends Model
         return $this->hasMany(BillPayment::class);
     }
 
+    public function has_storno(){
+        return $this->hasOne(Bill::class, 'storno_id');
+    }
+
+    public function is_storno_of(){
+        return $this->belongsTo(Bill::class, 'storno_id');
+    }
 
     public function getFormatedStatusAttribute($key)
     {

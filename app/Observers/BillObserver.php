@@ -38,12 +38,6 @@ class BillObserver
         }
         $bill->update(['bill_status' => $bill->bill_status]);
 
-
-        if(!Storage::exists($bill->document)){
-            dispatch(new CreateBillPdf($bill, Auth::user()));
-        }
-
-
     }
 
     /**
@@ -62,7 +56,10 @@ class BillObserver
             ]);
 
         });
-        dispatch(new CreateBillPdf($bill, Auth::user()));
+
+        if(count($bill->positions) > 0){
+            dispatch(new CreateBillPdf($bill, Auth::user()));
+        }
     }
 
 

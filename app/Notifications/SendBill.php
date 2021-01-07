@@ -49,6 +49,10 @@ class SendBill extends Notification
      */
     public function toMail($notifiable)
     {
+
+       Storage::disk('local')->put($this->bill->document, Storage::disk('s3')->get($this->bill->document));
+
+
         return (new MailMessage)
             ->from('dont-reply@mybilling.at', $this->settings['contactperson'] . ' via mybilling')
             ->subject('Neue Rechnung von ' . $this->settings['company_name'])
@@ -66,11 +70,15 @@ class SendBill extends Notification
             ->salutation( new HtmlString('Mit freundlichen Grüßen,<br>' . $this->settings['contactperson'] .
                 ' via <a href="https://mybilling.at">mybilling.at</a>'))
 
-            ->attachData(file_get_contents(Storage::temporaryUrl($this->bill->document, now()->add(3, 'minutes'))),
-                $this->settings['prefix'] . $this->bill->bill_number . '.pdf',
-                [
-                    'mime' => 'application/pdf',
-                ]);
+            ->attach(Storage::disk('local')->path($this->bill->document));
+
+           Storage::disk('local')->delete($this->bill->document);
+
+//            ->attachData(file_get_contents(Storage::temporaryUrl($this->bill->document, now()->add(3, 'minutes'))),
+//                $this->settings['prefix'] . $this->bill->bill_number . '.pdf',
+//                [
+//                    'mime' => 'application/pdf',
+//                ]);
 
     }
 

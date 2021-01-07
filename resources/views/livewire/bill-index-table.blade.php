@@ -2,7 +2,7 @@
     <thead>
     <tr>
         <th class="p-1 text-left">Nr.</th>
-        <th class="p-1 text-left">Datum</th>
+        <th class="p-1 text-left">Rechnungsdatum</th>
         <th class="p-1 text-left">Empfänger</th>
         <th class="p-1 text-right">Netto</th>
         <th class="p-1 text-right">Mwst.</th>
@@ -14,8 +14,14 @@
     </thead>
     <tbody>
     @forelse( $bills as $bill )
+
         <tr>
-            <td class=" p-1">{{ $bill->bill_number }}</td>
+            <td class=" p-1">
+                @if($bill->is_storno_of)
+                    <p class="text-xs text-red-800">Storno von {{ $bill->is_storno_of->prefix }}{{ $bill->is_storno_of->bill_number }}</p>
+                @endif
+                {{$bill->prefix}}{{ $bill->bill_number }}
+            </td>
             <td class=" p-1">{{ \Carbon\Carbon::parse($bill->billing_date)->format('d.m.y') }}</td>
             <td class=" p-1">
                 <p class="text-xs">{{ $bill->customer->company_name }}</p>

@@ -15,3 +15,7 @@ table.striped tr:nth-child(even) {
 .button-primary:focus {
     @apply outline-none;
 }
+.ql-placeholder{
+    min-width: 100px;
+    width: 100px;
+}

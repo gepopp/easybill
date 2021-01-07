@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Bill;
 use App\Models\Customer;
 use App\Models\BillSetting;
+use App\Jobs\CreateBillPdf;
 use Illuminate\Http\Request;
 use App\Notifications\SendBill;
 use Illuminate\Support\Facades\Auth;
@@ -67,16 +68,37 @@ class BillController extends Controller
      */
     public function show(Bill $bill)
     {
+        if (!Storage::exists($bill->document)) {
+            dispatch(new CreateBillPdf($bill, Auth::user()));
+        }
+
+
         return view('bill.show')->with(['bill' => $bill, 'settings' => $bill->getSettings()]);
     }
 
-    public function send(Bill $bill){
 
-        if($bill->sent_at == null){
+    /**
+     * Sent the E-Mail notification with bill attachment
+     *
+     * @param Bill $bill
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function send(Bill $bill)
+    {
+
+        if ($bill->sent_at == null) {
             $bill->customer->notify(new SendBill($bill));
-        }
-        return redirect()->route('bills.index')->with('bills', Bill::all());
 
+            Bill::withoutEvents(function () use ($bill) {
+
+                unset($bill->bill_status_formatted);
+                $bill->update([
+                    'sent_at' => now(),
+                ]);
+
+            });
+        }
+        return redirect()->route('bills.show', $bill);
     }
 
     /**
@@ -87,7 +109,7 @@ class BillController extends Controller
      */
     public function edit(Bill $bill)
     {
-        if ($bill->sent_at != null) {
+        if ($bill->sent_at != null || $bill->storno_id != null) {
             return redirect(route('bills.show', $bill));
         }
         return view('bill.edit')->with(['bill' => $bill])->with('settings', $bill->getSettings());
@@ -99,12 +121,95 @@ class BillController extends Controller
      *
      * @param Bill $bill
      */
-    public function update(Request $request, Bill $bill){
-
+    public function update(Request $request, Bill $bill)
+    {
         $bill->update([
-            'generated_at' => now()
+            'generated_at' => now(),
         ]);
         return redirect()->route('bills.show', $bill);
+    }
+
+
+    public function duplicate(Bill $bill)
+    {
+
+
+        $newbill = Bill::create([
+            'user_id'      => $bill->user_id,
+            'storno_id'    => null,
+            'customer_id'  => $bill->customer_id,
+            'billing_date' => now(),
+            'respite'      => $bill->respite,
+            'sent_at'      => null,
+            'generated_at' => null,
+            'paid_at'      => null,
+            'prefix'       => $bill->prefix,
+            'bill_number'  => Bill::getNextBillNumber(),
+            'bill_status'  => 'draft',
+            'document'     => null,
+        ]);
+
+        foreach ($bill->positions as $position) {
+            $newposition = $position->replicate();
+            $newposition->bill_id = $newbill->id;
+            $newposition->save();
+        }
+
+        return redirect()->route('bills.edit', $newbill)->with('settings', $bill->getSettings());
+
+    }
+
+    public function storno(Bill $bill)
+    {
+        if ($bill->sent_at == null || $bill->storno_id != null) {
+            return redirect()->route('bills.index')->with('bills', Bill::all());
+        }
+
+        $newbill = Bill::create([
+            'storno_id'    => $bill->id,
+            'user_id'      => $bill->user_id,
+            'customer_id'  => $bill->customer_id,
+            'billing_date' => now(),
+            'respite'      => $bill->respite,
+            'sent_at'      => null,
+            'generated_at' => now(),
+            'paid_at'      => now(),
+            'prefix'       => $bill->prefix,
+            'bill_number'  => Bill::getNextBillNumber(),
+            'bill_status'  => 'generated',
+            'document'     => null,
+        ]);
+
+        foreach ($bill->positions as $position) {
+            $newposition = $position->replicate();
+            $newposition->bill_id = $newbill->id;
+            $newposition->netto = $newposition->netto * -1;
+            $newposition->save();
+        }
+
+        return redirect()->route('bills.edit', $newbill)->with('settings', $bill->getSettings());
+
+    }
+
+
+    /**
+     * delete bill and all relations and pdf
+     *
+     * @param Bill $bill
+     */
+    public function destroy(Bill $bill){
+
+        Storage::delete($bill->document);
+
+        foreach ($bill->positions as $position){
+            $position->delete();
+        }
+        $bill->delete();
+
+        return redirect()->route('bills.index');
+
+
+
     }
 
 }

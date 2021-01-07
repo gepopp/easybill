@@ -99,11 +99,70 @@
             <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
         @endpush
 
+        <script>
+            var toolbarOptions = {
+                container:
+                    [
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{
+                            'placeholder': [
+                                '[bill.bill_number]|Rechnungsnummer',
+                                '[bill.respite]|Zahlungsziel',
+                                '[bill.billing_date]|Rechnungsdatum',
+                                '[bill.totalBrutto]|Brutto gesamt',
+                                '[bill.totalNetto]|Netto gesamt',
+                                '[bill.totalVat]|MwSt. gesamt',
+                                '[bill.paid]|bezahlt',
+                                '[bill.prefix]|Rechnungsnummer Prefix',
+                                '[customer.company_name]|Empfänger Firmenname',
+                                '[customer.anrede]|Empfänger Anrede',
+                                '[customer.academic_degree]|Empfänger Akademischer Grad',
+                                '[customer.fullname]|Empfänger ganzer Name',
+                                '[customer.first_name]|Empfänger Vorname',
+                                '[customer.last_name]|Empfänger Nachname',
+                                '[customer.email]|Empfänger E-Mail Adresse',
+                                '[customer.address]|Empfänger Adresse',
+                                '[customer.address_addition]|Empfänger Adresszusatz',
+                                '[customer.zip]|Empfänger Plz',
+                                '[customer.city]|Empfänger Ort',
+                            ]
+                        }],
+                    ],
+                handlers: {
+                    "placeholder": function (value) {
+                        if (value) {
+
+                            value = value.split('|')[0];
+                            const cursorPosition = this.quill.getSelection().index;
+                            this.quill.insertText(cursorPosition, value);
+                            this.quill.setSelection(cursorPosition + value.length);
+                        }
+                    }
+                }
+            }
+
+            setTimeout(() => {
+
+                document.querySelectorAll('.ql-toolbar').forEach((toolbar) => {
+                    placeholderPickerItems = Array.prototype.slice.call(toolbar.querySelectorAll('.ql-placeholder .ql-picker-item'));
+                    placeholderPickerItems.forEach(item => {
+                        split = item.dataset.value.split('|');
+                        item.textContent = split[1];
+                    });
+                    toolbar.querySelector('.ql-placeholder .ql-picker-label').innerHTML = 'Platzhalter' + toolbar.querySelector('.ql-placeholder .ql-picker-label').innerHTML;
+                });
+            },1000);
+
+
+        </script>
+
         <div class="my-16 bg-white col-span-6" wire:ignore>
             <x-jet-label for="headertext" value="{{ __('Kopftext') }}"/>
             <div x-data x-ref="headertext"
                  x-init="
-                 quill_headertext = new Quill($refs.headertext, {theme: 'snow'});
+                 quill_headertext = new Quill($refs.headertext, {theme: 'snow',  modules: {
+                        toolbar: toolbarOptions
+                 }});
                  quill_headertext.on('text-change', function () {
                     $wire.updatewysiwyg(quill_headertext.root.innerHTML, 'headertext');
                  });
@@ -111,12 +170,13 @@
                 {!! $settings['headertext'] !!}
             </div>
         </div>
-
         <div class="my-16 bg-white col-span-6" wire:ignore>
             <x-jet-label for="footertext" value="{{ __('Fussnote') }}"/>
             <div x-data x-ref="footertext"
                  x-init="
-                 quill_footertext = new Quill($refs.footertext, {theme: 'snow'});
+                 quill_footertext = new Quill($refs.footertext, {theme: 'snow',  modules: {
+                        toolbar: toolbarOptions
+                 }});
                  quill_footertext.on('text-change', function () {
                     $wire.updatewysiwyg(quill_footertext.root.innerHTML, 'footertext');
                  });
@@ -130,7 +190,9 @@
             <x-jet-label for="footercol_1" value="{{ __('Fusszeile Spalte links') }}"/>
             <div x-data x-ref="footercol_1"
                  x-init="
-                 quill_footercol_1 = new Quill($refs.footercol_1, {theme: 'snow'});
+                 quill_footercol_1 = new Quill($refs.footercol_1, {theme: 'snow',  modules: {
+                        toolbar: toolbarOptions
+                 }});
                  quill_footercol_1.on('text-change', function () {
                     $wire.updatewysiwyg(quill_footercol_1.root.innerHTML, 'footercol_1');
                  });
@@ -143,7 +205,9 @@
             <x-jet-label for="footercol_2" value="{{ __('Fusszeile Spalte mitte') }}"/>
             <div x-data x-ref="footercol_2"
                  x-init="
-                 quill_footercol_2 = new Quill($refs.footercol_2, {theme: 'snow'});
+                 quill_footercol_2 = new Quill($refs.footercol_2, {theme: 'snow',  modules: {
+                        toolbar: toolbarOptions
+                 }});
                  quill_footercol_2.on('text-change', function () {
                     $wire.updatewysiwyg(quill_footercol_2.root.innerHTML, 'footercol_2');
                  });
@@ -156,7 +220,9 @@
             <x-jet-label for="footercol_3" value="{{ __('Fusszeile Spalte rechts') }}"/>
             <div x-data x-ref="footercol_3"
                  x-init="
-                 quill_footercol_3 = new Quill($refs.footercol_3, {theme: 'snow'});
+                 quill_footercol_3 = new Quill($refs.footercol_3, {theme: 'snow',  modules: {
+                        toolbar: toolbarOptions
+                 }});
                  quill_footercol_3.on('text-change', function () {
                     $wire.updatewysiwyg(quill_footercol_3.root.innerHTML, 'footercol_3');
                  });
