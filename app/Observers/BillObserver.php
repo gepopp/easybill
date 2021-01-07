@@ -14,42 +14,44 @@ class BillObserver
 {
 
 
-    public function retrieved(Bill $bill){
+    public function retrieved(Bill $bill)
+    {
 
-        if($bill->generated_at != null){
+        if ($bill->generated_at != null) {
             $bill->bill_status = 'generated';
-        }else{
+        } else {
             $bill->bill_status = 'draft';
         }
 
-        if($bill->sent_at != null){
+        if ($bill->sent_at != null) {
             $bill->bill_status = 'sent';
         }
 
-        if($bill->bill_status == 'sent'){
-            if($bill->unformatedPaid >= $bill->unformatedBruttoTotal){
+        if ($bill->bill_status == 'sent') {
+            if ($bill->unformatedPaid >= $bill->unformatedBruttoTotal) {
                 $bill->bill_status = 'paid';
             }
 
             $desired_respite = BillSetting::where('setting_name', 'desired_respite')->first('setting_value')->setting_value ?? 7;
-            if(Carbon::parse($bill->billing_date)->addDays($desired_respite)->isPast() && $bill->unformatedPaid < $bill->unformatedBruttoTotal){
+            if (Carbon::parse($bill->billing_date)->addDays($desired_respite)->isPast() && $bill->unformatedPaid < $bill->unformatedBruttoTotal) {
                 $bill->bill_status = 'overdue';
             }
         }
 
-        if($bill->has_storno){
+        if ($bill->has_storno) {
             $bill->status = 'paid';
         }
 
-
-        $bill->update(['bill_status' => $bill->bill_status]);
-
+        Bill::withoutEvents(function () use ($bill) {
+            unset($bill->bill_status_formatted);
+            $bill->update(['bill_status' => $bill->bill_status]);
+        });
     }
 
     /**
      * Handle the bill "updated" event.
      *
-     * @param  \App\Models\Bill  $bill
+     * @param \App\Models\Bill $bill
      * @return void
      */
     public function updated(Bill $bill)
@@ -63,13 +65,14 @@ class BillObserver
 
         });
 
-        if(count($bill->positions) > 0){
+        if (count($bill->positions) > 0) {
             dispatch(new CreateBillPdf($bill, Auth::user()));
         }
     }
 
 
-    public function updating(Bill $bill){
+    public function updating(Bill $bill)
+    {
         unset($bill->bill_status_formatted);
     }
 }
