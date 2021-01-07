@@ -28,7 +28,14 @@ class BillObserver
         }
 
         if ($bill->bill_status == 'sent') {
-            if ($bill->unformatedPaid == $bill->unformatedBruttoTotal) {
+            $payment = $bill->unformatedPaid;
+            $brutto = $bill->unformatedBruttoTotal;
+            if ($payment < 0 && $brutto < 0) {
+                $payment *= -1;
+                $brutto *= -1;
+            }
+
+            if ($payment >= $brutto) {
                 $bill->bill_status = 'paid';
             }
 
