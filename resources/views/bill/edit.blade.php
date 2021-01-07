@@ -37,14 +37,14 @@
                                 {{ $bill->is_storno_of->prefix }} {{ $bill->is_storno_of->bill_number }}
                             @endif
                         </h2>
-                        {{  $settings['headertext']  }}
+                        {!! $settings['headertext']  !!}
                     </div>
                 </div>
                 <livewire:add-bill-position :bill="$bill">
                 <hr>
                 <livewire:bill-summ :bill="$bill"/>
                 <hr class="mt-24">
-                {{ $settings['footertext'] }}
+                {!! $settings['footertext'] !!}
                 <div class="grid grid-cols-3 gap-4 pt-5 pb-20 text-sm">
                     <div>
                         {!! $settings['footercol_1'] !!}
