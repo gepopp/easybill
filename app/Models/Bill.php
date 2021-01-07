@@ -24,6 +24,10 @@ class Bill extends Model
         static::addGlobalScope('owns', function (Builder $builder) {
             $builder->where('user_id', '=', \Auth::id());
         });
+
+        static::addGlobalScope('orderByBillingDate', function(Builder $builder){
+           $builder->orderBy('billing_date', 'DESC');
+        });
     }
 
 
