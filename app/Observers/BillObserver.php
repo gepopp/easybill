@@ -38,13 +38,6 @@ class BillObserver
             }
         }
 
-
-        if($bill->storno_id != null){
-            $bill->bill_status = 'paid';
-        }
-
-
-
         Bill::withoutEvents(function () use ($bill) {
             unset($bill->bill_status_formatted);
             $bill->update(['bill_status' => $bill->bill_status]);

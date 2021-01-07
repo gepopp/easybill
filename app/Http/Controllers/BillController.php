@@ -7,6 +7,7 @@ use App\Models\Bill;
 use App\Models\Customer;
 use App\Models\BillSetting;
 use App\Jobs\CreateBillPdf;
+use App\Models\BillPayment;
 use Illuminate\Http\Request;
 use App\Notifications\SendBill;
 use Illuminate\Support\Facades\Auth;
@@ -187,6 +188,23 @@ class BillController extends Controller
             $newposition->save();
         }
 
+        BillPayment::create([
+            'bill_id'      => $bill->id,
+            'amount'       => $bill->unformatedBruttoTotal,
+            'payment_date' => now(),
+        ]);
+
+        BillPayment::create([
+            'bill_id'      => $newbill->id,
+            'amount'       => $newbill->unformatedBruttoTotal,
+            'payment_date' => now(),
+        ]);
+
+        Bill::withoutEvents(function () use ($bill) {
+            unset($bill->bill_status_formatted);
+            $bill->update(['paid_at' => now()]);
+        });
+
         return redirect()->route('bills.edit', $newbill)->with('settings', $bill->getSettings());
 
     }
@@ -197,17 +215,17 @@ class BillController extends Controller
      *
      * @param Bill $bill
      */
-    public function destroy(Bill $bill){
+    public function destroy(Bill $bill)
+    {
 
         Storage::delete($bill->document);
 
-        foreach ($bill->positions as $position){
+        foreach ($bill->positions as $position) {
             $position->delete();
         }
         $bill->delete();
 
         return redirect()->route('bills.index');
-
 
 
     }
