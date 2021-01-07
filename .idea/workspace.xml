@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Observers/BillObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/BillObserver.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -238,7 +239,7 @@
       <workItem from="1606154440094" duration="1046000" />
       <workItem from="1609232195824" duration="2095000" />
       <workItem from="1609524646520" duration="129481000" />
-      <workItem from="1609841956963" duration="69237000" />
+      <workItem from="1609841956963" duration="69621000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1603576131712</created>
@@ -471,7 +472,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610012177257</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="addeed order scope &quot;billing_date&quot; to bills Model">
+      <created>1610012286395</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1610012286395</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
