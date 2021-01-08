@@ -65,7 +65,7 @@ class CreateBillPdf implements ShouldQueue
         $path = "bills/pdf/{$this->user->id}/RE{$this->bill->bill_number}.pdf";
         Storage::put($path, $pdf->output());
 
-        $this->bill->update(['document' => $path]);
+        $this->bill->update(['generated_at' => now(), 'document' => $path]);
     }
 
 

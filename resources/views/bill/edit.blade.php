@@ -4,6 +4,26 @@
             {{ __('Rechung bearbeiten') }}
         </h2>
     </x-slot>
+    <x-slot name="headerbutton">
+        <div x-data="{ enabled: true }"
+             x-init="
+                        Livewire.on('new_row', (event) => {
+                            enabled = !event;
+                        });
+                    ">
+            <form action="{{ route('bill.document', $bill) }}" method="GET">
+                @csrf
+                <button type="submit"
+                        class="button-primary"
+                        :class="{ 'bg-opacity-50 cursor-not-allowed' : enabled == false }"
+                        :disabled="!enabled"
+                >
+                    <span class="px-10">speichern</span>
+                </button>
+            </form>
+
+        </div>
+    </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5 px-20">
@@ -20,25 +40,6 @@
                 </div>
                 <livewire:add-bill-position :bill="$bill"/>
                 <livewire:bill-summ :bill="$bill"/>
-                <div class="flex justify-end mt-20"
-                     x-data="{ enabled: true }"
-                     x-init="
-                        Livewire.on('new_row', (event) => {
-                            enabled = !event;
-                        });
-                    ">
-                    <form action="{{ route('bill.document', $bill) }}" method="GET">
-                        @csrf
-                        <button type="submit"
-                           class="button-primary"
-                           :class="{ 'bg-opacity-50 cursor-not-allowed' : enabled == false }"
-                           :disabled="!enabled"
-                        >
-                            <span class="px-10">speichern</span>
-                        </button>
-                    </form>
-
-                </div>
             </div>
         </div>
     </div>

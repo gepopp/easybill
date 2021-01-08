@@ -23,6 +23,7 @@ class CustomerSelect extends Component
 
         if(strlen( $this->search ) <= 2) {
             $this->search_result_json = '[]';
+            $this->emit('customer_search_empty');
         }else{
             $search = $this->search;
             $this->search_result = Customer::where('company_name', 'like', '%'.$search.'%')
@@ -42,9 +43,7 @@ class CustomerSelect extends Component
         $this->emit('customer_selected', $this->search_result[$index]->id);
         $this->search_result_json = '[]';
 
-
     }
-
 
     public function render()
     {

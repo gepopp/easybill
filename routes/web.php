@@ -30,9 +30,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+
+Route::resource('bills', \App\Http\Controllers\BillController::class);
+
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::resource('customers', \App\Http\Controllers\CustomerController::class);
-    Route::resource('bills', \App\Http\Controllers\BillController::class);
     Route::resource('products', \App\Http\Controllers\ProductController::class);
     Route::resource('paymentaccounts', \App\Models\PaymentAccount::class);
 

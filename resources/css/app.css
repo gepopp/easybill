@@ -5,9 +5,12 @@
 table.striped tr:nth-child(even) {
     @apply bg-logo-gray;
 }
+table.striped tr:hover:nth-child(even) {
+    @apply bg-gray-200;
+}
 
 .button-primary {
-    @apply rounded-xl w-full bg-gradient-to-r from-logo-primary via-logo-secondary to-logo-terciary p-3 text-center text-white font-semibold;
+    @apply rounded-xl bg-gradient-to-r from-logo-primary via-logo-secondary to-logo-terciary p-3 text-center text-white font-semibold;
 }
 .button-primary:hover {
     @apply bg-logo-light bg-gradient-to-l from-logo-terciary;

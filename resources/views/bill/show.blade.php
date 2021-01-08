@@ -1,8 +1,31 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Rechung') }} {{ $bill->prefix }} {{ $bill->bill_number }}
+            {{ __('Rechnung') }} {{ $bill->prefix }} {{ $bill->bill_number }}
         </h2>
+    </x-slot>
+    <x-slot name="headerbutton">
+        <div class="flex space-x-2">
+            @if($bill->sent_at == null && !$bill->is_storno_of && !$bill->has_storno )
+                <a href="{{ route('bills.edit', $bill) }}" class="button-primary">bearbeiten</a>
+            @endif
+            @if($bill->sent_at == null)
+               <livewire:bill-send-button :bill="$bill"/>
+            @endif
+            @if(!$bill->has_storno && !$bill->is_storno_of && $bill->sent_at == null)
+                <a onclick="document.getElementById('delete-{{ $bill->id }}').submit()" class="button-primary cursor-pointer">löschen</a>
+                <form action="{{ route('bills.destroy', $bill ) }}" method="post" id="delete-{{ $bill->id }}">
+                    @csrf
+                    @method('DELETE')
+                </form>
+            @endif
+            @if(!$bill->is_storno_of)
+                <a href="{{ route('bill.duplicate', $bill) }}" class="button-primary">duplizieren</a>
+            @endif
+            @if(!$bill->has_storno && !$bill->is_storno_of && $bill->paid() == 0)
+                <a href="{{ route('bill.storno', $bill) }}" class="button-primary">stornieren</a>
+            @endif
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -33,7 +56,9 @@
                         </div>
 
 
-                        <address class="mb-10"><x-customer-address :customer="$bill->customer"/></address>
+                        <address class="mb-10">
+                            <x-customer-address :customer="$bill->customer"/>
+                        </address>
 
                         <p class="flex justify-between">
                             <strong>Rechnungsdatum:</strong> {{ \Carbon\Carbon::parse($bill->billing_date)->format('d.m.Y') }}
@@ -52,42 +77,15 @@
                             <strong>Brutto:</strong><span>{{ $bill->total('brutto', 'withSymbol') }}</span></p>
 
                         <div class="flex flex-col space-y-4 mt-10">
-
-                            @if($bill->sent_at == null && !$bill->is_storno_of && !$bill->has_storno )
-                                <a href="{{ route('bills.edit', $bill) }}" class="button-primary">bearbeiten</a>
-                            @endif
-
-                            @if($bill->sent_at == null)
-                                <a href="{{ route('bill.send', $bill) }}" class="button-primary">jetzt senden</a>
-                            @endif
-
-                            @if(!$bill->has_storno && !$bill->is_storno_of && $bill->sent_at == null)
-                                <a onclick="document.getElementById('delete-{{ $bill->id }}').submit()" class="button-primary cursor-pointer">löschen</a>
-                            @endif
-
-                            @if(!$bill->is_storno_of)
-                                <a href="{{ route('bill.duplicate', $bill) }}" class="button-primary">duplizieren</a>
-                            @endif
-
-                            @if(!$bill->has_storno && !$bill->is_storno_of)
-                                <a href="{{ route('bill.storno', $bill) }}" class="button-primary">stornieren</a>
-                            @endif
-
                             @if($bill->has_storno)
                                 <p>
                                     Diese Rechnung wurde
                                     <a href="{{ route('bills.show', $bill->has_storno ) }}" class="text-red-800 underline">storniert.</a>
                                 </p>
                             @endif
-
                             @if(!$bill->has_storno && !$bill->is_storno_of && $bill->sent_at !== null )
                                 <livewire:bill-payments-list :bill="$bill"/>
                             @endif
-
-                            <form action="{{ route('bills.destroy', $bill ) }}" method="post" id="delete-{{ $bill->id }}">
-                                @csrf
-                                @method('DELETE')
-                            </form>
                         </div>
 
                     </div>

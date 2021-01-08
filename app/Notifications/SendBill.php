@@ -16,7 +16,6 @@ class SendBill extends Notification
 {
     use Queueable;
 
-    public $settings;
     public Bill $bill;
 
     /**
@@ -26,7 +25,6 @@ class SendBill extends Notification
      */
     public function __construct($bill)
     {
-        $this->settings = $bill->getSettings();
         $this->bill = $bill;
     }
 
@@ -54,31 +52,25 @@ class SendBill extends Notification
 
 
         return (new MailMessage)
-            ->from('dont-reply@mybilling.at', $this->settings['contactperson'] . ' via mybilling')
-            ->subject('Neue Rechnung von ' . $this->settings['company_name'])
+            ->from('dont-reply@mybilling.at', BillSetting::getSetting('contactperson') . ' via mybilling')
+            ->subject('Neue Rechnung von ' . BillSetting::getSetting('company_name'))
             ->greeting($notifiable->is_female ? 'Sehr geehrte Frau ' : 'Sehr geehrter Herr ' .
                 $notifiable->academic_degree . ' ' . $notifiable->firstname . ' ' . $notifiable->last_name . ',')
 
-            ->line($this->settings['contactperson'] . ' von ' .
-                $this->settings['company_name'] . ' hat Ihnen die Rechnung ' .
-                $this->settings['prefix'] . $this->bill->bill_number . ' gesendet. Sie finden diese Rechnung im Anhang.')
+            ->line(BillSetting::getSetting('contactperson') . ' von ' .
+                BillSetting::getSetting('company_name') . ' hat Ihnen die Rechnung ' .
+                BillSetting::getSetting('prefix') . $this->bill->bill_number . ' gesendet. Sie finden diese Rechnung im Anhang.')
 
             ->line('Bitte überweisen Sie den Rechnungsbetrag über ' . $this->bill->bruttoTotal . ' € bis zum ' .
-                Carbon::parse($this->bill->billing_date)->addDays($this->settings['desired_respite'])->format('d.m.Y') .
+                Carbon::parse($this->bill->billing_date)->addDays($this->bill->respite)->format('d.m.Y') .
                 ' auf eines der in der Rechnung angegebenen Konten.')
 
-            ->salutation( new HtmlString('Mit freundlichen Grüßen,<br>' . $this->settings['contactperson'] .
+            ->salutation( new HtmlString('Mit freundlichen Grüßen,<br>' . BillSetting::getSetting('contactperson') .
                 ' via <a href="https://mybilling.at">mybilling.at</a>'))
 
             ->attach(Storage::disk('local')->path($this->bill->document));
 
            Storage::disk('local')->delete($this->bill->document);
-
-//            ->attachData(file_get_contents(Storage::temporaryUrl($this->bill->document, now()->add(3, 'minutes'))),
-//                $this->settings['prefix'] . $this->bill->bill_number . '.pdf',
-//                [
-//                    'mime' => 'application/pdf',
-//                ]);
 
     }
 
