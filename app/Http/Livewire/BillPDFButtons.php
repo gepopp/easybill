@@ -28,6 +28,6 @@ class BillPDFButtons extends Component
     }
     public function render()
     {
-        return view('livewire.bill-p-d-f-buttons');
+        return view('livewire.bill.bill-p-d-f-buttons');
     }
 }

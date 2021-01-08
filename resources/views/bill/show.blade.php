@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Rechung') }} {{ $settings['prefix'] }} {{ $bill->bill_number }}
+            {{ __('Rechung') }} {{ $bill->prefix }} {{ $bill->bill_number }}
         </h2>
     </x-slot>
 
@@ -13,70 +13,83 @@
                         <livewire:bill-p-d-f-buttons :bill="$bill"/>
                     </div>
                     <div class="p-10 col-span-2">
-                        <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-10">
+                        <div class="mb-10">
+                            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                                @if($bill->is_storno_of)
+                                    {{ __('Stornorechung') }}
+                                @else
+                                    {{ __('Rechung') }}
+                                @endif
+                                <x-billnumber :bill="$bill"/>
+                            </h2>
                             @if($bill->is_storno_of)
-                                {{ __('Stornorechung') }}
-                            @else
-                                {{ __('Rechung') }}
+                                <p class="text-sm">
+                                    Zu Rechnung
+                                    <a href="{{ route('bills.show', $bill->is_storno_of) }}" class="underline text-logo-primary">
+                                        <x-billnumber :bill="$bill->is_storno_of"/>
+                                    </a>
+                                </p>
                             @endif
-                            {{ $bill->prefix }} {{ $bill->bill_number }} <br>
-                            @if($bill->is_storno_of)
-                                <a href="{{ route('bills.show', $bill->is_storno_of) }}" class="underline text-logo-primary">
-                                    {{ $bill->is_storno_of->prefix }} {{ $bill->is_storno_of->bill_number }}
-                                </a>
-                            @endif
-                        </h2>
+                        </div>
+
+
+                        <address class="mb-10"><x-customer-address :customer="$bill->customer"/></address>
+
                         <p class="flex justify-between">
                             <strong>Rechnungsdatum:</strong> {{ \Carbon\Carbon::parse($bill->billing_date)->format('d.m.Y') }}
                         </p>
                         <p class="flex justify-between">
                             <strong>Fälig am:</strong> {{ \Carbon\Carbon::parse($bill->billing_date)->addDays($bill->respite)->format('d.m.Y') }}
                         </p>
-                        <p class="flex justify-between"><strong>Status:</strong> {!! $bill->formatedStatus !!}
+                        <p class="flex justify-between"><strong>Status:</strong>
+                            <x-bill-status status="{{ $bill->bill_status }}"/>
                         </p>
-                        <p class="flex justify-between"><strong>Netto:</strong><span>{{ $bill->nettoTotal }} €</span>
-                        </p>
-                        <p class="flex justify-between"><strong>MwSt.:</strong><span>{{ $bill->vatTotal }} €</span></p>
-                        <p class="flex justify-between"><strong>Brutto:</strong><span>{{ $bill->bruttoTotal }} €</span>
-                        </p>
-                        <address class="p-5 text-white bg-logo-secondary mt-10">
-                            {!!  $bill->customer->getAddressHtml() !!}
-                        </address>
+                        <p class="flex justify-between">
+                            <strong>Netto:</strong><span>{{ $bill->total('netto', 'withSymbol') }}</span></p>
+                        <p class="flex justify-between">
+                            <strong>MwSt.:</strong><span>{{ $bill->total('vat', 'withSymbol') }}</span></p>
+                        <p class="flex justify-between">
+                            <strong>Brutto:</strong><span>{{ $bill->total('brutto', 'withSymbol') }}</span></p>
 
                         <div class="flex flex-col space-y-4 mt-10">
-                            @if($bill->sent_at == null)
-                                @if(!$bill->has_storno && !$bill->is_storno_of)
-                                    <a href="{{ route('bills.edit', $bill) }}" class="button-primary">bearbeiten</a>
-                                    <a onclick="document.getElementById('delete-{{ $bill->id }}').submit()" class="button-primary cursor-pointer">löschen</a>
-                                @endif
 
-                                <a href="{{ route('bill.send', $bill) }}" class="button-primary">jetzt senden</a>
-
-                                @if(!$bill->is_storno_of)
-                                    <a href="{{ route('bill.duplicate', $bill) }}" class="button-primary">duplizieren</a>
-                                @endif
-
-                                <form action="{{ route('bills.destroy', $bill ) }}" method="post" id="delete-{{ $bill->id }}">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
-                            @else
-                                @if(!$bill->is_storno_of)
-                                    <a href="{{ route('bill.duplicate', $bill) }}" class="button-primary">duplizieren</a>
-                                    @if(!$bill->has_storno)
-                                        <a href="{{ route('bill.storno', $bill) }}" class="button-primary">stornieren</a>
-                                        <livewire:bill-payments-list :bill="$bill"/>
-                                    @else
-                                        <p>
-                                            Diese Rechnung wurde
-                                            <a href="{{ route('bills.show', $bill->has_storno ) }}" class="text-red-800 underline">storniert.</a>
-
-                                        </p>
-                                    @endif
-                                @endif
+                            @if($bill->sent_at == null && !$bill->is_storno_of && !$bill->has_storno )
+                                <a href="{{ route('bills.edit', $bill) }}" class="button-primary">bearbeiten</a>
                             @endif
 
+                            @if($bill->sent_at == null)
+                                <a href="{{ route('bill.send', $bill) }}" class="button-primary">jetzt senden</a>
+                            @endif
+
+                            @if(!$bill->has_storno && !$bill->is_storno_of && $bill->sent_at == null)
+                                <a onclick="document.getElementById('delete-{{ $bill->id }}').submit()" class="button-primary cursor-pointer">löschen</a>
+                            @endif
+
+                            @if(!$bill->is_storno_of)
+                                <a href="{{ route('bill.duplicate', $bill) }}" class="button-primary">duplizieren</a>
+                            @endif
+
+                            @if(!$bill->has_storno && !$bill->is_storno_of)
+                                <a href="{{ route('bill.storno', $bill) }}" class="button-primary">stornieren</a>
+                            @endif
+
+                            @if($bill->has_storno)
+                                <p>
+                                    Diese Rechnung wurde
+                                    <a href="{{ route('bills.show', $bill->has_storno ) }}" class="text-red-800 underline">storniert.</a>
+                                </p>
+                            @endif
+
+                            @if(!$bill->has_storno && !$bill->is_storno_of && $bill->sent_at !== null )
+                                <livewire:bill-payments-list :bill="$bill"/>
+                            @endif
+
+                            <form action="{{ route('bills.destroy', $bill ) }}" method="post" id="delete-{{ $bill->id }}">
+                                @csrf
+                                @method('DELETE')
+                            </form>
                         </div>
+
                     </div>
                 </div>
             </div>

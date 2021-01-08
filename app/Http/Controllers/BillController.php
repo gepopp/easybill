@@ -25,41 +25,9 @@ class BillController extends Controller
     public function index()
     {
         $bills = Bill::all();
-
         return view('bill.index')->with('bills', $bills);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('bill.create')->with(['customers' => Customer::all(), 'settings' => BillSetting::all()->pluck('setting_value', 'setting_name')]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'customer_id'  => 'required|exists:App\Models\Customer,id',
-            'billing_date' => 'required|date|after_or_equal:today',
-            'bill_number'  => 'required|numeric|unique:bills,bill_number',
-        ]);
-        $data['user_id'] = Auth::id();
-        $data['bill_status'] = 'draft';
-
-        $bill = new Bill($data);
-        $bill->save();
-
-        return redirect(route('bills.edit', $bill));
-    }
 
     /**
      * Display the specified resource.
@@ -72,9 +40,7 @@ class BillController extends Controller
         if (!Storage::exists($bill->document)) {
             dispatch(new CreateBillPdf($bill, Auth::user()));
         }
-
-
-        return view('bill.show')->with(['bill' => $bill, 'settings' => $bill->getSettings()]);
+        return view('bill.show')->with(['bill' => $bill]);
     }
 
 
@@ -86,18 +52,10 @@ class BillController extends Controller
      */
     public function send(Bill $bill)
     {
-
         if ($bill->sent_at == null) {
             $bill->customer->notify(new SendBill($bill));
 
-            Bill::withoutEvents(function () use ($bill) {
-
-                unset($bill->bill_status_formatted);
-                $bill->update([
-                    'sent_at' => now(),
-                ]);
-
-            });
+            $bill->update(['sent_at' => now()]);
         }
         return redirect()->route('bills.show', $bill);
     }
@@ -106,27 +64,22 @@ class BillController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param \App\Models\Bill $bill
-     * @return \Illuminate\Http\Response
      */
     public function edit(Bill $bill)
     {
-        if ($bill->sent_at != null || $bill->storno_id != null) {
+        if ($bill->sent_at != null || $bill->is_storno_of || $bill->has_storno) {
             return redirect(route('bills.show', $bill));
         }
-        return view('bill.edit')->with(['bill' => $bill])->with('settings', $bill->getSettings());
+        return view('bill.edit')->with(['bill' => $bill]);
     }
 
 
-    /**
-     * update the bill
-     *
-     * @param Bill $bill
-     */
-    public function update(Request $request, Bill $bill)
+    public function document(Bill $bill)
     {
-        $bill->update([
-            'generated_at' => now(),
-        ]);
+        Storage::delete($bill->document);
+
+        dispatch(new CreateBillPdf($bill, Auth::user()));
+
         return redirect()->route('bills.show', $bill);
     }
 
@@ -134,6 +87,9 @@ class BillController extends Controller
     public function duplicate(Bill $bill)
     {
 
+        if ($bill->is_storno_of) {
+            return redirect()->route('bills.index')->with(['bills' => Bill::all()]);
+        }
 
         $newbill = Bill::create([
             'user_id'      => $bill->user_id,
@@ -156,13 +112,13 @@ class BillController extends Controller
             $newposition->save();
         }
 
-        return redirect()->route('bills.edit', $newbill)->with('settings', $bill->getSettings());
+        return redirect()->route('bills.edit', $newbill);
 
     }
 
     public function storno(Bill $bill)
     {
-        if ($bill->sent_at == null || $bill->storno_id != null) {
+        if ($bill->sent_at == null || $bill->is_storno_of || $bill->has_storno) {
             return redirect()->route('bills.index')->with('bills', Bill::all());
         }
 
@@ -200,10 +156,7 @@ class BillController extends Controller
             'payment_date' => now(),
         ]);
 
-        Bill::withoutEvents(function () use ($bill) {
-            unset($bill->bill_status_formatted);
-            $bill->update(['paid_at' => now()]);
-        });
+        $bill->update(['paid_at' => now()]);
 
         return redirect()->route('bills.edit', $newbill)->with('settings', $bill->getSettings());
 

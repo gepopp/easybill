@@ -48,6 +48,6 @@ class BillDateField extends Component
 
     public function render()
     {
-        return view('livewire.bill-date-field');
+        return view('livewire.bill.bill-date-field');
     }
 }

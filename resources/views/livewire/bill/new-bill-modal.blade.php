@@ -6,7 +6,7 @@
             <h1>Neue Rechnung</h1>
         </x-slot>
         <x-slot name="content">
-            <livewire:new-bil-modal-form/>
+            <livewire:new-bill-modal-form/>
         </x-slot>
     </x-jet-dialog-modal>
 </div>

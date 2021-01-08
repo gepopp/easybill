@@ -3,7 +3,10 @@
         <span class="mr-3">Rechnungsdatum:</span>
         @if($edit == 'date')
             <span class="flex items-center">
-            <input type="date" wire:model.lazy="date">
+            <input type="date"
+                   wire:model.lazy="date"
+                   class="appearance-none @error('date') border-red-800 @else border-logo-primary @enderror border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+            >
             <svg class="w-4 h-4 ml-2 text-gray-400" wire:click="$set('edit', false)" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         </span>
         @else
@@ -16,7 +19,11 @@
         <span class="mr-3">Zahlungsziel:</span>
     @if($edit == 'respite')
         <span class="flex items-center">
-            <input type="number" wire:model.lazy="respite">
+            <input
+                type="number"
+                wire:model.lazy="respite"
+                class="appearance-none @error('respite') border-red-800 @else border-logo-primary @enderror border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+            >
             <svg class="w-4 h-4 ml-2 text-gray-400" wire:click="$set('edit', false)" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         </span>
     @else

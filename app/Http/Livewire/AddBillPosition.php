@@ -16,12 +16,16 @@ class AddBillPosition extends Component
 
     protected $listeners = ['unsetNewRow', 'deleteBillRow'];
 
+    public function unsetNewRow(){
+        $this->new_rows = false;
+        $this->emit('new_row', false );
+    }
+
     public function deleteBillRow($id){
 
         BillPosition::find($id)->delete();
         $this->bill->refresh();
         $this->emit('refreshTotals');
-
     }
 
     public function addRow()
@@ -39,13 +43,8 @@ class AddBillPosition extends Component
         $this->emit('new_row', true );
     }
 
-    public function unsetNewRow(){
-       $this->new_rows = false;
-       $this->emit('new_row', false );
-    }
-
     public function render()
     {
-        return view('livewire.add-bill-position');
+        return view('livewire.bill.add-bill-position');
     }
 }

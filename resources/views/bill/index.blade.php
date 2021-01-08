@@ -15,5 +15,6 @@
                 <livewire:bill-index-table :bills="$bills"/>
             </div>
         </div>
+
     </div>
 </x-app-layout>

@@ -23,6 +23,6 @@ class BillRowDescription extends Component
 
     public function render()
     {
-        return view('livewire.bill-row-description');
+        return view('livewire.bill.bill-row-description');
     }
 }

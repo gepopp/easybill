@@ -76,6 +76,6 @@ class NewBillRow extends Component
 
     public function render()
     {
-        return view('livewire.new-bill-row');
+        return view('livewire.bill.new-bill-row');
     }
 }

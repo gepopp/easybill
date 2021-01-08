@@ -17,6 +17,6 @@ class BillPaymentsList extends Component
 
     public function render()
     {
-        return view('livewire.bill-payments-list');
+        return view('livewire.bill.bill-payments-list');
     }
 }

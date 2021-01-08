@@ -6,7 +6,10 @@ use PDF;
 use App\Models\Bill;
 use App\Models\User;
 use App\Models\Customer;
+use App\Scopes\OwnsScope;
+use App\Models\BillSetting;
 use Illuminate\Bus\Queueable;
+use App\Classes\PdfSnippetFormater;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -30,6 +33,7 @@ class CreateBillPdf implements ShouldQueue
         $this->bill = $bill;
         $this->user = $user;
 
+
     }
 
     /**
@@ -39,55 +43,35 @@ class CreateBillPdf implements ShouldQueue
      */
     public function handle()
     {
-        $bill = $this->bill;
+        $this->bill->update(['document' => 'processing']);
+        $customer = Customer::withoutGlobalScopes()->find($this->bill->customer_id);
 
+        $formatter = new PdfSnippetFormater($this->bill, $customer, $this->user );
 
-        Bill::withoutEvents(function () use ($bill) {
-            unset($bill->bill_status_formatted);
-            $bill->update([
-                'document' => 'processing',
-            ]);
-        });
+        Storage::delete($this->bill->document);
 
-        if ($this->bill->document != null) {
-            Storage::delete($this->bill->document);
-        }
-
-        // share data to view
-        $pdf = PDF::loadView('bill.showpdf',
+        $pdf = PDF::loadView('bill.basepdf',
             [
                 'bill'     => $this->bill,
-                'settings' => $this->bill->getSettings($this->user),
-                'customer' => Customer::withoutGlobalScope('owns')->find($this->bill->customer_id),
+                'customer' => $customer,
+                'user'     => $this->user,
+                'header'   => $formatter->formatBillSnippet(BillSetting::getSetting('headertext', $this->user)),
+                'footer'   => $formatter->formatBillSnippet(BillSetting::getSetting('footertext', $this->user)),
+                'footercol_1'   => $formatter->formatBillSnippet(BillSetting::getSetting('footercol_1', $this->user)),
+                'footercol_2'   => $formatter->formatBillSnippet(BillSetting::getSetting('footercol_2', $this->user)),
+                'footercol_3'   => $formatter->formatBillSnippet(BillSetting::getSetting('footercol_3', $this->user)),
             ]);
 
-        $path = "bills/pdf/RE{$this->bill->bill_number}.pdf";
-
+        $path = "bills/pdf/{$this->user->id}/RE{$this->bill->bill_number}.pdf";
         Storage::put($path, $pdf->output());
 
-
-        Bill::withoutEvents(function () use ($bill, $path) {
-            $bill->update([
-                'document' => $path,
-            ]);
-        });
+        $this->bill->update(['document' => $path]);
     }
 
 
     public function failed()
     {
-
-//        Auth::login($this->user, false);
-
-        $bill = $this->bill->refresh();
-
-        Bill::withoutEvents(function () use ($bill) {
-            $bill->update([
-                'document' => 'failed',
-            ]);
-        });
-
-
+       $this->bill->update(['document' => 'failed']);
     }
 
 }

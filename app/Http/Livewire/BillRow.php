@@ -47,6 +47,7 @@ class BillRow extends Component
             if (strlen($this->row->name) <= 2) {
                 $this->products_json = '[]';
             }
+
             $this->products_json = $this->products = Product::where('name', 'like', '%' . $this->row->name . '%')->get();
             if (count($this->products_json) == 0) {
                 $this->products_json = '[]';
@@ -68,6 +69,7 @@ class BillRow extends Component
     }
 
     public function deleteRow(){
+
         $this->row->delete();
         $this->emit('resetOrderNumber');
         $this->emit('refreshTotals');
@@ -79,7 +81,6 @@ class BillRow extends Component
         if($this->row->amount == '' || $this->row->netto == ''){
             return 0;
         }
-
         return number_format($this->row->amount * $this->row->netto, 2, ',', '.');
 
     }
@@ -89,7 +90,6 @@ class BillRow extends Component
         if($this->row->amount == '' || $this->row->netto == '' || $this->row->vat == ''){
             return 0;
         }
-
         return number_format(($this->row->netto * $this->row->amount ) + ((( $this->row->netto * $this->row->amount ) * $this->row->vat)/100), 2, ',', '.');
 
     }
@@ -108,6 +108,6 @@ class BillRow extends Component
 
     public function render()
     {
-        return view('livewire.bill-row');
+        return view('livewire.bill.bill-row');
     }
 }

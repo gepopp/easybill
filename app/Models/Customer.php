@@ -42,22 +42,6 @@ class Customer extends Model
 
     }
 
-
-    public function getAddressHtml()
-    {
-        ob_start();
-        ?>
-            <address>
-                <strong><?php echo $this->company_name ?></strong><br>
-                <?php echo $this->academic_degree ?> <?php echo $this->first_name ?> <?php echo $this->last_name ?><br>
-                <?php echo $this->address ?> <?php echo $this->address_addition ?><br>
-                <?php echo $this->zip ?> <?php echo $this->city ?>
-            </address>
-
-        <?php
-        return ob_get_clean();
-    }
-
     public function getAnredeAttribute(){
         if($this->is_female){
             return 'Sehr geehrte Frau';

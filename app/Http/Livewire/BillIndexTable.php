@@ -11,6 +11,6 @@ class BillIndexTable extends Component
 
     public function render()
     {
-        return view('livewire.bill-index-table');
+        return view('livewire.bill.bill-index-table');
     }
 }

@@ -15,7 +15,6 @@
     </thead>
     <tbody>
     @forelse( $bills as $bill )
-
         <tr>
             <td class=" p-1">
                 @if($bill->is_storno_of)
@@ -27,13 +26,15 @@
                 <p class="text-xs">{{ $bill->customer->company_name }}</p>
                 <p>{{ $bill->customer->first_name }} {{ $bill->customer->last_name }}</p>
             </td>
-            <td class=" p-1 text-right">{{ $bill->nettoTotal }} €</td>
-            <td class=" p-1 text-right">{{ $bill->vatTotal }} €</td>
-            <td class=" p-1 text-right">{{ $bill->bruttoTotal }} €</td>
-            <td class=" p-1 text-right ml-5">{{ $bill->paid }} €</td>
+            <td class=" p-1 text-right">{{ $bill->total('netto', 'withSymbol') }}</td>
+            <td class=" p-1 text-right">{{ $bill->total('vat', 'withSymbol') }}</td>
+            <td class=" p-1 text-right">{{ $bill->total('brutto', 'withSymbol') }}</td>
+            <td class=" p-1 text-right">{{ $bill->paid('withSymbol') }}</td>
             <td class=" p-1">{{ \Carbon\Carbon::parse($bill->billing_date)->format('d.m.y') }}</td>
             <td class=" p-1">{{ \Carbon\Carbon::parse($bill->billing_date)->addDays($bill->respite)->format('d.m.y') }}</td>
-            <td class=" p-1 text-right">{!! $bill->formatedStatus !!}</td>
+            <td class=" p-1 text-right">
+                <x-bill-status status="{{ $bill->bill_status }}"/>
+            </td>
             <td class="p-1 text-right">
                 <a href="{{ route('bills.show', $bill) }}" class="underline">Zur Rechnung</a>
             </td>

@@ -3,33 +3,36 @@
 namespace App\Models;
 
 use PDF;
+use App\Scopes\OwnsScope;
+use App\Traits\Calculations;
+use App\Traits\NumberFormats;
 use App\Traits\FormatTextSnippet;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Database\Eloquent\Builder;
+use App\Scopes\OrderByBillingDateScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 class Bill extends Model
 {
-    use HasFactory, FormatTextSnippet;
+    use HasFactory, NumberFormats, Calculations;
 
     protected $guarded = [];
 
     protected $with = ['customer', 'positions', 'payments', 'is_storno_of'];
 
 
+
+
     protected static function booted()
     {
-        static::addGlobalScope('owns', function (Builder $builder) {
-            $builder->where('user_id', '=', \Auth::id());
-        });
-
-        static::addGlobalScope('orderByBillingDate', function(Builder $builder){
-           $builder->orderBy('billing_date', 'DESC');
-        });
+        static::addGlobalScope( new OwnsScope );
+        static::addGlobalScope(new OrderByBillingDateScope);
     }
 
+    /********************************************/
+    /********* RELATIONS  ***********************/
+    /********************************************/
 
     public function user()
     {
@@ -59,98 +62,47 @@ class Bill extends Model
         return $this->belongsTo(Bill::class, 'storno_id');
     }
 
-    public function getFormatedStatusAttribute($key)
+
+    /**
+     * returns the amount of all payments
+     *
+     * @param string $format
+     * @return mixed
+     */
+    public function paid($format = 'rounded')
     {
-        switch ($this->bill_status){
-            case 'draft':
-                $status = '<span class="text-gray-600">Entwurf</span>';
-                break;
-            case 'generated':
-                $status = '<span class="text-logo-light">erzeugt</span>';
-                break;
-            case 'sent':
-                $status = '<span class="text-logo-terciary">gesendet</span>';
-                break;
-            case 'paid':
-                $status = '<span class="text-logo-primary">bezahlt</span>';
-                break;
-            case 'overdue':
-                $status = '<span class="text-red-600">überfällig</span>';
-                break;
-            default:
-                break;
-        }
-        return $status;
-    }
-
-
-    public function getPaidAttribute()
-    {
-
-        return number_format($this->getUnformatedPaidAttribute(), 2, ',', '.');
-
-    }
-
-    public function getUnformatedPaidAttribute()
-    {
-
         $amount = 0;
         foreach ($this->payments as $payment) {
             $amount += $payment->amount;
         }
-        return $amount;
+        return $this->{$format}($amount);
 
     }
 
 
-    public function getNettoTotalAttribute()
-    {
-        return number_format($this->getUnformatedNettoTotalAttribute(), 2, ',', '.');
-    }
+    /**
+     * sum up the values of billPositions
+     *
+     * @param        $column
+     * @param string $format
+     * @return mixed
+     */
+    public function total($column, $format = 'rounded'){
 
-    public function getUnformatedNettoTotalAttribute()
-    {
-        $netto = 0;
-
+        $total = 0;
         foreach ($this->positions as $position) {
-            $netto += $position->netto * $position->amount;
+            $total += $this->{$column . 'Amount'}($position);
         }
-        return round($netto, 2 );
+        return $this->{$format}($total);
+
     }
 
 
-    public function getVatTotalAttribute()
-    {
-        return number_format($this->getUnformatedVatTotalAttribute(), 2, ',', '.');
-    }
-
-    public function getUnformatedVatTotalAttribute()
-    {
-        $vat = 0;
-
-        foreach ($this->positions as $position) {
-            $vat += (($position->netto * $position->amount) * $position->vat) / 100;
-        }
-        return round($vat, 2 );
-    }
-
-
-    public function getBruttoTotalAttribute()
-    {
-        return number_format($this->getUnformatedBruttoTotalAttribute(), 2, ',', '.');
-    }
-
-    public function getUnformatedBruttoTotalAttribute()
-    {
-        $brutto = 0;
-
-        foreach ($this->positions as $position) {
-            $brutto += (($position->netto * $position->amount) + ((($position->netto * $position->amount) * $position->vat) / 100));
-        }
-        return round($brutto, 2 );
-    }
-
-
+    /**
+     * get incremented max of bill numbers
+     *
+     * @return int
+     */
     public static function getNextBillNumber()
     {
 
@@ -166,45 +118,9 @@ class Bill extends Model
         }
 
         $maxBill++;
-
         return $maxBill;
 
     }
 
-    public function createPdf()
-    {
-        return Storage::temporaryUrl($this->document, now()->addMinutes(1));
-    }
-
-    public function getSettings(User $user = null)
-    {
-        if($user == null){
-            $user = Auth::user();
-        }
-
-        $defaults = [
-            'logo'            => asset('logo-icon.png'),
-            'address'         => '',
-            'contactperson'   => '',
-            'contactphone'    => '',
-            'contactemail'    => '',
-            'uid'             => '',
-            'headertext'      => '',
-            'footertext'      => '',
-            'prefix'          => 'RE',
-            'bill_number'     => 1000,
-            'company_name'    => '',
-            'footercol_1'     => '',
-            'footercol_2'     => '',
-            'footercol_3'     => '',
-            'desired_respite' => 7,
-        ];
-        $settings = BillSetting::withoutGlobalScopes()->where('user_id', $user->id)->pluck('setting_value', 'setting_name')->toArray();
-        $settings = array_merge($defaults, $settings);
-
-        $settings['headertext'] = $this->formatBillSnippet($settings['headertext']);
-        $settings['footertext'] = $this->formatBillSnippet($settings['footertext']);
-        return $settings;
-    }
 
 }

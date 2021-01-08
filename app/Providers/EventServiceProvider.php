@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Bill;
+use App\Models\BillPosition;
 use App\Observers\BillObserver;
 use Illuminate\Auth\Events\Registered;
+use App\Observers\BillPostionObserver;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;

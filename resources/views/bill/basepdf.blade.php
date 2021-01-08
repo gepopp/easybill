@@ -13,7 +13,7 @@
 <body class="text-sm leading-normal pt-24">
 <header class="fixed top-0 left-0 h-24 w-full">
     <div style="width: 33%; float: right; padding-right: 1.5cm">
-        <img src="{{ Storage::temporaryUrl($settings['logo'], now()->addMinutes(5)) }}" style="max-width: none; width: auto">
+        <img src="{{ Storage::temporaryUrl(\App\Models\BillSetting::getSetting('logo', $user), now()->addMinutes(5)) }}" style="max-width: none; width: auto">
     </div>
 </header>
 <footer class="fixed bottom-0 left-0 w-full h-14">
@@ -35,13 +35,13 @@
                         </td>
                     </tr>
                 </table>
-                {{--                {!! $settings['footercol_1'] !!}--}}
+{{--                {!! $settings['footercol_1'] !!}--}}
             </td>
             <td class="text-center">
-                {!! $settings['footercol_2'] !!}
+                {!! $footercol_2 !!}
             </td>
             <td class="text-right">
-                {!! $settings['footercol_3'] !!}
+                {!! $footercol_3 !!}
             </td>
         </tr>
     </table>
@@ -51,16 +51,16 @@
     <table class="table-auto w-full">
         <tr>
             <td valign="bottom">
-                <p class="text-xs" style="font-size: .5rem">Abs: {{ $settings['company_name'] }}, {{ $settings['address'] }}</p>
-                {!! $customer->getAddressHtml() !!}
+              <p class="text-xs" style="font-size: .5rem">Abs: {{ \App\Models\BillSetting::getSetting('company_name', $user ) }}, {{ \App\Models\BillSetting::getSetting('address', $user ) }}</p>
+                <x-customer-address :customer="$customer"/>
             </td>
             <td>
-                <p class="text-right text-xs leading-normal">{{ $settings['company_name'] }}</p>
-                <p class="text-right text-xs leading-normal">{{ $settings['address'] }}</p>
-                <p class="text-right text-xs leading-normal">{{ $settings['contactperson'] }}</p>
-                <p class="text-right text-xs leading-normal">{{ $settings['contactemail'] }}</p>
-                <p class="text-right text-xs leading-normal">{{ $settings['contactphone'] }}</p>
-                <p class="text-right text-xs leading-normal">{{ $settings['uid'] }}</p>
+                <p class="text-right text-xs leading-normal">{{ \App\Models\BillSetting::getSetting('company_name', $user) }}</p>
+                <p class="text-right text-xs leading-normal">{{ \App\Models\BillSetting::getSetting('address', $user) }}</p>
+                <p class="text-right text-xs leading-normal">{{ \App\Models\BillSetting::getSetting('contactperson', $user) }}</p>
+                <p class="text-right text-xs leading-normal">{{ \App\Models\BillSetting::getSetting('contactemail', $user) }}</p>
+                <p class="text-right text-xs leading-normal">{{ \App\Models\BillSetting::getSetting('contactphone', $user) }}</p>
+                <p class="text-right text-xs leading-normal">{{ \App\Models\BillSetting::getSetting('uid', $user) }}</p>
                 <p class="text-right text-xs leading-normal">
                     Rechnungsdatum: {{ \Carbon\Carbon::parse($bill->billing_date)->format('d.m.Y') }}
                 </p>
@@ -73,7 +73,7 @@
 
     <div class="mt-10">
         <p class="font-bold text-lg">Rechnung: {{ $bill->prefix }} {{ $bill->bill_number }} </p>
-        <p>{!! $settings['headertext'] !!}</p>
+        <p>{!! $header !!}</p>
     </div>
     <table class="table-auto w-full mt-10">
         <thead class="border-b">
@@ -141,21 +141,21 @@
         <tr>
             <td class="w-1/2"></td>
             <td class="w-1/4 text-left">Netto gesamt:</td>
-            <td class="w-1/4 text-right">{{ $bill->nettoTotal  }} €</td>
+            <td class="w-1/4 text-right">{{ $bill->total('netto', 'withSymbol')  }}</td>
         </tr>
 
         <tr>
             <td class="w-1/2"></td>
             <td class="w-1/4 text-left">MwSt.:</td>
-            <td class="w-1/4 text-right">{{ $bill->vatTotal  }} €</td>
+            <td class="w-1/4 text-right">{{ $bill->total('vat', 'withSymbol')  }} €</td>
         </tr>
         <tr>
             <td class="w-1/2"></td>
             <td class="w-1/4 text-left font-bold">Rechnungsbetrag:</td>
-            <td class="w-1/4 text-right font-bold">{{ $bill->bruttoTotal}} €</td>
+            <td class="w-1/4 text-right font-bold">{{ $bill->total('brutto', 'withSymbol') }} €</td>
         </tr>
     </table>
-    <p class="mt-16">{!! $settings['footertext'] !!}</p>
+    <p class="mt-16">{!! $footer !!}</p>
 </main>
 </body>
 </html>

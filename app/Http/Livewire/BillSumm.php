@@ -42,6 +42,6 @@ class BillSumm extends Component
 
     public function render()
     {
-        return view('livewire.bill-summ');
+        return view('livewire.bill.bill-summ');
     }
 }
