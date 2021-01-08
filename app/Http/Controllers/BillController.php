@@ -198,7 +198,10 @@ class BillController extends Controller
         }
         $bill->delete();
 
-        session()->put('header', ['type' => 'error', 'message' => "Die Rechnung $bill->prefix $bill->bill_number wurde gelöscht."]);
+        session()->put('topflash', [
+            'type'    => 'error',
+            'message' => "Deine Rechnung $bill->prefix $bill->bill_number wurde gelöscht.",
+        ]);
 
         return redirect()->route('bills.index');
 
