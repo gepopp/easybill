@@ -176,7 +176,7 @@ class BillController extends Controller
 
         $bill->update(['paid_at' => now()]);
 
-        session()->flash('header', ['type' => 'success', 'message' => "Die Rechnung $bill->prefix $bill->bill_number wurde erfolgreich storniert."]);
+        session()->put('header', ['type' => 'success', 'message' => "Die Rechnung $bill->prefix $bill->bill_number wurde erfolgreich storniert."]);
 
         return redirect()->route('bills.edit', $newbill)->with('settings', $bill->getSettings());
 
@@ -197,6 +197,8 @@ class BillController extends Controller
             $position->delete();
         }
         $bill->delete();
+
+        session()->put('header', ['type' => 'error', 'message' => "Die Rechnung $bill->prefix $bill->bill_number wurde gelöscht."]);
 
         return redirect()->route('bills.index');
 
