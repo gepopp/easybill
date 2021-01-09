@@ -94,6 +94,7 @@
                             @if(!$bill->has_storno && !$bill->is_storno_of && $bill->sent_at !== null )
                                 <livewire:bill-payments-list :bill="$bill"/>
                             @endif
+                            <livewire:bill-notofactions-list :bill="$bill"/>
                         </div>
 
                     </div>

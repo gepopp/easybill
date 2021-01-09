@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Traits\Topflash;
 use App\Notifications\SendBill;
 use App\Models\UserEmailNotification;
+use App\Notifications\ThankYouForPaying;
 use Illuminate\Notifications\Events\NotificationSent;
 
 class LogNotification
@@ -30,7 +31,8 @@ class LogNotification
      */
     public function handle(NotificationSent $event)
     {
-        if($event->notification instanceof SendBill ){
+        if( $event->notification instanceof SendBill || $event->notification instanceof ThankYouForPaying ){
+
             $userNotification = new UserEmailNotification([
                 'user_id'      => $event->notification->user->id,
                 'customer_id'  => $event->notifiable->id,
@@ -41,7 +43,7 @@ class LogNotification
             $userNotification->about()->associate($event->notification->bill);
             $userNotification->save();
 
-            $this->topflash('billSent', $event->notification->bill, $event->notification->user );
+            $this->topflash('emailSent' );
         }
 
 

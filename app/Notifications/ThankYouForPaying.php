@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\Bill;
+use App\Models\User;
 use App\Models\BillSetting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\HtmlString;
@@ -15,15 +16,17 @@ class ThankYouForPaying extends Notification
     use Queueable;
 
     public Bill $bill;
+    public User $user;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($bill)
+    public function __construct($bill, $user)
     {
         $this->bill = $bill;
+        $this->user = $user;
     }
 
     /**
@@ -47,6 +50,7 @@ class ThankYouForPaying extends Notification
     {
         return (new MailMessage)
             ->from('dont-reply@mybilling.at', BillSetting::getSetting('contactperson') . ' via mybilling')
+            ->replyTo($notifiable->email)
             ->subject('Danke für Ihre Zahlung.')
             ->greeting($notifiable->is_female ? 'Sehr geehrte Frau ' : 'Sehr geehrter Herr ' .
                 $notifiable->academic_degree . ' ' . $notifiable->firstname . ' ' . $notifiable->last_name . ',')

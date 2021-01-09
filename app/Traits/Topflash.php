@@ -33,46 +33,50 @@ trait Topflash
     {
 
         $messages = [
-            'billSendingError' => [
+            'billSendingError'     => [
                 'type'    => 'error',
                 'message' => "Deine Rechnung [prefix] [bill_number] konnte nicht gesendet werden. Speichere die Rechnung nochmals und warte bis das Pdf geladen ist.",
             ],
-            'billSent'         => [
+            'billSent'             => [
                 'type'    => 'success',
                 'message' => "Deine Rechnung [prefix] [bill_number] wurde versendet.",
             ],
-            'billEmailQueued'  => [
+            'billEmailQueued'      => [
                 'type'    => 'success',
                 'message' => "Deine Rechnung [prefix] [bill_number] wurde für den Versand vorbereitet.",
             ],
-            'billDuplicated'   => [
+            'billDuplicated'       => [
                 'type'    => 'success',
                 'message' => 'Die Rechnung wurde erfolgreich dupliziert.',
             ],
-            'billNotEidtable'  => [
+            'billNotEidtable'      => [
                 'type'    => 'error',
                 'message' => 'Diese Rechnung kann nicht mehr bearbeitet werden.',
             ],
-            'billNotDuplicateable'  => [
+            'billNotDuplicateable' => [
                 'type'    => 'error',
                 'message' => 'Stornos können nicht dupliziert werden.',
             ],
-            'billNotStornoable'  => [
+            'billNotStornoable'    => [
                 'type'    => 'error',
                 'message' => 'Diese Rechnung kann nicht Storniert werden. Wenn du sie noch nicht gesendet hast lösche die Rechnung einfach.',
             ],
-            'billStorno' => [
+            'billStorno'           => [
                 'type'    => 'error',
                 'message' => "Deine Rechnung [prefix] [bill_number] wurde storniert. Du kannst die Stornorechnung jetzt an den Kunden senden.",
             ],
-            'billDeleted' => [
+            'billDeleted'          => [
                 'type'    => 'error',
                 'message' => "Deine Rechnung [prefix] [bill_number] wurde gelöscht.",
             ],
-            'billsettings' => [
-                'type' => 'error',
-                'message' => 'Bitte fülle zuerst deine Rechnungsdaten aus.'
-            ]
+            'billsettings'         => [
+                'type'    => 'error',
+                'message' => 'Bitte fülle zuerst deine Rechnungsdaten aus.',
+            ],
+            'emailSent'            => [
+                'type'    => 'success',
+                'message' => 'E-Mail wurde gesendet.',
+            ],
 
         ];
 

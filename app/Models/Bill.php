@@ -19,7 +19,7 @@ class Bill extends Model
 
     protected $guarded = [];
 
-    protected $with = ['customer', 'positions', 'payments', 'is_storno_of', 'notifications'];
+    protected $with = ['customer', 'positions', 'payments', 'is_storno_of'];
 
 
 
