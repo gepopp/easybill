@@ -5,14 +5,16 @@
         'generated'     => 'text-logo-light',
         'sent'          => 'text-logo-terciary',
         'paid'          => 'text-logo-primary',
-        'overdue'       => 'text-red-600'
+        'overdue'       => 'text-red-600',
+        'storno'        => 'text-red-900'
     ],
     'translation' => [
         'draft'         => 'Entwurf',
         'generated'     => 'erzeugt',
         'sent'          => 'gesendet',
         'paid'          => 'bezahlt',
-        'overdue'       => 'überfällig'
+        'overdue'       => 'überfällig',
+        'storno'        => 'storniert'
     ]
 ])
 

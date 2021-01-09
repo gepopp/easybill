@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\Bill;
-use App\Models\Customer;
-use Illuminate\View\View;
-use App\Models\BillSetting;
+use App\Models\User;
+use App\Traits\Topflash;
+use Illuminate\Bus\Batch;
 use App\Jobs\CreateBillPdf;
 use App\Models\BillPayment;
-use Illuminate\Http\Request;
 use App\Notifications\SendBill;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Blade;
+use App\Models\UserEmailNotification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use App\Notifications\ThankYouForPaying;
@@ -20,6 +19,10 @@ use App\Notifications\ThankYouForPaying;
 
 class BillController extends Controller
 {
+
+
+    use Topflash;
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +30,7 @@ class BillController extends Controller
      */
     public function index()
     {
-        return view('bill.index')->with(['bills' => Bill::all()]);
+        return view('bill.index');
     }
 
 
@@ -38,12 +41,8 @@ class BillController extends Controller
      */
     public function show(Bill $bill)
     {
-        if (!Storage::exists($bill->document)) {
-            dispatch(new CreateBillPdf($bill, Auth::user()));
-        }
         return view('bill.show')->with(['bill' => $bill]);
     }
-
 
     /**
      * Sent the E-Mail notification with bill attachment
@@ -54,46 +53,23 @@ class BillController extends Controller
     public function send(Bill $bill)
     {
         if (!Storage::exists($bill->document)) {
-            Session::put('topflash', [
-                'type'    => 'error',
-                'message' => "Deine Rechnung $bill->prefix $bill->bill_number konnte nicht gesendet werden.
-                               Speichere die Rechnung nochmals und warte bis das Pdf geladen ist.",
-            ]);
+            $this->dispatch(new CreateBillPdf($bill, Auth::user()));
+            $this->topflash('billSendingError', $bill);
             return redirect()->route('bills.edit', $bill);
         }
 
-
-        if ($bill->is_storno_of) {
-            BillPayment::create([
-                'bill_id'      => $bill->id,
-                'amount'       => $bill->total('brutto'),
-                'payment_date' => now(),
-            ]);
-
-            BillPayment::create([
-                'bill_id'      => $bill->storno_id,
-                'amount'       => $bill->total('brutto') * -1,
-                'payment_date' => now(),
-            ]);
+        if ($bill->is_storno_of && $bill->paid() < $bill->total('brutto')) {
+            $this->makeStornoPayments($bill);
         }
-
 
         if ($bill->sent_at == null) {
-            $bill->customer->notify(new SendBill($bill));
-
             $bill->update(['sent_at' => now()]);
+            $this->dispatch(new \App\Jobs\SendBill($bill, Auth::user()));
         }
 
-        session()->put('topflash', [
-            'type'    => 'success',
-            'message' => "Deine Rechnung $bill->prefix $bill->bill_number wurde versendet.",
-        ]);
         return redirect()->route('bills.show', $bill);
     }
 
-    public function mailtest(Bill $bill){
-        return (new ThankYouForPaying($bill))->toMail($bill->customer);
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -102,9 +78,6 @@ class BillController extends Controller
      */
     public function edit(Bill $bill)
     {
-        if ($bill->sent_at != null || $bill->is_storno_of || $bill->has_storno) {
-            return redirect(route('bills.show', $bill));
-        }
         return view('bill.edit')->with(['bill' => $bill]);
     }
 
@@ -114,7 +87,6 @@ class BillController extends Controller
         Storage::delete($bill->document);
 
         $bill->update(['document' => 'onqueue']);
-
         dispatch(new CreateBillPdf($bill, Auth::user()));
 
         return redirect()->route('bills.show', $bill);
@@ -123,11 +95,6 @@ class BillController extends Controller
 
     public function duplicate(Bill $bill)
     {
-
-        if ($bill->is_storno_of) {
-            return redirect()->route('bills.index')->with(['bills' => Bill::all()]);
-        }
-
         $newbill = Bill::create([
             'user_id'      => $bill->user_id,
             'storno_id'    => null,
@@ -148,17 +115,14 @@ class BillController extends Controller
             $newposition->save();
         }
 
+        $this->topflash('billDuplicated');
         return redirect()->route('bills.edit', $newbill);
 
     }
 
     public function storno(Bill $bill)
     {
-        if ($bill->sent_at == null || $bill->is_storno_of || $bill->has_storno || $bill->paid() != 0.00) {
-            return redirect()->route('bills.index')->with('bills', Bill::all());
-        }
-
-        $newbill = Bill::create([
+       $newbill = Bill::create([
             'storno_id'    => $bill->id,
             'user_id'      => $bill->user_id,
             'customer_id'  => $bill->customer_id,
@@ -175,16 +139,12 @@ class BillController extends Controller
         foreach ($bill->positions as $position) {
             $newposition = $position->replicate();
             $newposition->bill_id = $newbill->id;
-            $newposition->netto = $newposition->netto * -1;
+            $newposition->netto = $newposition->amount * -1;
             $newposition->save();
         }
 
 
-        session()->put('topflash', [
-            'type'    => 'error',
-            'message' => "Deine Rechnung $bill->prefix $bill->bill_number wurde storniert. Du kannst die Stornorechnung jetzt an den Kunden senden.",
-        ]);
-
+        $this->topflash('billStorno', $bill);
         return redirect()->route('bills.edit', $newbill);
 
     }
@@ -197,7 +157,6 @@ class BillController extends Controller
      */
     public function destroy(Bill $bill)
     {
-
         Storage::delete($bill->document);
 
         foreach ($bill->positions as $position) {
@@ -205,14 +164,28 @@ class BillController extends Controller
         }
         $bill->delete();
 
-        session()->put('topflash', [
-            'type'    => 'error',
-            'message' => "Deine Rechnung $bill->prefix $bill->bill_number wurde gelöscht.",
-        ]);
-
+        $this->topflash('billDeleted', $bill);
         return redirect()->route('bills.index');
 
 
+    }
+
+    /**
+     * @param Bill $bill
+     */
+    public function makeStornoPayments(Bill $bill): void
+    {
+        BillPayment::create([
+            'bill_id'      => $bill->id,
+            'amount'       => $bill->total('brutto') - $bill->paid(),
+            'payment_date' => now(),
+        ]);
+
+        BillPayment::create([
+            'bill_id'      => $bill->storno_id,
+            'amount'       => ($bill->total('brutto') - $bill->paid()) * -1,
+            'payment_date' => now(),
+        ]);
     }
 
 }

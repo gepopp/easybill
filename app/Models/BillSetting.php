@@ -32,28 +32,9 @@ class BillSetting extends Model
             $user = Auth::user();
         }
 
-        $defaults = [
-            'logo'            => asset('logo-icon.png'),
-            'address'         => '',
-            'contactperson'   => '',
-            'contactphone'    => '',
-            'contactemail'    => '',
-            'uid'             => '',
-            'headertext'      => '',
-            'footertext'      => '',
-            'prefix'          => 'RE',
-            'bill_number'     => 1000,
-            'company_name'    => '',
-            'footercol_1'     => '',
-            'footercol_2'     => '',
-            'footercol_3'     => '',
-            'desired_respite' => 7,
-        ];
         $settings = BillSetting::withoutGlobalScopes()
             ->where('user_id', $user->id)->pluck('setting_value', 'setting_name')
             ->toArray();
-
-        $settings = array_merge($defaults, $settings);
 
         return $settings[$name];
     }

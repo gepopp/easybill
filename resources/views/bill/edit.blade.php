@@ -11,7 +11,7 @@
                             enabled = !event;
                         });
                     ">
-            <form action="{{ route('bill.document', $bill) }}" method="GET">
+            <form action="{{ route('bills.document', $bill) }}" method="GET">
                 @csrf
                 <button type="submit"
                         class="button-primary"

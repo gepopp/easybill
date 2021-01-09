@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Queue\Events\JobProcessing;
+use Illuminate\Support\Facades\RateLimiter;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        RateLimiter::for('email', function ($job){
+           return Limit::perMinute(5)->by($job->user->id);
+        });
     }
 }

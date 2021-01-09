@@ -59,6 +59,10 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function flash()
+    {
+        return $this->hasMany(UserFlash::class);
+    }
 
     public function customers(){
         return $this->hasMany(Customer::class);

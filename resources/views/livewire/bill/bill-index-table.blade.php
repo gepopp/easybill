@@ -83,6 +83,8 @@
                 <td class=" p-1">
                     @if($bill->is_storno_of)
                         <p class="text-xs text-red-800">Storno von {{ $bill->is_storno_of->prefix }}{{ $bill->is_storno_of->bill_number }}</p>
+                    @elseif($bill->has_storno)
+                        <p class="text-xs text-red-800">Storniert mit {{ $bill->has_storno->prefix }}{{ $bill->has_storno->bill_number }}</p>
                     @endif
                     {{$bill->prefix}}{{ $bill->bill_number }}
                 </td>

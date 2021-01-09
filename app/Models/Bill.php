@@ -19,7 +19,7 @@ class Bill extends Model
 
     protected $guarded = [];
 
-    protected $with = ['customer', 'positions', 'payments', 'is_storno_of'];
+    protected $with = ['customer', 'positions', 'payments', 'is_storno_of', 'notifications'];
 
 
 
@@ -60,6 +60,10 @@ class Bill extends Model
 
     public function is_storno_of(){
         return $this->belongsTo(Bill::class, 'storno_id');
+    }
+
+    public function notifications(){
+        return $this->morphMany(UserEmailNotification::class, 'about');
     }
 
 

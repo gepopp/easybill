@@ -7,6 +7,7 @@ use App\Models\BillPosition;
 use App\Observers\BillObserver;
 use Illuminate\Auth\Events\Registered;
 use App\Observers\BillPostionObserver;
+use Illuminate\Notifications\Events\NotificationSent;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
@@ -22,6 +23,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        NotificationSent::class => [
+            'App\Listeners\LogNotification',
+        ]
+
     ];
 
     /**

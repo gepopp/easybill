@@ -25,10 +25,10 @@
                 </form>
             @endif
             @if(!$bill->is_storno_of)
-                <a href="{{ route('bill.duplicate', $bill) }}" class="button-primary">duplizieren</a>
+                <a href="{{ route('bills.duplicate', $bill) }}" class="button-primary">duplizieren</a>
             @endif
             @if(!$bill->has_storno && !$bill->is_storno_of && $bill->paid() == 0)
-                <a href="{{ route('bill.storno', $bill) }}" class="button-primary">stornieren</a>
+                <a href="{{ route('bills.storno', $bill) }}" class="button-primary">stornieren</a>
             @endif
             @if($bill->sent_at != null && $bill->paid() < $bill->total('brutto') && !$bill->has_storno && !$bill->is_storno_of)
                 <livewire:add-bill-payment-modal :bill="$bill"/>

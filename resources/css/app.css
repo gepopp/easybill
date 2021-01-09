@@ -2,6 +2,11 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+
+[x-cloak]{
+    display: none;
+}
+
 table.striped tr:nth-child(even) {
     @apply bg-logo-gray;
 }

@@ -43,7 +43,7 @@
                 {{ $headerbutton ?? '' }}
             </div>
         </div>
-        <x-flash/>
+        <livewire:top-flash/>
     </header>
 
 
