@@ -179,11 +179,13 @@ class BillController extends Controller
             $newposition->save();
         }
 
-        $bill->update(['paid_at' => now()]);
 
-        session()->put('header', ['type' => 'success', 'message' => "Die Rechnung $bill->prefix $bill->bill_number wurde erfolgreich storniert."]);
+        session()->put('topflash', [
+            'type'    => 'error',
+            'message' => "Deine Rechnung $bill->prefix $bill->bill_number wurde storniert. Du kannst die Stornorechnung jetzt an den Kunden senden.",
+        ]);
 
-        return redirect()->route('bills.edit', $newbill)->with('settings', $bill->getSettings());
+        return redirect()->route('bills.edit', $newbill);
 
     }
 

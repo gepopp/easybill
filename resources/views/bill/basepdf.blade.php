@@ -72,7 +72,7 @@
     </table>
 
     <div class="mt-10">
-        <p class="font-bold text-lg">Rechnung: {{ $bill->prefix }} {{ $bill->bill_number }} </p>
+        <p class="font-bold text-lg">{{ $bill->total('vat') > 0 ? 'Rechnung' : 'Gutschrift' }}: {{ $bill->prefix }} {{ $bill->bill_number }} </p>
         <p>{!! $header !!}</p>
     </div>
     <table class="table-auto w-full mt-10">

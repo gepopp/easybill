@@ -1,5 +1,5 @@
 <div
-    x-data="{ timeout : 20, show : false }"
+    x-data="{ timeout : 500, show : false }"
     x-cloak
     x-init="
 
@@ -15,7 +15,7 @@
             }, 1000)
         ">
     @if($message)
-        <div class="{{ $type == 'success' ? 'bg-logo-light' : 'bg-red-400' }} text-white w-full absolute shadow-inner" style="z-index: -1"
+        <div x-cloak class="{{ $type == 'success' ? 'bg-logo-light' : 'bg-red-400' }} text-white w-full absolute shadow-inner" style="z-index: -1"
              x-show="show"
              x-transition:enter="transition duration-500 transform ease-in-out"
              x-transition:enter-start="scale-y-0 opacity-0 -translate-y-full"
