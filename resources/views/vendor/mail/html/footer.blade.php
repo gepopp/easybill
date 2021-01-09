@@ -4,6 +4,7 @@
 <tr>
 <td class="content-cell" align="center">
 {{ Illuminate\Mail\Markdown::parse($slot) }}
+    <p class="text-xs">myblilling.at ist ein Projekt von <a href="https://poppgerhard.at">Webentwicklung Gerhard Popp</a></p>
 </td>
 </tr>
 </table>

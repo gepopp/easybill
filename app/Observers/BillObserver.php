@@ -9,6 +9,7 @@ use App\Jobs\CreateBillPdf;
 use App\Models\BillSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Notifications\ThankYouForPaying;
 
 class BillObserver
 {

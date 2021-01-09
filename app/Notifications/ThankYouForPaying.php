@@ -2,17 +2,15 @@
 
 namespace App\Notifications;
 
-use Carbon\Carbon;
 use App\Models\Bill;
 use App\Models\BillSetting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\HtmlString;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class SendBill extends Notification
+class ThankYouForPaying extends Notification
 {
     use Queueable;
 
@@ -31,7 +29,7 @@ class SendBill extends Notification
     /**
      * Get the notification's delivery channels.
      *
-     * @param mixed $notifiable
+     * @param  mixed  $notifiable
      * @return array
      */
     public function via($notifiable)
@@ -42,42 +40,32 @@ class SendBill extends Notification
     /**
      * Get the mail representation of the notification.
      *
-     * @param mixed $notifiable
+     * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
-
-       Storage::disk('local')->put($this->bill->document, Storage::disk('s3')->get($this->bill->document));
-
-
         return (new MailMessage)
             ->from('dont-reply@mybilling.at', BillSetting::getSetting('contactperson') . ' via mybilling')
-            ->subject('Neue Rechnung von ' . BillSetting::getSetting('company_name'))
+            ->subject('Danke für Ihre Zahlung.')
             ->greeting($notifiable->is_female ? 'Sehr geehrte Frau ' : 'Sehr geehrter Herr ' .
                 $notifiable->academic_degree . ' ' . $notifiable->firstname . ' ' . $notifiable->last_name . ',')
 
             ->line(BillSetting::getSetting('contactperson') . ' von ' .
-                BillSetting::getSetting('company_name') . ' hat Ihnen die Rechnung ' .
-                $this->bill->prefix . $this->bill->bill_number . ' gesendet. Sie finden diese Rechnung im Anhang.')
+                BillSetting::getSetting('company_name') . ' hat Ihre Zahlung zur ' .
+                $this->bill->prefix . $this->bill->bill_number . ' verbucht.')
 
-            ->line('Bitte überweisen Sie den Rechnungsbetrag über ' . $this->bill->total('brutto', 'euro') . ' € bis zum ' .
-                Carbon::parse($this->bill->billing_date)->addDays($this->bill->respite)->format('d.m.Y') .
-                ' auf eines der in der Rechnung angegebenen Konten.')
+            ->line(new HtmlString('<strong>Danke.</strong><br> Die Rechnung ist nun beglichen.'))
+
 
             ->salutation( new HtmlString('Mit freundlichen Grüßen,<br>' . BillSetting::getSetting('contactperson') .
-                ' via <a href="https://mybilling.at">mybilling.at</a>'))
-
-            ->attach(Storage::disk('local')->path($this->bill->document));
-
-           Storage::disk('local')->delete($this->bill->document);
-
+                ' via <a href="https://mybilling.at">mybilling.at</a>'));
     }
 
     /**
      * Get the array representation of the notification.
      *
-     * @param mixed $notifiable
+     * @param  mixed  $notifiable
      * @return array
      */
     public function toArray($notifiable)

@@ -10,7 +10,7 @@
                 <a href="{{ route('bills.edit', $bill) }}" class="button-primary">bearbeiten</a>
             @endif
             @if($bill->sent_at == null)
-               <livewire:bill-send-button :bill="$bill"/>
+                <livewire:bill-send-button :bill="$bill"/>
             @endif
             @if(!$bill->has_storno && !$bill->is_storno_of && $bill->sent_at == null)
                 <a onclick="document.getElementById('delete-{{ $bill->id }}').submit()" class="button-primary cursor-pointer">löschen</a>
@@ -24,6 +24,9 @@
             @endif
             @if(!$bill->has_storno && !$bill->is_storno_of && $bill->paid() == 0)
                 <a href="{{ route('bill.storno', $bill) }}" class="button-primary">stornieren</a>
+            @endif
+            @if($bill->sent_at != null && $bill->paid() < $bill->total('brutto') && !$bill->has_storno && !$bill->is_storno_of)
+                <livewire:add-bill-payment-modal :bill="$bill"/>
             @endif
         </div>
     </x-slot>

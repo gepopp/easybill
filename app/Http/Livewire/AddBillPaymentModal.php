@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Bill;
 use Livewire\Component;
 use App\Models\BillPayment;
+use App\Notifications\ThankYouForPaying;
 
 class AddBillPaymentModal extends Component
 {
@@ -13,6 +14,7 @@ class AddBillPaymentModal extends Component
     public $amount;
     public $payment_date;
     public $to_pay;
+    public $say_thanx = true;
 
     protected $listeners = ['paymentsChanged'];
 
@@ -38,6 +40,11 @@ class AddBillPaymentModal extends Component
 
         BillPayment::create($data);
 
+        if($this->amount == $this->to_pay && $this->say_thanx){
+            $this->bill->customer->notify(new ThankYouForPaying($this->bill));
+        }
+
+
         $this->emit('paymentsChanged');
 
         $this->show = false;
@@ -54,6 +61,6 @@ class AddBillPaymentModal extends Component
 
     public function render()
     {
-        return view('livewire.add-bill-payment-modal');
+        return view('livewire.bill.add-bill-payment-modal');
     }
 }

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
+use App\Notifications\ThankYouForPaying;
 
 
 class BillController extends Controller
@@ -88,6 +89,10 @@ class BillController extends Controller
             'message' => "Deine Rechnung $bill->prefix $bill->bill_number wurde versendet.",
         ]);
         return redirect()->route('bills.show', $bill);
+    }
+
+    public function mailtest(Bill $bill){
+        return (new ThankYouForPaying($bill))->toMail($bill->customer);
     }
 
     /**
