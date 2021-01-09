@@ -51,6 +51,7 @@ class ThankYouForPaying extends Notification
         return (new MailMessage)
             ->from('dont-reply@mybilling.at', BillSetting::getSetting('contactperson') . ' via mybilling')
             ->replyTo($notifiable->email)
+            ->bcc('gerhard@poppgerhard.at')
             ->subject('Danke für Ihre Zahlung.')
             ->greeting($notifiable->is_female ? 'Sehr geehrte Frau ' : 'Sehr geehrter Herr ' .
                 $notifiable->academic_degree . ' ' . $notifiable->firstname . ' ' . $notifiable->last_name . ',')
