@@ -14,7 +14,7 @@
             </li>
         @empty
             <li class="flex justify-center px-3 py-5 border-b border-logo-primary">
-                Noch keine Zahlung erfasst.
+                Noch nichts gesendet.
             </li>
         @endforelse
     </ul>
