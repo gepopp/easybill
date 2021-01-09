@@ -3,7 +3,7 @@
     <ul>
         @forelse($bill->notifications as $notification)
             <li class="flex flex-col justify-center px-3 py-5 border-b border-logo-primary">
-                <p class="">
+                <p>
                     @if( $notification->notification == 'App\Notifications\SendBill')
                         Rechnung gesendet
                     @elseif($notification->notification == 'App\Notifications\ThankYouForPaying')

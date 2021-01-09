@@ -10,10 +10,6 @@ class BillNotifactionsList extends Component
     public Bill $bill;
     public $notifications;
 
-    public function mount(){
-
-    }
-
 
     public function render()
     {
