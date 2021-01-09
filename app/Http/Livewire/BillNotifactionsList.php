@@ -10,7 +10,6 @@ class BillNotifactionsList extends Component
     public Bill $bill;
     public $notifications;
 
-
     public function render()
     {
         return view('livewire.bill.bill-notifactions-list');
