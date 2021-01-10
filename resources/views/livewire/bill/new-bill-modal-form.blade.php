@@ -1,7 +1,7 @@
 <div>
     <form wire:submit.prevent="createBill">
         <x-input name="billing_date" type="date" label="Rechnungsdatum" inputalign="text-left"/>
-        <x-input name="bill_number" type="number" label="Rechnungsnummer" prefix="{{ $prefix }}" step="1"/>
+        <x-input name="bill_number" type="number" label="Rechnungsnummer" prefix="{{ $prefix }}" step="1" disabled="disabled"/>
         <x-input name="respite" type="number" label="Zahlungsziel" step="1"/>
 
         <div class="flex justify-between items-center mb-4">
