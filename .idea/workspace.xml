@@ -20,22 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/lang/de.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/de/de.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/de/messages.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/livewire/de.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillIndexTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/BillIndexTable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/livewire.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/livewire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bill/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/bill-status.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/bill-status.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-index-table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-index-table.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -257,14 +242,7 @@
       <workItem from="1606154440094" duration="1046000" />
       <workItem from="1609232195824" duration="2095000" />
       <workItem from="1609524646520" duration="129481000" />
-      <workItem from="1609841956963" duration="201555000" />
-    </task>
-    <task id="LOCAL-00013" summary="update customer create">
-      <created>1609704498917</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1609704498917</updated>
+      <workItem from="1609841956963" duration="202216000" />
     </task>
     <task id="LOCAL-00014" summary="update customer create">
       <created>1609780166326</created>
@@ -602,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610232101784</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="update bills table and filters">
+      <created>1610288667847</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1610288667847</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,6 +620,7 @@
     <MESSAGE value="refactor all bill views and controller/observer/job" />
     <MESSAGE value="Thank You email on payment" />
     <MESSAGE value="introduce flash messages and bill middleware" />
-    <option name="LAST_COMMIT_MESSAGE" value="introduce flash messages and bill middleware" />
+    <MESSAGE value="update bills table and filters" />
+    <option name="LAST_COMMIT_MESSAGE" value="update bills table and filters" />
   </component>
 </project>

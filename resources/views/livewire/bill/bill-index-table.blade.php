@@ -38,7 +38,7 @@
                            type="text"
                            x-ref="datepicker"
                            >
-                    <div class="absolute top-0 right-0 pt-2 pr-2 z-50" x-show="start != ''">
+                    <div class="absolute top-0 right-0 pt-2 pr-2 cursor-pointer" x-show="start != ''">
                         <svg class="w-5 h-5 text-gray-400" @click="pickr.clear()" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </div>
                 </div>
