@@ -20,8 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/lang/de.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de/de.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/de/messages.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/livewire/de.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill-send-button.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill-send-button.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillIndexTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/BillIndexTable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/livewire.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/livewire.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bill/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/bill-status.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/bill-status.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-index-table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-index-table.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +212,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/livewire" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -209,6 +224,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\lang" />
       <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\views\livewire" />
       <recent name="C:\Users\gerha\PhpstormProjects\easybill\public" />
       <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\views\product" />
@@ -241,14 +257,7 @@
       <workItem from="1606154440094" duration="1046000" />
       <workItem from="1609232195824" duration="2095000" />
       <workItem from="1609524646520" duration="129481000" />
-      <workItem from="1609841956963" duration="180228000" />
-    </task>
-    <task id="LOCAL-00012" summary="update customer create">
-      <created>1609702739279</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1609702739279</updated>
+      <workItem from="1609841956963" duration="201555000" />
     </task>
     <task id="LOCAL-00013" summary="update customer create">
       <created>1609704498917</created>
@@ -586,7 +595,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610230942024</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="introduce flash messages and bill middleware">
+      <created>1610232101784</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1610232101784</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

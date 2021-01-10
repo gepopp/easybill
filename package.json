@@ -20,5 +20,8 @@
         "tailwindcss": "^1.8.0",
         "vue-template-compiler": "^2.6.12",
         "webpack-livereload-plugin": "^1.2.0"
+    },
+    "dependencies": {
+        "flatpickr": "^4.6.9"
     }
 }

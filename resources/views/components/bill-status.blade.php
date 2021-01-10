@@ -1,15 +1,15 @@
 @props([
     'status' => 'draft',
     'stats' => [
-        'draft'         => 'text-gray-600',
-        'generated'     => 'text-logo-light',
-        'sent'          => 'text-logo-terciary',
-        'paid'          => 'text-logo-primary',
-        'overdue'       => 'text-red-600',
-        'storno'        => 'text-red-900'
+        'draft'         => 'bg-gray-600',
+        'generated'     => 'bg-yellow-400',
+        'sent'          => 'bg-logo-terciary',
+        'paid'          => 'bg-logo-primary',
+        'overdue'       => 'bg-red-600',
+        'storno'        => 'bg-red-900'
     ],
     'translation' => [
-        'draft'         => 'Entwurf',
+        'draft'         => 'entwurf',
         'generated'     => 'erzeugt',
         'sent'          => 'gesendet',
         'paid'          => 'bezahlt',
@@ -18,4 +18,7 @@
     ]
 ])
 
-<span {{ $attributes->merge(['class' => "{$stats[$status]}"]) }}>{{ $translation[$status] }}</span>
+<span class="relative inline-block px-3 py-1 font-semibold leading-normal pb-2 w-full text-center">
+    <span class="{{ $stats[$status]}} absolute inset-0 opacity-75 rounded-full w-full h-full"></span>
+    <span class="relative text-xs text-white">{{ $translation[$status] }}</span>
+</span>

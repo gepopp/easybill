@@ -1,5 +1,5 @@
 require('./bootstrap');
 
-window.setTwoNumberDecimal = (el) => {
-    el.value = parseFloat(el.value).toFixed(2);
-};
+import flatpickr from "flatpickr";
+import { German } from "flatpickr/dist/l10n/de.js"
+flatpickr.localize(German);

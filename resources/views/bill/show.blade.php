@@ -6,7 +6,7 @@
             @else
                 {{ __('Rechnung') }}
             @endif
-                {{ $bill->prefix }} {{ $bill->bill_number }}
+            {{ $bill->prefix }} {{ $bill->bill_number }}
         </h2>
     </x-slot>
     <x-slot name="headerbutton">
@@ -45,13 +45,16 @@
                     </div>
                     <div class="p-10 col-span-2">
                         <div class="mb-10">
-                            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                            <h2 class="font-semibold text-xl text-gray-800 leading-tight flex justify-between items-center">
                                 @if($bill->is_storno_of)
                                     {{ __('Stornorechung') }}
                                 @else
                                     {{ __('Rechung') }}
                                 @endif
                                 <x-billnumber :bill="$bill"/>
+                                <span class="w-24">
+                                <x-bill-status status="{{ $bill->bill_status }}"/>
+                                </span>
                             </h2>
                             @if($bill->is_storno_of)
                                 <p class="text-sm">
@@ -63,27 +66,24 @@
                             @endif
                         </div>
 
-
-                        <address class="mb-10">
-                            <x-customer-address :customer="$bill->customer"/>
-                        </address>
-
                         <p class="flex justify-between">
                             <strong>Rechnungsdatum:</strong> {{ \Carbon\Carbon::parse($bill->billing_date)->format('d.m.Y') }}
                         </p>
                         <p class="flex justify-between">
                             <strong>Fälig am:</strong> {{ \Carbon\Carbon::parse($bill->billing_date)->addDays($bill->respite)->format('d.m.Y') }}
                         </p>
-                        <p class="flex justify-between"><strong>Status:</strong>
-                            <x-bill-status status="{{ $bill->bill_status }}"/>
+                        <p class="flex justify-between">
+                            <strong>Netto:</strong><span>{{ $bill->total('netto', 'withSymbol') }}</span>
                         </p>
                         <p class="flex justify-between">
-                            <strong>Netto:</strong><span>{{ $bill->total('netto', 'withSymbol') }}</span></p>
+                            <strong>MwSt.:</strong><span>{{ $bill->total('vat', 'withSymbol') }}</span>
+                        </p>
                         <p class="flex justify-between">
-                            <strong>MwSt.:</strong><span>{{ $bill->total('vat', 'withSymbol') }}</span></p>
-                        <p class="flex justify-between">
-                            <strong>Brutto:</strong><span>{{ $bill->total('brutto', 'withSymbol') }}</span></p>
-
+                            <strong>Brutto:</strong><span>{{ $bill->total('brutto', 'withSymbol') }}</span>
+                        </p>
+                        <address class="mb-10 text-right mt-10">
+                            <x-customer-address :customer="$bill->customer"/>
+                        </address>
                         <div class="flex flex-col space-y-4 mt-10">
                             @if($bill->has_storno)
                                 <p>
