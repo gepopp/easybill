@@ -6,7 +6,7 @@ use App\Models\Bill;
 use Livewire\Component;
 use App\Models\BillPayment;
 use Illuminate\Support\Facades\Auth;
-use App\Notifications\ThankYouForPaying;
+use App\Notifications\ThankYouForPayingNotification;
 
 class AddBillPaymentModal extends Component
 {
@@ -42,7 +42,7 @@ class AddBillPaymentModal extends Component
         BillPayment::create($data);
 
         if($this->amount == $this->to_pay && $this->say_thanx){
-            $this->bill->customer->notify(new ThankYouForPaying($this->bill, Auth::user()));
+            $this->bill->customer->notify(new ThankYouForPayingNotification($this->bill, Auth::user()));
         }
 
 

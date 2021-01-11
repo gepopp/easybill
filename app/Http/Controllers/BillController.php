@@ -3,18 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bill;
-use App\Models\User;
 use App\Traits\Topflash;
-use Illuminate\Bus\Batch;
-use App\Jobs\CreateBillPdf;
+use App\Jobs\SendBillJob;
+use App\Jobs\CreateBillPdfJob;
 use App\Models\BillPayment;
-use App\Notifications\SendBill;
-use Illuminate\Support\Facades\Bus;
+use App\Jobs\BillReminderJob;
 use Illuminate\Support\Facades\Auth;
-use App\Models\UserEmailNotification;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Session;
-use App\Notifications\ThankYouForPaying;
 
 
 class BillController extends Controller
@@ -53,7 +48,7 @@ class BillController extends Controller
     public function send(Bill $bill)
     {
         if (!Storage::exists($bill->document)) {
-            $this->dispatch(new CreateBillPdf($bill, Auth::user()));
+            $this->dispatch(new CreateBillPdfJob($bill, Auth::user()));
             $this->topflash('billSendingError', $bill);
             return redirect()->route('bills.edit', $bill);
         }
@@ -64,11 +59,31 @@ class BillController extends Controller
 
         if ($bill->sent_at == null) {
             $bill->update(['sent_at' => now()]);
-            $this->dispatch(new \App\Jobs\SendBill($bill, Auth::user()));
+            $this->dispatch(new SendBillJob($bill, Auth::user()));
         }
 
         return redirect()->route('bills.show', $bill);
     }
+
+
+
+
+    public function remind(Bill $bill)
+    {
+        if (!Storage::exists($bill->document)) {
+            $this->dispatch(new CreateBillPdfJob($bill, Auth::user()));
+            $this->topflash('billSendingError', $bill);
+            return redirect()->route('bills.edit', $bill);
+        }
+
+        $this->dispatch(new BillReminderJob($bill, Auth::user()));
+
+        return redirect()->route('bills.show', $bill);
+    }
+
+
+
+
 
 
     /**
@@ -87,7 +102,7 @@ class BillController extends Controller
         Storage::delete($bill->document);
 
         $bill->update(['document' => 'onqueue']);
-        dispatch(new CreateBillPdf($bill, Auth::user()));
+        dispatch(new CreateBillPdfJob($bill, Auth::user()));
 
         return redirect()->route('bills.show', $bill);
     }

@@ -4,30 +4,28 @@ namespace App\Jobs;
 
 use App\Models\Bill;
 use App\Models\User;
-use App\Models\Customer;
 use App\Traits\Topflash;
+use App\Models\Customer;
 use Illuminate\Bus\Queueable;
-use Illuminate\Bus\Batchable;
-use App\Models\UserEmailNotification;
+use App\Notifications\BillReminderNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\Middleware\RateLimited;
 
-class SendBill implements ShouldQueue
+class BillReminderJob implements ShouldQueue
 {
-    use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels, Topflash;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, Topflash;
+
 
     public Bill $bill;
     public User $user;
     public Customer $customer;
-    public UserEmailNotification $notification;
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
+    public BillReminderJob $notification;
+
+
+
+
     public function __construct($bill, $user)
     {
         $this->bill = $bill->withoutRelations();
@@ -44,7 +42,7 @@ class SendBill implements ShouldQueue
     public function handle()
     {
         $this->topflash('billEmailQueued', $this->bill, $this->user);
-        $this->customer->notify(new \App\Notifications\SendBill($this->bill, $this->user));
+        $this->customer->notify(new BillReminderNotification($this->bill, $this->user));
     }
 
 
@@ -52,7 +50,6 @@ class SendBill implements ShouldQueue
 
     public function failed()
     {
-        $this->bill->update(['sent_at' => null]);
         $this->topflash('billSendingError', $this->bill, $this->user);
     }
 }

@@ -3,9 +3,11 @@
 namespace App\Listeners;
 
 use App\Traits\Topflash;
-use App\Notifications\SendBill;
+use App\Jobs\BillReminderJob;
+use App\Notifications\SendBillNotification;
+use App\Notifications\BillReminderNotification;
 use App\Models\UserEmailNotification;
-use App\Notifications\ThankYouForPaying;
+use App\Notifications\ThankYouForPayingNotification;
 use Illuminate\Notifications\Events\NotificationSent;
 
 class LogNotification
@@ -31,7 +33,7 @@ class LogNotification
      */
     public function handle(NotificationSent $event)
     {
-        if( $event->notification instanceof SendBill || $event->notification instanceof ThankYouForPaying ){
+        if( $event->notification instanceof SendBillNotification || $event->notification instanceof ThankYouForPayingNotification || $event->notification instanceof BillReminderNotification){
 
             $userNotification = new UserEmailNotification([
                 'user_id'      => $event->notification->user->id,
@@ -43,7 +45,7 @@ class LogNotification
             $userNotification->about()->associate($event->notification->bill);
             $userNotification->save();
 
-            $this->topflash('emailSent' );
+            $this->topflash('emailSent', $event->notification->bill, $event->notification->user );
         }
 
 

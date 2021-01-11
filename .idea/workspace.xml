@@ -20,7 +20,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-modal-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-modal-form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/CustomerIndexPage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Jobs/BillReminderJob.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Notifications/BillReminderNotification.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/customer-index-page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BillController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BillController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/AddBillPaymentModal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/AddBillPaymentModal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/BillMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/BillMiddleware.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/CreateBillPdf.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CreateBillPdfJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/SendBill.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendBillJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/LogNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/LogNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/SendBill.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/SendBillNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/ThankYouForPaying.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/ThankYouForPayingNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/BillObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/BillObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/Topflash.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/Topflash.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bill/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill-send-button.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill-send-button.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-notifactions-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-notifactions-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/customer-select.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/customer-select.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,14 +262,8 @@
       <workItem from="1606154440094" duration="1046000" />
       <workItem from="1609232195824" duration="2095000" />
       <workItem from="1609524646520" duration="129481000" />
-      <workItem from="1609841956963" duration="202334000" />
-    </task>
-    <task id="LOCAL-00015" summary="update customer create">
-      <created>1609780728989</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1609780728989</updated>
+      <workItem from="1609841956963" duration="208320000" />
+      <workItem from="1610364573757" duration="7782000" />
     </task>
     <task id="LOCAL-00016" summary="update customer create">
       <created>1609783237350</created>
@@ -586,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610289250852</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="update bills table and filters">
+      <created>1610290195426</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1610290195426</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

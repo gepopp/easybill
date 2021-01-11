@@ -61,6 +61,14 @@ trait Topflash
                 'type'    => 'error',
                 'message' => 'Diese Rechnung kann nicht Storniert werden. Wenn du sie noch nicht gesendet hast lösche die Rechnung einfach.',
             ],
+            'billNotDeletable'    => [
+                'type'    => 'error',
+                'message' => 'Diese Rechnung kann nicht gelöscht werden.',
+            ],
+            'billNotRemindable'    => [
+                'type'    => 'error',
+                'message' => 'Zahlungserinnerungen können erst einen Tag nach Ablauf der Zahlungsfrist gesendet werden.',
+            ],
             'billStorno'           => [
                 'type'    => 'error',
                 'message' => "Deine Rechnung [prefix] [bill_number] wurde storniert. Du kannst die Stornorechnung jetzt an den Kunden senden.",

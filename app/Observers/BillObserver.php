@@ -5,11 +5,11 @@ namespace App\Observers;
 use PDF;
 use Carbon\Carbon;
 use App\Models\Bill;
-use App\Jobs\CreateBillPdf;
+use App\Jobs\CreateBillPdfJob;
 use App\Models\BillSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use App\Notifications\ThankYouForPaying;
+use App\Notifications\ThankYouForPayingNotification;
 
 class BillObserver
 {
@@ -29,7 +29,7 @@ class BillObserver
             if (abs($bill->paid()) >= abs($bill->total('brutto'))) {
                 $bill->bill_status = 'paid';
             }else{
-                if (Carbon::parse($bill->billing_date)->addDays($bill->respite)->isPast()){
+                if (Carbon::parse($bill->billing_date)->addDays($bill->respite + 2)->isPast()){
                     $bill->bill_status = 'overdue';
                 }
             }

@@ -4,10 +4,12 @@
         @forelse($bill->notifications as $notification)
             <li class="flex flex-col justify-center px-3 py-5 border-b border-logo-primary">
                 <p>
-                    @if( $notification->notification == 'App\Notifications\SendBill')
+                    @if( $notification->notification == 'App\Notifications\SendBillNotification')
                         Rechnung gesendet
-                    @elseif($notification->notification == 'App\Notifications\ThankYouForPaying')
+                    @elseif($notification->notification == 'App\Notifications\ThankYouForPayingNotification')
                         Danke gesendet
+                    @elseif($notification->notification == 'App\Notifications\BillReminderNotification' )
+                        Zahlungserinnerung gesendet
                     @endif
                 </p>
                 <p class="text-xs">Gesendet {{ \Carbon\Carbon::parse($notification->updated_at)->diffForHumans() }}</p>

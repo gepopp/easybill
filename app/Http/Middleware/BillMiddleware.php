@@ -3,10 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Carbon\Carbon;
 use App\Models\Bill;
 use App\Traits\Topflash;
 use App\Models\BillSetting;
-use App\Jobs\CreateBillPdf;
+use App\Jobs\CreateBillPdfJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -45,7 +46,7 @@ class BillMiddleware
         // create pdf if not exists on show
         if($request->routeIs('bills.show')){
             if (!Storage::exists($bill->document)) {
-                dispatch(new CreateBillPdf($bill, Auth::user()));
+                dispatch(new CreateBillPdfJob($bill, Auth::user()));
             }
         }
 
@@ -81,6 +82,12 @@ class BillMiddleware
             }
         }
 
+        if($request->routeIs('bills.remind')){
+            if(!Carbon::parse($bill->billing_date)->addDays($bill->respite + 1 )->isPast() && $bill->sent_at != null){
+                $this->topflash('billNotRemindable', $bill);
+                return redirect()->route('bills.show', $bill);
+            }
+        }
 
         return $next($request);
     }

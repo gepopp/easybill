@@ -3,13 +3,13 @@
         <input type="search"
                id="customer_name"
                class="w-64 appearance-none border-logo-primary border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 text-left focus:outline-none"
-               placeholder="Kunde wählen"
+               placeholder="Kunde suchen"
                wire:model="search"
                x-on:keydown.arrow-down="highlight = Math.min(search_results.length - 1, highlight + 1);"
                x-on:keydown.arrow-up="highlight = Math.max( 0, highlight - 1);"
                x-on:keydown.enter="
                        $wire.fillIn(highlight);
-                   ">
+                   "/>
 
         <div class="absolute top-0 left-0 mt-16 p-5 shadow-lg bg-white w-full z-50 rounded-xl" x-show="search_results.length > 0">
             <ul>

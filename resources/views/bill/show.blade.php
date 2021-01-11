@@ -33,6 +33,9 @@
             @if($bill->sent_at != null && $bill->paid() < $bill->total('brutto') && !$bill->has_storno && !$bill->is_storno_of)
                 <livewire:add-bill-payment-modal :bill="$bill"/>
             @endif
+            @if(\Carbon\Carbon::parse($bill->billing_date)->addDays($bill->respite + 1 )->isPast() && $bill->sent_at != null)
+                    <a href="{{ route('bills.remind', $bill) }}" class="button-primary">Zahlungserinnerung senden</a>
+            @endif
         </div>
     </x-slot>
 
