@@ -37,9 +37,11 @@
                            placeholder="Zeitraum wählen"
                            type="text"
                            x-ref="datepicker"
-                           >
+                    >
                     <div class="absolute top-0 right-0 pt-2 pr-2 cursor-pointer" x-show="start != ''">
-                        <svg class="w-5 h-5 text-gray-400" @click="pickr.clear()" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        <svg class="w-5 h-5 text-gray-400" @click="pickr.clear()" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
                     </div>
                 </div>
 
@@ -114,7 +116,6 @@
             <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider text-right">Bezahlt</th>
             <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 tracking-wider">Status</th>
             <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider text-right">Datum</th>
-            <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider text-right">Fällig am</th>
         </tr>
         </thead>
         <tbody>
@@ -153,13 +154,12 @@
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-right">
                     <p>{{ \Carbon\Carbon::parse($bill->billing_date)->format('d.m.Y') }}</p>
-                    <p><span class="text-xs">&nbsp;</span></p>
+                    <p>
+                        <span class="text-xs @if($bill->bill_status == 'overdue') text-red-800 @endif">&nbsp;
+                        {{ \Carbon\Carbon::parse($bill->billing_date)->addDays($bill->respite)->format('d.m.Y') }}
+                        </span>
+                    </p>
                 </td>
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-right">
-                    <p>{{ \Carbon\Carbon::parse($bill->billing_date)->addDays($bill->respite)->format('d.m.Y') }}</p>
-                    <p><span class="text-xs">&nbsp;</span></p>
-                </td>
-
             </tr>
 
         @empty
