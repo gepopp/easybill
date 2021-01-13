@@ -1,17 +1,22 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('Neuer Kunden') }}
         </h2>
+    </x-slot>
+    <x-slot name="headerbutton">
+        <button wire:click="button" onclick="document.getElementById('customer-form').submit()" class="button-secondary">speichern</button>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5">
 
-                <form action="{{ route('customers.store') }}" class="w-full" method="post">
+                <form action="{{ route('customers.store') }}" class="w-full" method="post" id="customer-form">
                     @csrf
-
+                    <div class="w-1/2">
+                        <livewire:customer-type-selector/>
+                    </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="company_name">Unternehmen</label>

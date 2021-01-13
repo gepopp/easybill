@@ -42,7 +42,7 @@ class BillReminderNotification extends Notification
         return ['mail'];
     }
 
-    /**
+    /**show
      * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable

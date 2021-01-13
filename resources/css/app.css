@@ -33,12 +33,21 @@ table.striped tr:hover:nth-child(even) {
 }
 
 .button-primary {
-    @apply bg-logo-primary p-3 text-center text-white font-semibold rounded-xl shadow;
+    @apply bg-logo-primary p-2 text-sm text-center text-white font-semibold rounded-xl shadow;
 }
 .button-primary:hover {
-    @apply bg-logo-light bg-gradient-to-l from-logo-terciary;
+    @apply bg-logo-light;
 }
-.button-primary:focus {
+
+.button-secondary {
+    @apply bg-logo-gray p-2 text-sm text-center text-logo-primary font-semibold rounded-xl shadow;
+}
+
+.button-secondary:hover {
+    @apply bg-logo-gray;
+}
+
+.button-primary:focus, .button-secondary:focus {
     @apply outline-none;
 }
 .ql-placeholder{

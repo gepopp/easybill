@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('Rechung bearbeiten') }}
         </h2>
     </x-slot>
@@ -14,7 +14,7 @@
             <form action="{{ route('bills.document', $bill) }}" method="GET">
                 @csrf
                 <button type="submit"
-                        class="button-primary"
+                        class="button-secondary"
                         :class="{ 'bg-opacity-50 cursor-not-allowed' : enabled == false }"
                         :disabled="!enabled"
                 >

@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl leading-tight text-white">
             Deine Kunden
         </h2>
     </x-slot>
     <x-slot name="headerbutton">
         <div class="flex space-x-2">
-
+            <a href="{{ route('customers.create') }}" class="button-secondary">Neuer Kunde</a>
         </div>
     </x-slot>
 

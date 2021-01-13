@@ -20,9 +20,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/BillPresendModal.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/CustomerTypeSelector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_12_183859_add_company_cols_to_cusmters.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/bill-presend-modal.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/customer-type-selector.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill-send-button.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill-send-button.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-index-table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-index-table.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillSendButton.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/BillReminderNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/BillReminderNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bill/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bill/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bill/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill-send-button.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/add-bill-payment-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/add-bill-payment-modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-date-field.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-date-field.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-modal.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,14 +263,9 @@
       <workItem from="1609232195824" duration="2095000" />
       <workItem from="1609524646520" duration="129481000" />
       <workItem from="1609841956963" duration="208320000" />
-      <workItem from="1610364573757" duration="8133000" />
-    </task>
-    <task id="LOCAL-00017" summary="update customer create">
-      <created>1609783404308</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1609783404308</updated>
+      <workItem from="1610364573757" duration="10792000" />
+      <workItem from="1610434134579" duration="1018000" />
+      <workItem from="1610476420838" duration="11292000" />
     </task>
     <task id="LOCAL-00018" summary="update customer create">
       <created>1609784241105</created>
@@ -589,7 +603,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610388906858</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="update index table layout">
+      <created>1610389297710</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1610389297710</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -624,6 +645,7 @@
     <MESSAGE value="introduce flash messages and bill middleware" />
     <MESSAGE value="update bills table and filters" />
     <MESSAGE value="add reminder notification to bill" />
-    <option name="LAST_COMMIT_MESSAGE" value="add reminder notification to bill" />
+    <MESSAGE value="update index table layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="update index table layout" />
   </component>
 </project>

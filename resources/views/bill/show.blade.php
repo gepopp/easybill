@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             @if($bill->is_storno_of )
                 {{ __('Stornorechnung') }}
             @else
@@ -12,29 +12,29 @@
     <x-slot name="headerbutton">
         <div class="flex space-x-2">
             @if($bill->sent_at == null && !$bill->is_storno_of && !$bill->has_storno )
-                <a href="{{ route('bills.edit', $bill) }}" class="button-primary">bearbeiten</a>
+                <a href="{{ route('bills.edit', $bill) }}" class="button-secondary">bearbeiten</a>
             @endif
             @if($bill->sent_at == null)
-                <livewire:bill-send-button :bill="$bill"/>
+                <livewire:bill-presend-modal :bill="$bill" route="bills.send" notifyclass="App\Notifications\SendBillNotification"/>
             @endif
             @if(!$bill->has_storno && !$bill->is_storno_of && $bill->sent_at == null)
-                <a onclick="document.getElementById('delete-{{ $bill->id }}').submit()" class="button-primary cursor-pointer">löschen</a>
-                <form action="{{ route('bills.destroy', $bill ) }}" method="post" id="delete-{{ $bill->id }}">
+                <a onclick="document.getElementById('delete-{{ $bill->id }}').submit()" class="button-secondary cursor-pointer">löschen</a>
+                <form action="{{ route('bills.destroy', $bill ) }}" method="post" id="delete-{{ $bill->id }}" class="hidden">
                     @csrf
                     @method('DELETE')
                 </form>
             @endif
             @if(!$bill->is_storno_of)
-                <a href="{{ route('bills.duplicate', $bill) }}" class="button-primary">duplizieren</a>
+                <a href="{{ route('bills.duplicate', $bill) }}" class="button-secondary">duplizieren</a>
             @endif
             @if(!$bill->has_storno && !$bill->is_storno_of && $bill->paid() == 0)
-                <a href="{{ route('bills.storno', $bill) }}" class="button-primary">stornieren</a>
+                <a href="{{ route('bills.storno', $bill) }}" class="button-secondary">stornieren</a>
             @endif
             @if($bill->sent_at != null && $bill->paid() < $bill->total('brutto') && !$bill->has_storno && !$bill->is_storno_of)
                 <livewire:add-bill-payment-modal :bill="$bill"/>
             @endif
             @if(\Carbon\Carbon::parse($bill->billing_date)->addDays($bill->respite + 1 )->isPast() && $bill->sent_at != null)
-                    <a href="{{ route('bills.remind', $bill) }}" class="button-primary">Zahlungserinnerung senden</a>
+                <livewire:bill-presend-modal :bill="$bill" route="bills.remind" notifyclass="App\Notifications\BillReminderNotification" btntext="Zahlungserinnerung"/>
             @endif
         </div>
     </x-slot>

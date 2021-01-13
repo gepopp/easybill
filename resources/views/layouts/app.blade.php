@@ -36,9 +36,9 @@
 <div class="min-h-screen bg-gray-100">
 @livewire('navigation-dropdown')
 <!-- Page Heading -->
-    <header class="bg-white shadow relative z-10">
-        <div class="bg-white">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+    <header class="shadow relative z-10">
+        <div class="bg-logo-primary">
+            <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8 flex justify-between items-center text-white">
                 {{ $header }}
                 {{ $headerbutton ?? '' }}
             </div>

@@ -1,5 +1,5 @@
 <div>
-    <button type="button" wire:click="showModal" class="button-primary">Zahlung erfassen</button>
+    <button type="button" wire:click="showModal" class="button-secondary">Zahlung erfassen</button>
     <x-jet-dialog-modal :id="'tester'" :maxWidth="'2xl'" wire:model="show">
 
         <x-slot name="title">
