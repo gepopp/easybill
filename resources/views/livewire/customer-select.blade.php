@@ -19,8 +19,8 @@
                         x-on:click="
                             $wire.fillIn(index)
                         ">
-                        <p class="text-sm font-bold" x-text="item.company_name"></p>
-                        <p class="text-sm font-bold">
+                        <p class="text-sm font-bold text-gray-800" x-text="item.company_name"></p>
+                        <p class="text-sm font-bold text-gray-800">
                             <span x-text="item.first_name"></span>
                             <span x-text="item.last_name"></span>
                         </p>

@@ -44,7 +44,7 @@
         </div>
     @else
         <div style="min-height: 1000px">
-            <object data="{{ $link }}" type="application/pdf" width="100%" height="100%" style="min-height: 1000px"></object>
+            <object data="{{ $link }}" type="application/pdf" width="100%" height="100%" style="min-height: 1150px"></object>
         </div>
     @endif
 </div>

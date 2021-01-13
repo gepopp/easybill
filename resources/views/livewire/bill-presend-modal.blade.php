@@ -20,7 +20,7 @@
     <x-jet-dialog-modal :maxWidth="'2xl'" wire:model="show">
         <x-slot name="title">
             <div class="flex justify-between">
-                <h1 class="text-gray-800">Rechnung senden</h1>
+                <h1 class="text-gray-800">E-Mail Vorschau</h1>
                 <div wire:click="$set('show', false)" class="cursor-pointer">
                     <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -30,17 +30,19 @@
         </x-slot>
         <x-slot name="content">
             <div class="text-gray-500">
-                <div class="pb-0">
-                    <p class="font-semibold">Von:</p>
-                    <p class="mb-5">{{ $this->getFrom() }}</p>
-                    <p class="font-semibold">Betreff:</p>
-                    <p class="mb-5">{{ $this->getSubject() }}</p>
-                    <p class="font-semibold">Nachricht:</p>
-                </div>
-                <iframe src="data:text/html;base64,{!! base64_encode($this->getContent()) !!}" width="100%" height="600px"></iframe>
-                <div class="py-4 flex justify-end">
-                    <a href="{{ route($route, $bill) }}" class="button-primary">jetzt senden</a>
-                </div>
+                @if($pdf)
+                    <div class="pb-0">
+                        <p class="font-semibold">Von:</p>
+                        <p class="mb-5">{{ $this->getFrom() }}</p>
+                        <p class="font-semibold">Betreff:</p>
+                        <p class="mb-5">{{ $this->getSubject() }}</p>
+                        <p class="font-semibold">Nachricht:</p>
+                    </div>
+                    <iframe src="data:text/html;base64,{!! base64_encode($this->getContent()) !!}" width="100%" height="600px"></iframe>
+                    <div class="py-4 flex justify-end">
+                        <a href="{{ route($route, $bill) }}" class="button-primary">jetzt senden</a>
+                    </div>
+                @endif
             </div>
         </x-slot>
     </x-jet-dialog-modal>
