@@ -21,7 +21,6 @@
                     <span class="px-10">speichern</span>
                 </button>
             </form>
-
         </div>
     </x-slot>
     <div class="py-12">
@@ -30,7 +29,7 @@
                 <div class="pt-24 flex justify-between">
                     <x-customer-address :customer="$bill->customer"/>
                     <div>
-                        <livewire:bill-date-field :bill="$bill"/>
+                        <livewire:bill.date-field :bill="$bill"/>
                     </div>
                 </div>
                 <div class="mt-24">
@@ -38,8 +37,8 @@
                         <x-billnumber :bill="$bill"/>
                     </h2>
                 </div>
-                <livewire:add-bill-position :bill="$bill"/>
-                <livewire:bill-summ :bill="$bill"/>
+                <livewire:bill.add-bill-position :bill="$bill"/>
+                <livewire:bill.summ :bill="$bill"/>
             </div>
         </div>
     </div>

@@ -33,14 +33,14 @@ table.striped tr:hover:nth-child(even) {
 }
 
 .button-primary {
-    @apply bg-logo-primary p-2 text-sm text-center text-white font-semibold rounded-xl shadow;
+    @apply bg-logo-primary p-2 text-sm text-center text-white font-semibold rounded-xl shadow border border-logo-gray;
 }
 .button-primary:hover {
     @apply bg-logo-light;
 }
 
 .button-secondary {
-    @apply bg-logo-gray p-2 text-sm text-center text-logo-primary font-semibold rounded-xl shadow;
+    @apply bg-logo-gray p-2 text-sm text-center text-logo-primary font-semibold rounded-xl shadow border border-logo-gray;
 }
 
 .button-secondary:hover {

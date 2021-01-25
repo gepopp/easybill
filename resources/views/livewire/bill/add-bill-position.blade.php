@@ -4,7 +4,7 @@
         <tr>
             <th class="text-left w-5 font-semibold text-gray-600">#</th>
             <th class="text-left w-4/12 px-2 font-semibold text-gray-600">Bezeichnung</th>
-            <th class="text-left w-16 px-2 font-semibold text-gray-600">Menge</th>
+            <th class="text-left w-20 px-2 font-semibold text-gray-600">Menge</th>
             <th class="text-left w-1/12 px-2 font-semibold text-gray-600">Einheit</th>
             <th class="text-left w-1/12 px-2 font-semibold text-gray-600">Einzelpreis</th>
             <th class="text-right w-1/12 px-2 font-semibold text-gray-600">Gesamt</th>
@@ -15,12 +15,12 @@
         </thead>
         <tbody>
         @foreach( $bill->positions as $position )
-            <livewire:bill-row :row="$position" :bill="$bill" :key="$position->id"/>
-            <livewire:bill-row-description :row="$position" :bill="$bill" :key="uniqid()"/>
+            <livewire:bill.row :row="$position" :bill="$bill" :key="$position->id"/>
+            <livewire:bill.row-description :row="$position" :bill="$bill" :key="uniqid()"/>
         @endforeach
 
         @if($new_rows)
-            <livewire:new-bill-row :data="$new_rows" />
+            <livewire:bill.new-row :data="$new_rows" />
         @endif
 
         </tbody>

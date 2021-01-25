@@ -10,7 +10,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
+                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
                 serif: ['Roboto Slab', ...defaultTheme.fontFamily.serif],
 
             },
@@ -18,10 +18,18 @@ module.exports = {
                 logo:{
                     primary: '#42A626',
                     light: '#A8D99A',
+                    dark: '#141F05',
+                    darker: '#090D02',
                     secondary:'#ABBF11',
                     terciary: '#D2D90B',
                     gray: '#F2F2F2'
                 }
+            },
+            height: {
+                'screen-75' : "75vh"
+            },
+            maxHeight: {
+                'screen-75' : "75vh"
             }
         },
     },
@@ -32,5 +40,8 @@ module.exports = {
         textColor:['responsive', 'hover', 'focus', 'disabled', 'checked']
     },
 
-    plugins: [require('@tailwindcss/ui')],
+    plugins: [
+        require('@tailwindcss/ui'),
+        require('tailwind-scrollbar'),
+    ],
 };

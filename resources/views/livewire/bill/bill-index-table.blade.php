@@ -174,17 +174,6 @@
     </div>
     @push('scripts')
         <script src="{{ asset('js/app.js') }}"></script>
-        <script>
-            // var pick = flatpickr('#pick', {
-            //     mode: "range",
-            //     dateFormat: "d.m.Y",
-            //     onReady: function () {
-            //         this.config.onChange.push((selectedDates) => {
-            //             addChangeEvent(selectedDates);
-            //         });
-            //     }
-            // });
-        </script>
     @endpush
 </div>
 

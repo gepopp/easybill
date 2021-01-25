@@ -20,10 +20,78 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/AddBillPaymentModal.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/AddBillPosition.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/DateField.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/IndexTable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/NewRow.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/NotificationsList.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/PaymentListItem.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/PaymentsList.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/PdfLoader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/ReminderModal.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/Row.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/RowDescription.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/Summ.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Customer/TypeSelector.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/HeaderBar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/NotificationPreview.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Sidebar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/View/Components/VerticalLayout.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_13_151102_add_customer_numbers.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_13_151407_add_make_bill_numbers_unique_for_user.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/vertical.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/bill/reminder-modal.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/customer/type-selector.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/header-bar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/notification-preview.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill-presend-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill-presend-modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-p-d-f-buttons.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-p-d-f-buttons.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/AddBillPaymentModal.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/AddBillPosition.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillDateField.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillIndexTable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillNotifactionsList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillPDFButtons.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillPaymentListItem.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillPaymentsList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillPresendModal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/SendModal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillRow.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillRowDescription.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillSumm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/CustomerIndexPage.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/CustomerTypeSelector.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/NewBillModal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/NewBillModal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/NewBillModalForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/NewBillRow.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/jetstream.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/jetstream.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bill/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bill/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bill/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill-presend-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/send-modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/add-bill-payment-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/add-bill-payment-modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/add-bill-position.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/add-bill-position.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-index-table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-index-table.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-payments-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-payments-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-row-description.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-row-description.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-row.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-row.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-modal-form.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-row.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-row.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/customer-index-page.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/customer-select.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/customer-select.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/customer-type-selector.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/dialog-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/dialog-modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/responsive-nav-link.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/responsive-nav-link.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +267,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/layouts" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -211,11 +279,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\views\layouts" />
       <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\lang" />
       <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\views\livewire" />
       <recent name="C:\Users\gerha\PhpstormProjects\easybill\public" />
       <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\views\product" />
-      <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\views\customer" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\views\livewire\bill" />
@@ -247,14 +315,11 @@
       <workItem from="1609841956963" duration="208320000" />
       <workItem from="1610364573757" duration="10792000" />
       <workItem from="1610434134579" duration="1018000" />
-      <workItem from="1610476420838" duration="13180000" />
-    </task>
-    <task id="LOCAL-00019" summary="update customer create">
-      <created>1609784276009</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1609784276009</updated>
+      <workItem from="1610476420838" duration="17886000" />
+      <workItem from="1610549350626" duration="7471000" />
+      <workItem from="1610601888874" duration="19800000" />
+      <workItem from="1610791044042" duration="1202000" />
+      <workItem from="1611136449034" duration="12382000" />
     </task>
     <task id="LOCAL-00020" summary="install analytics">
       <created>1609784671925</created>
@@ -592,7 +657,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610523553457</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="at before send modal">
+      <created>1610525613622</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1610525613622</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

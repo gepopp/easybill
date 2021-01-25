@@ -6,7 +6,7 @@
             <div class="flex justify-between">
                 <h1>Zahlung erfassen</h1>
                 <div wire:click="showModal" class="cursor-pointer">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </div>
@@ -62,8 +62,17 @@
                             </label>
                         </div>
                     </div>
+                    <div x-data="{ mail : @entangle('say_thanx') }">
+                        <div class="p-5 border border-logo-primary mb-5" x-show.transition.fade="mail">
+                            <livewire:notification-preview :bill="$bill" notifyclass="App\Notifications\ThankYouForPayingNotification"/>
+                        </div>
+                    </div>
                 @endif
-                <button class="button-primary" type="submit">Zahlng speichern</button>
+                <div class="flex justify-end">
+                    <button class="button-primary" type="submit">
+                        <span class="px-3">Zahlung speichern</span>
+                    </button>
+                </div>
             </form>
         </x-slot>
     </x-jet-dialog-modal>

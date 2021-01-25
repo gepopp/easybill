@@ -42,10 +42,14 @@
             pattern="[0-9]+([,\.][0-9]+)?">
     </td>
     <td class="p-2">
-        <input type="text"
+        <select type="text"
                class="appearance-none @error('row.unit') border-red-800 @else border-logo-primary @enderror border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
-               wire:model.lazy="row.unit"
-               pattern="[0-9]+([,\.][0-9]+)?">
+               wire:model="row.unit">
+            <option value="Stück">Stück</option>
+            <option value="Stunden">Stunden</option>
+            <option value="Pauschal">Pauschal</option>
+            <option value="Kg">Kg</option>
+        </select>
     </td>
     <td class="p-2">
         <input type="number"

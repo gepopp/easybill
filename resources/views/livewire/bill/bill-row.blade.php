@@ -1,17 +1,4 @@
-<tr class="hover:bg-gray-50"
-    x-data="{ focused: false }"
-        x-init="$watch('focused', value => {
-            setTimeout(()=>{
-                if(!focused){
-                    $wire.update()
-                }
-            },500);
-
-            $wire.on('focus', (field) => {
-                    document.getElementsByName(field)[0].focus()
-                })
-        })"
-    >
+<tr class="hover:bg-gray-50">
     <td valign="top" class="py-2">
         <div class="w-full h-full flex items-center font-semibold text-logo-primary p-1">
             {{ $row->order_number }}
@@ -19,27 +6,20 @@
         <input type="hidden" wire:model="row.order_number">
         <input type="hidden" wire:model="row.id">
     </td>
-    <td x-data="{ highlight : 0, products : {{ $this->products_json }} }" x-init="$watch('products', (products) => console.log(products))" class="relative px-2">
+    <td x-data="{ highlight : 0, products : @entangle('products') }" x-init="$watch('products', (value) => console.log(value))" class="relative px-2">
         <input type="text"
                class="@error('row.name') border-red-800 @else border-logo-primary @enderror appearance-none border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
-               wire:model="row.name"
-               x-on:focusin="focused = true"
-               x-on:focusout="focused = false"
-               x-on:keydown.arrow-down="highlight = Math.min(products.length - 1, highlight + 1); console.log(highlight)"
-               x-on:keydown.arrow-up="highlight = Math.max( 0, highlight - 1); console.log(highlight)"
-               x-on:keydown.enter="
-                       $wire.fillIn(highlight);
-                   "
-        >
-        <div class="absolute top-0 left-0 mt-16 p-5 shadow-lg bg-white w-full" x-show="products.length > 0">
+               wire:model.debounce.500ms="row.name"
+               x-on:keydown.arrow-down="highlight = Math.min(products.length - 1, highlight + 1);"
+               x-on:keydown.arrow-up="highlight = Math.max( 0, highlight - 1);"
+               x-on:keydown.enter="$wire.fillIn(highlight);">
+        <div class="absolute top-0 left-0 mt-11 p-5 shadow-lg bg-white w-full z-50" x-show="products.length > 0">
             <ul>
                 <template x-for="(item, index) in products" x-key="item.id">
                     <li class="py-3 hover:bg-gray-50 cursor-pointer list-none"
-                        x-on:click="
-                               $wire.fillIn(index);
-                            "
+                        x-on:click="$wire.fillIn(index);"
                         :class="{'bg-gray-50': index == highlight }">
-                        <p class="text-sm font-bold" x-text="item.name"></p>
+                        <p class="text-sm font-bold text-gray-800" x-text="item.name"></p>
                     </li>
                 </template>
             </ul>
@@ -49,29 +29,25 @@
         <input
             type="number"
             class="@error('row.amount') border-red-800 @else border-logo-primary @enderror appearance-none border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
-            wire:model.defer="row.amount"
+            wire:model="row.amount"
             step="0.01"
-            pattern="[0-9]+([,\.][0-9]+)?"
-            x-on:focusin="focused = true"
-            x-on:focusout="focused = false">
+            pattern="[0-9]+([,\.][0-9]+)?">
     </td>
     <td class="p-2">
-        <input type="text"
-               class="appearance-none @error('row.unit') border-red-800 @else border-logo-primary @enderror border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
-               wire:model.defer="row.unit"
-               step="0.01"
-               pattern="[0-9]+([,\.][0-9]+)?"
-               x-on:focusin="focused = true"
-               x-on:focusout="focused = false">
+        <select class="appearance-none @error('row.unit') border-red-800 @else border-logo-primary @enderror border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+                wire:model="row.unit">
+            <option value="Stück">Stück</option>
+            <option value="Stunden">Stunden</option>
+            <option value="Pauschal">Pauschal</option>
+            <option value="Kg">Kg</option>
+        </select>
     </td>
     <td class="p-2">
         <input type="number"
                class="appearance-none @error('row.netto') border-red-800 @else border-logo-primary @enderror  border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
-               wire:model.defer="row.netto"
+               wire:model="row.netto"
                step="0.01"
-               pattern="[0-9]+([,\.][0-9]+)?"
-               x-on:focusin="focused = true"
-               x-on:focusout="focused = false">
+               pattern="[0-9]+([,\.][0-9]+)?">
     </td>
     <td align="right p-2">
         <input type="text"
@@ -83,11 +59,9 @@
     <td align="right" class="p-2">
         <input type="number"
                class="appearance-none @error('row.vat') border-red-800 @else border-logo-primary @enderror border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
-               wire:model.defer="row.vat"
+               wire:model="row.vat"
                step="0.01"
-               pattern="[0-9]+([,\.][0-9]+)?"
-               x-on:focusin="focused = true"
-               x-on:focusout="focused = false">
+               pattern="[0-9]+([,\.][0-9]+)?">
     </td>
 
     <td  align="right" class="p-2">

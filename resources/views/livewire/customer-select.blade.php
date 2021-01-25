@@ -9,18 +9,18 @@
                x-on:keydown.arrow-up="highlight = Math.max( 0, highlight - 1);"
                x-on:keydown.enter="
                        $wire.fillIn(highlight);
-                   "/>
+               "/>
 
         <div class="absolute top-0 left-0 mt-16 p-5 shadow-lg bg-white w-full z-50 rounded-xl" x-show="search_results.length > 0">
             <ul>
                 <template x-for="(item, index) in search_results" x-key="item.id">
-                    <li class="py-3 hover:bg-gray-50 cursor-pointer list-none border-b"
+                    <li class="py-3 hover:bg-gray-50 cursor-pointer list-none border-b p-2"
                         :class="{'bg-gray-50': index == highlight }"
                         x-on:click="
                             $wire.fillIn(index)
                         ">
-                        <p class="text-sm font-bold text-gray-800" x-text="item.company_name"></p>
-                        <p class="text-sm font-bold text-gray-800">
+                        <p class="text-sm text-gray-800 text-sm" x-text="item.company_name"></p>
+                        <p class="text-sm font-semibold text-gray-800">
                             <span x-text="item.first_name"></span>
                             <span x-text="item.last_name"></span>
                         </p>

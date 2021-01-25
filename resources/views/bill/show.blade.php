@@ -14,8 +14,9 @@
             @if($bill->sent_at == null && !$bill->is_storno_of && !$bill->has_storno )
                 <a href="{{ route('bills.edit', $bill) }}" class="button-secondary">bearbeiten</a>
             @endif
+
             @if($bill->sent_at == null)
-                <livewire:bill-presend-modal :bill="$bill" route="bills.send" notifyclass="App\Notifications\SendBillNotification"/>
+                <livewire:bill.send-modal :bill="$bill" route="bills.send" notifyclass="App\Notifications\SendBillNotification"/>
             @endif
             @if(!$bill->has_storno && !$bill->is_storno_of && $bill->sent_at == null)
                 <a onclick="document.getElementById('delete-{{ $bill->id }}').submit()" class="button-secondary cursor-pointer">löschen</a>
@@ -27,14 +28,14 @@
             @if(!$bill->is_storno_of)
                 <a href="{{ route('bills.duplicate', $bill) }}" class="button-secondary">duplizieren</a>
             @endif
-            @if(!$bill->has_storno && !$bill->is_storno_of && $bill->paid() == 0)
+            @if(!$bill->has_storno && !$bill->is_storno_of && $bill->paid() == 0 && $bill->sent_at != null)
                 <a href="{{ route('bills.storno', $bill) }}" class="button-secondary">stornieren</a>
             @endif
             @if($bill->sent_at != null && $bill->paid() < $bill->total('brutto') && !$bill->has_storno && !$bill->is_storno_of)
-                <livewire:add-bill-payment-modal :bill="$bill"/>
+                <livewire:bill.add-bill-payment-modal :bill="$bill"/>
             @endif
             @if(\Carbon\Carbon::parse($bill->billing_date)->addDays($bill->respite + 1 )->isPast() && $bill->sent_at != null)
-                <livewire:bill-presend-modal :bill="$bill" route="bills.remind" notifyclass="App\Notifications\BillReminderNotification" btntext="Zahlungserinnerung"/>
+                <livewire:bill.reminder-modal :bill="$bill" notifyclass="App\Notifications\BillReminderNotification" btntext="Zahlungserinnerung"/>
             @endif
         </div>
     </x-slot>
@@ -44,7 +45,7 @@
             <div class="bg-white overflow-hidden shadow-xl rounded-lg">
                 <div class="grid grid-cols-6 gap-10">
                     <div class="col-span-4 flex items-center justify-center" style="background-color: rgb(82, 86, 89); min-height: 1000px">
-                        <livewire:bill-p-d-f-buttons :bill="$bill"/>
+                        <livewire:bill.pdf-loader :bill="$bill"/>
                     </div>
                     <div class="p-10 col-span-2">
                         <div class="mb-10">
@@ -95,9 +96,9 @@
                                 </p>
                             @endif
                             @if(!$bill->has_storno && !$bill->is_storno_of && $bill->sent_at !== null )
-                                <livewire:bill-payments-list :bill="$bill"/>
+                                <livewire:bill.payments-list :bill="$bill"/>
                             @endif
-                            <livewire:bill-notifactions-list :bill="$bill"/>
+                                <livewire:bill.notifications-list :bill="$bill"/>
                         </div>
 
                     </div>
