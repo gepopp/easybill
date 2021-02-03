@@ -36,26 +36,36 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->validate([
-            'company_name'     => 'string|nullable',
-            'is_female'        => 'required|boolean',
+            'is_company'       => 'required|boolean',
+            'company_name'     => 'exclude_if:is_company,0|required|string',
+            'is_female'        => 'exclude_if:is_company,1|required|boolean',
             'academic_degree'  => 'string|max:50|nullable',
-            'first_name'       => 'string|max:50',
-            'last_name'        => 'string|max:50',
-            'address'          => 'string|',
+            'first_name'       => 'string|max:50|nullable',
+            'last_name'        => 'exclude_if:is_company,1|string|max:50|required',
+            'address'          => 'string|nullable',
             'address_addition' => 'string|nullable',
-            'zip'              => 'string|max:50',
-            'city'             => 'string|max:50',
+            'zip'              => 'string|max:50|nullable',
+            'city'             => 'string|max:50|nullable',
             'email'            => 'email|required',
+            'phone'            => 'string|nullable',
         ]);
+
+        if($data['is_company']){
+            unset($data['academic_degree']);
+            unset($data['first_name']);
+            unset($data['last_name']);
+        }else{
+            unset($data['company_name']);
+        }
 
         $data['user_id'] = \Auth::id();
 
         $customer = new Customer($data);
         $customer->save();
 
-        return redirect(route('customers.index'));
-
+        return redirect(route('customers.edit', $customer));
 
     }
 

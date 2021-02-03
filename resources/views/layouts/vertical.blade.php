@@ -37,24 +37,22 @@
     @livewire('header-bar')
     <div class="flex">
         @livewire('sidebar')
-        <main>
-            {{ $slot }}
-        </main>
+        <div class="w-full">
+            <header class="shadow relative z-10">
+                <div class="bg-logo-primary">
+                    <div class="py-2 px-4 sm:px-6 flex justify-between items-center text-white">
+                        {{ $header }}
+                        {{ $headerbutton ?? '' }}
+                    </div>
+                </div>
+                <livewire:top-flash/>
+            </header>
+            <!-- Page Content -->
+            <main>
+                {{ $slot }}
+            </main>
+        </div>
     </div>
-    <!-- Page Heading -->
-{{--    <header class="shadow relative z-10">--}}
-{{--        <div class="bg-logo-primary">--}}
-{{--            <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8 flex justify-between items-center text-white">--}}
-{{--                {{ $header }}--}}
-{{--                {{ $headerbutton ?? '' }}--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <livewire:top-flash/>--}}
-{{--    </header>--}}
-
-
-<!-- Page Content -->
-
 </div>
 
 @stack('modals')

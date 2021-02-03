@@ -59,7 +59,7 @@ class SendBillNotification extends Notification
             ->bcc('gerhard@poppgerhard.at')
             ->subject('Neue Rechnung von ' . BillSetting::getSetting('company_name', $this->user))
             ->greeting($notifiable->is_female ? 'Sehr geehrte Frau ' : 'Sehr geehrter Herr ' .
-                $notifiable->academic_degree . ' ' . $notifiable->firstname . ' ' . $notifiable->last_name . ',')
+                $notifiable->academic_degree . ' ' . $notifiable->first_name . ' ' . $notifiable->last_name . ',')
             ->line(BillSetting::getSetting('contactperson', $this->user) . ' von ' .
                 BillSetting::getSetting('company_name', $this->user) . ' hat Ihnen die Rechnung ' .
                 $this->bill->prefix . $this->bill->bill_number . ' gesendet. Sie finden diese Rechnung im Anhang.')

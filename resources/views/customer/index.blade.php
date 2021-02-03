@@ -1,7 +1,7 @@
 <x-vertical-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl leading-tight text-white">
-            Deine Kunden
+            Kunden
         </h2>
     </x-slot>
     <x-slot name="headerbutton">

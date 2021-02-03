@@ -40,7 +40,7 @@ table.striped tr:hover:nth-child(even) {
 }
 
 .button-secondary {
-    @apply bg-logo-gray p-2 text-sm text-center text-logo-primary font-semibold rounded-xl shadow border border-logo-gray;
+    @apply bg-logo-gray p-2 px-5 text-sm text-center text-logo-primary font-semibold shadow border border-logo-gray;
 }
 
 .button-secondary:hover {

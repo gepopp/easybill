@@ -20,78 +20,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/AddBillPaymentModal.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/AddBillPosition.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/DateField.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/IndexTable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/NewRow.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/NotificationsList.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/PaymentListItem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/PaymentsList.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/PdfLoader.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/ReminderModal.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/Row.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/RowDescription.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/Summ.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Customer/TypeSelector.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/HeaderBar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/NotificationPreview.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Sidebar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/View/Components/VerticalLayout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_13_151102_add_customer_numbers.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_13_151407_add_make_bill_numbers_unique_for_user.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/vertical.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/bill/reminder-modal.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/customer/type-selector.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/header-bar.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/notification-preview.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/sidebar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EmailAdressController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/EmailAdress.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/EmailAdressFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_26_195058_update_customer_table_v2.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_26_195336_create_email_adresses_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_26_211710_add_phone_to_customer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/EmailAdressSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/AddBillPaymentModal.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/AddBillPosition.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillDateField.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillIndexTable.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillNotifactionsList.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillPDFButtons.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillPaymentListItem.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillPaymentsList.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillPresendModal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/SendModal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillRow.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillRowDescription.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/BillSumm.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/CustomerIndexPage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/CustomerTypeSelector.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/NewBillModal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Bill/NewBillModal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/NewBillModalForm.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/NewBillRow.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/jetstream.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/jetstream.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Customer/TypeSelector.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Customer/TypeSelector.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/SendBillNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/SendBillNotification.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bill/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bill/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bill/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/de/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/de/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/input.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/customer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill-presend-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/send-modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/add-bill-payment-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/add-bill-payment-modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/add-bill-position.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/add-bill-position.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-index-table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-index-table.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-payments-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-payments-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-row-description.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-row-description.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/bill-row.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/bill-row.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-modal-form.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-row.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/bill/new-bill-row.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/customer-index-page.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/customer-select.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/customer-select.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/customer-type-selector.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/dialog-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/dialog-modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/responsive-nav-link.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/responsive-nav-link.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/vertical.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/vertical.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/customer/type-selector.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/customer/type-selector.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -320,6 +267,13 @@
       <workItem from="1610601888874" duration="19800000" />
       <workItem from="1610791044042" duration="1202000" />
       <workItem from="1611136449034" duration="12382000" />
+      <workItem from="1611577036184" duration="15000" />
+      <workItem from="1611686411658" duration="9211000" />
+      <workItem from="1611776306995" duration="841000" />
+      <workItem from="1611777252531" duration="2480000" />
+      <workItem from="1612006670594" duration="32000" />
+      <workItem from="1612037563427" duration="98000" />
+      <workItem from="1612332012025" duration="372000" />
     </task>
     <task id="LOCAL-00020" summary="install analytics">
       <created>1609784671925</created>
