@@ -61,6 +61,11 @@ class Customer extends Model
         return $this->belongsTo(Customer::class, 'company_id');
     }
 
+    public function bills(){
+        return $this->hasMany(Bill::class);
+    }
+
+
     public function getFullnameAttribute()
     {
 

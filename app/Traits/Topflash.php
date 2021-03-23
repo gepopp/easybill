@@ -6,7 +6,6 @@ namespace App\Traits;
 
 use App\Models\UserFlash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
 trait Topflash
 {
@@ -61,7 +60,7 @@ trait Topflash
                 'type'    => 'error',
                 'message' => 'Diese Rechnung kann nicht Storniert werden. Wenn du sie noch nicht gesendet hast lösche die Rechnung einfach.',
             ],
-            'billNotDeletable'    => [
+            'billNotDeletable'     => [
                 'type'    => 'error',
                 'message' => 'Diese Rechnung kann nicht gelöscht werden.',
             ],
@@ -84,6 +83,10 @@ trait Topflash
             'emailSent'            => [
                 'type'    => 'success',
                 'message' => 'E-Mail wurde gesendet.',
+            ],
+            'customerNotDeletable' => [
+                'type'    => 'error',
+                'message' => 'Zu deisem Kunden gibt es bereits Rechnungen, daher kann er nicht mehr gelöscht werden.',
             ],
 
         ];

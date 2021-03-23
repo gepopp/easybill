@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Traits\Topflash;
 use Illuminate\Http\Request;
 use App\Http\Livewire\CustomerIndexPage;
 
 class CustomerController extends Controller
 {
+
+    use Topflash;
     /**
      * Display a listing of the resource.
      *
@@ -90,6 +93,14 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
+
+
+
+        if(!empty($customer->bills) || !empty($customer->company->bills)){
+            $this->topflash('customerNotDeletable');
+            return back();
+        }
+
         $customer->delete();
         return back();
     }
