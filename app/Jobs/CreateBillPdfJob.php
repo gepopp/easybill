@@ -46,7 +46,7 @@ class CreateBillPdfJob implements ShouldQueue
         $this->bill->update(['document' => 'processing']);
         $customer = Customer::withoutGlobalScopes()->find($this->bill->customer_id);
 
-        $formatter = new PdfSnippetFormater($this->bill, $customer, $this->user );
+        $formatter = new PdfSnippetFormater($this->bill, $customer, $this->user, $customer );
 
         Storage::delete($this->bill->document);
 
@@ -54,6 +54,7 @@ class CreateBillPdfJob implements ShouldQueue
             [
                 'bill'     => $this->bill,
                 'customer' => $customer,
+                'company'  => Customer::withoutGlobalScopes()->find($customer->company_id),
                 'user'     => $this->user,
                 'header'   => $formatter->formatBillSnippet(BillSetting::getSetting('headertext', $this->user)),
                 'footer'   => $formatter->formatBillSnippet(BillSetting::getSetting('footertext', $this->user)),

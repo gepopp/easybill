@@ -6,156 +6,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RE {{ $bill->bill_number }}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css"/>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        p {
+            line-height: 1.2;
+        }
+    </style>
 </head>
 
-<body class="text-sm leading-normal pt-24">
-<header class="fixed top-0 left-0 h-24 w-full">
-    <div style="width: 33%; float: right; padding-right: 1.5cm">
-        <img src="{{ Storage::temporaryUrl(\App\Models\BillSetting::getSetting('logo', $user), now()->addMinutes(5)) }}" style="max-width: none; width: auto">
+<body style="font-family: sans-serif; font-size: 12px; line-height: 1; padding-top: 3cm;">
+<header style="position: fixed; top: 0; left: 0; width: 100%;">
+    <div style="width: 33%; float: right; padding-right: 1.5cm;">
+        <img src="{{ Storage::temporaryUrl(\App\Models\BillSetting::getSetting('logo', $user), now()->addMinutes(5)) }}" style="max-width: none; width: auto;">
     </div>
 </header>
-<footer class="fixed bottom-0 left-0 w-full h-14">
+<footer style="position: fixed; bottom: 0; left: 0; width: 100%;height: 2cm; padding: 0 2cm 0 2cm;">
     <hr>
-    <table class="table-fixed text-xs w-full">
+    <table style="width: 100%">
         <tr>
             <td>
                 <table>
                     <tr>
-                        <td valign="bottom">
-                            <img src="{{ asset('logo-icon-ohne-hg.png')  }}" class="pt-2" style="max-width: auto; width: 1cm">
-                        </td>
-                        <td>
-                            <a href="https://mybilling.at">
-                                <p style="font-size: .5rem">Erstellt mit:</p>
-                                <h1 class="text-xl font-bold" style="color: #42A626">mybilling.at</h1>
-                                <h3 class="leading-none text-xs" style="color: #D2D90B">Dein kosnteloses Rechnungstool</h3>
-                            </a>
-                        </td>
+                        <a href="https://mybilling.at">
+                            <td valign="top">
+                                <img src="{{ asset('logo-icon.png')  }}" style="width: 1cm; height: auto; padding: 0; margin: 0;">
+                            </td>
+                            <td>
+                                <h1 style="color: #42A626; font-size: 1.5rem; line-height: 1; margin: 0; padding: 0;">mybilling.at</h1>
+                                <h3 style="color: #D2D90B; font-size: .5rem; line-height: 1; margin: 0; padding: 0;">Dein kosnteloses Rechnungstool</h3>
+                            </td>
+                        </a>
                     </tr>
                 </table>
-{{--                {!! $settings['footercol_1'] !!}--}}
+
+                {{--                {!! $settings['footercol_1'] !!}--}}
             </td>
-            <td class="text-center">
+            <td style="text-align: center">
                 {!! $footercol_2 !!}
             </td>
-            <td class="text-right">
+            <td style="text-align: right">
                 {!! $footercol_3 !!}
             </td>
         </tr>
     </table>
 </footer>
 
-<main class="w-full">
-    <table class="table-auto w-full">
+<main style="padding-left: 2cm; padding-right: 2cm;">
+    <table style="">
         <tr>
-            <td valign="bottom">
-              <p class="text-xs" style="font-size: .5rem">Abs: {{ \App\Models\BillSetting::getSetting('company_name', $user ) }}, {{ \App\Models\BillSetting::getSetting('address', $user ) }}</p>
-                <x-customer-address :customer="$customer"/>
+            <td valign="top">
+                <p style="font-size: .5rem; margin-bottom: 15px">Abs: {{ \App\Models\BillSetting::getSetting('company_name', $user ) }}, {{ \App\Models\BillSetting::getSetting('address', $user ) }}</p>
+
+                @if($company)
+                    <strong>{{ $company->company_name }}</strong><br>
+                @endif
+
+                {{ $customer->fullname }}<br>
+
+                @if($company)
+                    {{ $company->address }} {{ $company->address_addition }}<br>
+                    {{ $company->zip }} {{ $company->city }}
+                @else
+                    {{ $customer->address }} {{ $customer->address_addition }}<br>
+                    {{ $customer->zip }} {{ $customer->city }}
+                @endif
+
+
             </td>
-            <td>
-                <p class="text-right text-xs leading-normal">{{ \App\Models\BillSetting::getSetting('company_name', $user) }}</p>
-                <p class="text-right text-xs leading-normal">{{ \App\Models\BillSetting::getSetting('address', $user) }}</p>
-                <p class="text-right text-xs leading-normal">{{ \App\Models\BillSetting::getSetting('contactperson', $user) }}</p>
-                <p class="text-right text-xs leading-normal">{{ \App\Models\BillSetting::getSetting('contactemail', $user) }}</p>
-                <p class="text-right text-xs leading-normal">{{ \App\Models\BillSetting::getSetting('contactphone', $user) }}</p>
-                <p class="text-right text-xs leading-normal">{{ \App\Models\BillSetting::getSetting('uid', $user) }}</p>
-                <p class="text-right text-xs leading-normal">
-                    Rechnungsdatum: {{ \Carbon\Carbon::parse($bill->billing_date)->format('d.m.Y') }}
-                </p>
-                <p class="text-right text-xs leading-normal mb-24">
+            <td style="text-align: right">
+                <p>{{ \App\Models\BillSetting::getSetting('company_name', $user) }}</p>
+                <p>{{ \App\Models\BillSetting::getSetting('address', $user) }}</p>
+                <p>{{ \App\Models\BillSetting::getSetting('contactperson', $user) }}</p>
+                <p>{{ \App\Models\BillSetting::getSetting('contactemail', $user) }}</p>
+                <p>{{ \App\Models\BillSetting::getSetting('contactphone', $user) }}</p>
+                <p>{{ \App\Models\BillSetting::getSetting('uid', $user) }}</p>
+                <p>Rechnungsdatum: {{ \Carbon\Carbon::parse($bill->billing_date)->format('d.m.Y') }}</p>
+                <p>
                     Fälling am: {{ \Carbon\Carbon::parse($bill->billing_date)->addDays($bill->respite)->format('d.m.Y') }}
                 </p>
             </td>
         </tr>
     </table>
 
-    <div class="mt-10">
-        <p class="font-bold text-lg">{{ $bill->total('vat') > 0 ? 'Rechnung' : 'Gutschrift' }}: {{ $bill->prefix }} {{ $bill->bill_number }} </p>
-        <p>{!! $header !!}</p>
-    </div>
-    <table class="table-auto w-full mt-10">
-        <thead class="border-b">
-        <tr>
-            <th class="text-left  pr-1">#</th>
-            <th class="text-left pr-1">Bezeichnung</th>
-            <th class="text-center  pr-1">Menge</th>
-            <th class="text-center  pr-1">Einheit</th>
-            <th class="text-right  pr-1">Einzelpreis</th>
-            <th class="text-right  pr-1">Gesamt</th>
-            <th class="text-right  pr-1">MwSt.</th>
-            <th class="text-right ">Brutto</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach( $bill->positions as $position )
-            <tr class="py-3">
-                <td class="py-2 pr-1 whitespace-no-wrap" valign="top">
-                    {{ $position->order_number }}
-                </td>
-                <td class="py-2 pr-1 whitespace-no-wrap">
-                    {{ $position->name }}
-                </td>
-                <td class="py-2 pr-1 whitespace-no-wrap text-center">
-                    {{ $position->amount }}
-                </td>
-                <td class="py-2 pr-1 whitespace-no-wrap text-center">
-                    {{ $position->unit }}
-                </td>
-                <td class="py-2 pr-1 whitespace-no-wrap text-right">
-                    {{ number_format($position->netto, 2,',','.') }} €
-                </td>
-                <td class="py-2 pr-1 whitespace-no-wrap" align="right">
-                    {{ number_format( ($position->netto * $position->amount), 2,',','.') }} €
-                </td>
-                <td class="py-2 pr-1 whitespace-no-wrap" align="right">
-                    {{ number_format( ( $position->vat ), 0,',','.') }} %
-                </td>
-                <td class="py-2 whitespace-no-wrap" align="right">
-                    {{ number_format(($position->netto * $position->amount ) + ((( $position->netto * $position->amount ) * $position->vat)/100), 2, ',', '.') }} €
-                </td>
+        <div style="margin-top: 1cm">
+            <p style="font-weight: bold; font-size: 1rem">{{ $bill->total('vat') > 0 ? 'Rechnung' : 'Gutschrift' }}: {{ $bill->prefix }} {{ $bill->bill_number }} </p>
+            <p>{!! $header !!}</p>
+        </div>
+        <table style="margin-top:1cm; padding-bottom: 2cm;">
+            <thead style="border-bottom: 2px solid black; margin-bottom: 0.5cm">
+            <tr>
+                <th style="text-align: left">#</th>
+                <th style="text-align: left">Bezeichnung</th>
+                <th style="text-align: left">Menge</th>
+                <th style="text-align: left">Einheit</th>
+                <th style="text-align: left">Einzelpreis</th>
+                <th style="text-align: left">Gesamt</th>
+                <th style="text-align: left">MwSt.</th>
+                <th style="text-align: left">Brutto</th>
             </tr>
-            <tr class="border-b border-b-2">
-                <td></td>
-                <td>
-                    <p class="text-xs pb-3">{{ $position->description }}</p>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            </thead>
+            <tbody>
+            @foreach( $bill->positions as $position )
+                <tr style="padding: 5px 0 5px 0; text-align: left;">
+                    <td style="padding: 5px 0 5px 0; text-align: left;" valign="top">
+                        {{ $position->order_number }}
+                    </td>
+                    <td style="padding: 5px 0 5px 0; text-align: left;">
+                        {{ $position->name }}
+                    </td>
+                    <td style="padding: 5px 0 5px 0; text-align: left;">
+                        {{ $position->amount }}
+                    </td>
+                    <td style="padding: 5px 0 5px 0; text-align: left;">
+                        {{ $position->unit }}
+                    </td>
+                    <td style="padding: 5px 0 5px 0; text-align: left;white-space: nowrap;">
+                        {{ number_format($position->netto, 2,',','.') }} €
+                    </td>
+                    <td style="padding: 5px 0 5px 0; text-align: left;white-space: nowrap;">
+                        {{ number_format( ($position->netto * $position->amount), 2,',','.') }} €
+                    </td>
+                    <td style="padding: 5px 0 5px 0; text-align: left;white-space: nowrap;">
+                        {{ number_format( ( $position->vat ), 0,',','.') }} %
+                    </td>
+                    <td style="padding: 5px 0 5px 0; text-align: left;white-space: nowrap;">
+                        {{ number_format(($position->netto * $position->amount ) + ((( $position->netto * $position->amount ) * $position->vat)/100), 2, ',', '.') }} €
+                    </td>
+                </tr>
+                <tr class="border-b border-b-2">
+                    <td></td>
+                    <td>
+                        <p class="text-xs pb-3">{{ $position->description }}</p>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="8">
+                        <hr>
+                    </td>
+                </tr>
+
+            @endforeach
+            </tbody>
+        </table>
+        <table style="margin-bottom: 2cm;">
+            <tr>
+                <td style="width: 50%"></td>
+                <td>Netto gesamt:</td>
+                <td style="text-align: right">{{ $bill->total('netto', 'withSymbol')  }}</td>
+            </tr>
+
+            <tr>
+                <td style="width: 50%"></td>
+                <td>MwSt.:</td>
+                <td style="text-align: right">{{ $bill->total('vat', 'withSymbol')  }} €</td>
             </tr>
             <tr>
-                <td colspan="8">
-                    <hr>
-                </td>
+                <td style="width: 50%"></td>
+                <td>Rechnungsbetrag:</td>
+                <td style="text-align: right">{{ $bill->total('brutto', 'withSymbol') }} €</td>
             </tr>
-
-        @endforeach
-        </tbody>
-    </table>
-    <table class="table-fixed w-full">
-        <tr>
-            <td class="w-1/2"></td>
-            <td class="w-1/4 text-left">Netto gesamt:</td>
-            <td class="w-1/4 text-right">{{ $bill->total('netto', 'withSymbol')  }}</td>
-        </tr>
-
-        <tr>
-            <td class="w-1/2"></td>
-            <td class="w-1/4 text-left">MwSt.:</td>
-            <td class="w-1/4 text-right">{{ $bill->total('vat', 'withSymbol')  }} €</td>
-        </tr>
-        <tr>
-            <td class="w-1/2"></td>
-            <td class="w-1/4 text-left font-bold">Rechnungsbetrag:</td>
-            <td class="w-1/4 text-right font-bold">{{ $bill->total('brutto', 'withSymbol') }} €</td>
-        </tr>
-    </table>
-    <p class="mt-16">{!! $footer !!}</p>
+        </table>
+        <p>{!! $footer !!}</p>
 </main>
 </body>
 </html>

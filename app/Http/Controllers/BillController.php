@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Bill;
 use App\Traits\Topflash;
+use App\Models\Customer;
 use App\Jobs\SendBillJob;
-use App\Jobs\CreateBillPdfJob;
 use App\Models\BillPayment;
+use Illuminate\Http\Request;
 use App\Jobs\BillReminderJob;
+use App\Jobs\CreateBillPdfJob;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -28,6 +30,27 @@ class BillController extends Controller
         return view('bill.index');
     }
 
+
+    public function create()
+    {
+        $customers = Customer::billable()->orderBy('company_name')->get();
+        return view('bill.create')->with('customers', $customers);
+    }
+
+
+    public function store(Request $request)
+    {
+        $bill = Bill::create( array_merge(['user_id' => \auth()->id(), 'bill_status' => 'created'],
+            $request->validate([
+            'customer_id'      => 'required|exists:customers,id',
+            'billing_date'    => 'required|date',
+            'bill_number'     => 'required|integer|min:1',
+        ])));
+
+        return redirect(route('bills.edit', $bill));
+
+
+    }
 
     /**
      * Display the specified resource.
@@ -65,9 +88,6 @@ class BillController extends Controller
         return redirect()->route('bills.show', $bill);
     }
 
-
-
-
     public function remind(Bill $bill)
     {
         if (!Storage::exists($bill->document)) {
@@ -80,10 +100,6 @@ class BillController extends Controller
 
         return redirect()->route('bills.show', $bill);
     }
-
-
-
-
 
 
     /**
@@ -137,7 +153,7 @@ class BillController extends Controller
 
     public function storno(Bill $bill)
     {
-       $newbill = Bill::create([
+        $newbill = Bill::create([
             'storno_id'    => $bill->id,
             'user_id'      => $bill->user_id,
             'customer_id'  => $bill->customer_id,

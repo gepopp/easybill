@@ -10,39 +10,40 @@
         </div>
     </x-slot>
 
-{{--    <div class="py-12">--}}
-{{--        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">--}}
-{{--            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5">--}}
-{{--                <table class="w-full table-auto text-gray-800">--}}
-{{--                    <thead>--}}
-{{--                    <tr>--}}
-{{--                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider">Nr.</th>--}}
-{{--                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider">Empfänger</th>--}}
-{{--                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider text-right">Netto</th>--}}
-{{--                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider text-right">Brutto</th>--}}
-{{--                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider text-right">Bezahlt</th>--}}
-{{--                        <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 tracking-wider">Status</th>--}}
-{{--                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider text-right">Datum</th>--}}
-{{--                    </tr>--}}
-{{--                    </thead>--}}
-{{--                    <tbody>--}}
-{{--                    @forelse( $bills as $bill )--}}
-{{--                        <tr class="hover:bg-logo-gray">--}}
-{{--                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">--}}
-{{--                                <a href="{{ route('bills.show', $bill) }}">--}}
-{{--                                    <p class="underline"> {{$bill->prefix}}{{ $bill->bill_number }}</p>--}}
-{{--                                    @if($bill->is_storno_of)--}}
-{{--                                        <p class="text-xs text-red-800">Storno von {{ $bill->is_storno_of->prefix }}{{ $bill->is_storno_of->bill_number }}</p>--}}
-{{--                                    @elseif($bill->has_storno)--}}
-{{--                                        <p class="text-xs text-red-800">Storniert mit {{ $bill->has_storno->prefix }}{{ $bill->has_storno->bill_number }}</p>--}}
-{{--                                    @endif--}}
-{{--                                </a>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                    @endforelse--}}
-{{--                    </tbody>--}}
-{{--                </table>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl p-5">
+                <ul>
+                    @foreach($customers as $customer)
+                        <li class="p-5 border-b flex justify-between">
+                            <div>
+                                {{ $customer->fullname }}
+                                <ul class="ml-5">
+                                    @foreach($customer->contactperson as $contactperson)
+                                        <li class="flex items-end">
+                                            <svg class="w-4 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                            </svg>
+                                            {{ $contactperson->fullname }}
+                                            <a href="{{ route('customers.edit', $contactperson) }}" class="text-xs ml-5">bearbeiten</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div>
+                                <a href="{{ route('customers.edit', $customer) }}">
+                                    bearbeiten
+                                </a>
+                                <form action="{{ route('customers.destroy', $customer) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-800">löschen</button>
+                                </form>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
 </x-vertical-layout>

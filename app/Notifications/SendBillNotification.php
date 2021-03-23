@@ -72,17 +72,4 @@ class SendBillNotification extends Notification
             ->attach(Storage::disk('local')->path($this->bill->document));
 
     }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param mixed $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
-    }
 }

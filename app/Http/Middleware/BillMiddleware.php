@@ -30,6 +30,9 @@ class BillMiddleware
 
         //to show any bill route the user must enter his billing data
         $billSetting = BillSetting::pluck('setting_value', 'setting_name');
+
+
+
         $billSetting = $billSetting->filter(function ( $value, $key){
             return !empty($value);
         });

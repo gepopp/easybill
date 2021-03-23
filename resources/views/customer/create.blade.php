@@ -8,13 +8,13 @@
         <button wire:click="button" onclick="document.getElementById('customer-form').submit()" class="button-secondary">speichern</button>
     </x-slot>
 
-    {{ dump($errors) }}
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl p-5">
                 <form action="{{ route('customers.store') }}" class="w-full" method="post" id="customer-form">
                     @csrf
+
                     <div class="grid grid-cols-2 gap-10">
                         <div>
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="address_addition">Kontaktart</label>
@@ -32,10 +32,9 @@
                                     <x-input label="Ort" name="city" value="{{ old('city') }}"/>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-10">
+                    <div class="grid grid-cols-2 gap-10 border-t border-logo-primary pt-5">
                         <div>
                             <x-input label="E-Mail Adresse" name="email" value="{{ old('email') }}"/>
                         </div>

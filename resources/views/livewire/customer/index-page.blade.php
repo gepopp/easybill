@@ -3,7 +3,7 @@
         <div class="pb-5 border-b border-logo-primary">
             <input
                 type="text"
-                class="w-64 appearance-none border-logo-primary border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+                class="w-64 appearance-none border-logo-primary border p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
             >
         </div>
         <div class="flex flex-col bg-logo-gray h-64">

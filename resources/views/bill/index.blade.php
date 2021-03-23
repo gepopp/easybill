@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <x-slot name="headerbutton">
-        <livewire:bill.new-bill-modal/>
+        <a href="{{ route('bills.create') }}">Neue Rechnung</a>
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

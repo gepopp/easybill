@@ -189,5 +189,7 @@ return [
         'time'                  => 'Uhrzeit',
         'available'             => 'verfügbar',
         'size'                  => 'Größe',
+        'company'               => 'Unternehmen',
+        'company_id'            => 'Unternehmen',
     ],
 ];

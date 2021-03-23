@@ -18,10 +18,11 @@
     </div>
 
     @if($is_company)
-        <x-input label="Unternehmensbezeichnung" name="company_name" value="{{ old('company_name') }}" type="text"/>
+        <x-input label="Unternehmensbezeichnung" name="company_name" value="{{ $customer->company_name ?? old('company_name') }}" type="text"/>
     @else
 
         <div class="flex flex-wrap -mx-3 mb-6">
+            <livewire:customer.company-select :customer="$customer"></livewire:customer.company-select>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="first_name">Anrede</label>
                 <select name="is_female"
@@ -31,21 +32,21 @@
                       focus:outline-none focus:bg-white focus:border-logo-primary
                       @error('is_female') border-red-500 @enderror">
                         <option value="">Bitte wählen...</option>
-                        <option value="1">Frau</option>
-                        <option value="0">Herr</option>
+                        <option value="1" @if(($customer->is_female ?? null)) selected @endif>Frau</option>
+                        <option value="0" @if(!($customer->is_female ?? null)) selected @endif>Herr</option>
                 </select>
                 @error('is_female')
                 <p class="text-red-500 text-xs">{{ $message }}</p>
                 @enderror
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <x-input label="Titel" name="academic_degree" value="{{ old('academic_degree') }}"/>
+                <x-input label="Titel" name="academic_degree" value="{{ $customer->academic_degree ?? old('academic_degree') }}"/>
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <x-input label="Vorname" name="first_name" value="{{ old('first_name') }}"/>
+                <x-input label="Vorname" name="first_name" value="{{ $customer->first_name ?? old('first_name') }}"/>
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <x-input label="Nachname" name="last_name" value="{{ old('last_name') }}"/>
+                <x-input label="Nachname" name="last_name" value="{{ $customer->last_name ?? old('last_name') }}"/>
             </div>
         </div>
     @endif

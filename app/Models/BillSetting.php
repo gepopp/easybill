@@ -36,7 +36,7 @@ class BillSetting extends Model
             ->where('user_id', $user->id)->pluck('setting_value', 'setting_name')
             ->toArray();
 
-        return $settings[$name];
+        return $settings[$name] ?? null;
     }
 
 

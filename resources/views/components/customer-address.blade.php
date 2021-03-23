@@ -3,8 +3,12 @@
 ])
 
 <address>
-    <strong>{{ $customer->company_name }}</strong><br>
-    {{ $customer->academic_degree }} {{ $customer->first_name }} {{ $customer->last_name }}<br>
+    @if(!empty($customer->company))
+        <strong>{{ $customer->company->company_name }}</strong><br>
+    @endif
+
+
+    {{ $customer->fullname }}<br>
     {{ $customer->address }} {{ $customer->address_addition }}<br>
     {{ $customer->zip }} {{ $customer->city }}
 </address>

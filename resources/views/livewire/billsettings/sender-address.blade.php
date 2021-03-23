@@ -79,9 +79,15 @@
         </div>
 
         <div class="col-span-6 sm:col-span-6">
-            <x-jet-label for="bill_number" value="{{ __('Rechnungsnummer Beginnt bei') }}"/>
+            <x-jet-label for="bill_number" value="{{ __('Rechnungsnummer beginnt bei') }}"/>
             <x-jet-input id="bill_number" type="number" step="1" class="mt-1 block w-full" wire:model.defer="settings.bill_number"/>
             <x-jet-input-error for="settings.bill_number" class="mt-2"/>
+        </div>
+
+        <div class="col-span-6 sm:col-span-6">
+            <x-jet-label for="customer_number" value="{{ __('Kundennummer beginnt bei') }}"/>
+            <x-jet-input id="customer_number" type="text" step="1" class="mt-1 block w-full" wire:model.defer="settings.customer_number"/>
+            <x-jet-input-error for="settings.customer_number" class="mt-2"/>
         </div>
 
         <div class="col-span-6 sm:col-span-6">
