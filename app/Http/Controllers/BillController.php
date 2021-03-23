@@ -170,7 +170,7 @@ class BillController extends Controller
         foreach ($bill->positions as $position) {
             $newposition = $position->replicate();
             $newposition->bill_id = $newbill->id;
-            $newposition->netto = $newposition->amount * -1;
+            $newposition->amount = $newposition->amount * -1;
             $newposition->save();
         }
 

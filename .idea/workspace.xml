@@ -20,47 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AdressController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/NoteController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Customer/CompanySelect.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Adress.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Note.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Observers/CustomerObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/AdressFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/NoteFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_19_073940_create_adresses_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_19_073958_create_notes_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_20_083754_update_customer_table_email_nullable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/AdressSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/NoteSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/customer/company-select.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BillController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BillController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Billsettings/SenderAddress.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Billsettings/SenderAddress.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Customer/TypeSelector.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Customer/TypeSelector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/BillMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/BillMiddleware.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/CreateBillPdfJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CreateBillPdfJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BillSetting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BillSetting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/SendBillNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/SendBillNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/CustomerFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/CustomerFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/de/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/de/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bill/basepdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/basepdf.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bill/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bill/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/customer-address.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/customer-address.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customer/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customer/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/billsettings/sender-address.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/billsettings/sender-address.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/customer/index-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/customer/index-page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/customer/type-selector.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/customer/type-selector.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,14 +262,7 @@
       <workItem from="1616228616117" duration="1926000" />
       <workItem from="1616230560525" duration="15982000" />
       <workItem from="1616436284911" duration="13884000" />
-      <workItem from="1616488725271" duration="2588000" />
-    </task>
-    <task id="LOCAL-00022" summary="Rechungen v2">
-      <created>1609942370421</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1609942370421</updated>
+      <workItem from="1616488725271" duration="3325000" />
     </task>
     <task id="LOCAL-00023" summary="Rechungen v2">
       <created>1609942550963</created>
@@ -647,7 +600,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612332663947</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="v2 wip">
+      <created>1616491374911</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1616491374911</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -686,6 +646,7 @@
     <MESSAGE value="at before send modal" />
     <MESSAGE value="wip" />
     <MESSAGE value="debug bill notification" />
-    <option name="LAST_COMMIT_MESSAGE" value="debug bill notification" />
+    <MESSAGE value="v2 wip" />
+    <option name="LAST_COMMIT_MESSAGE" value="v2 wip" />
   </component>
 </project>
