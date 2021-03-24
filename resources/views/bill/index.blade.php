@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-vertical-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('Rechnungen') }}
@@ -14,4 +14,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-vertical-layout>

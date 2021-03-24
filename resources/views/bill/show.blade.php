@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-vertical-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
             @if($bill->is_storno_of )
@@ -50,6 +50,8 @@
                     <div class="p-10 col-span-2">
                         <div class="mb-10">
                             <h2 class="font-semibold text-xl text-gray-800 leading-tight flex justify-between items-center">
+
+
                                 @if($bill->is_storno_of)
                                     {{ __('Stornorechung') }}
                                 @else
@@ -59,6 +61,17 @@
                                 <span class="w-24">
                                 <x-bill-status status="{{ $bill->bill_status }}"/>
                                 </span>
+
+                                @if($bill->sent_at !== null)
+                                    <a href="{{ route('bills.download', $bill) }}" target="_blank">
+                                        <div class="h-10 w-10 rounded-full bg-gray-300 flex justify-center items-center">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                @endif
+
                             </h2>
                             @if($bill->is_storno_of)
                                 <p class="text-sm">
@@ -98,7 +111,7 @@
                             @if(!$bill->has_storno && !$bill->is_storno_of && $bill->sent_at !== null )
                                 <livewire:bill.payments-list :bill="$bill"/>
                             @endif
-                                <livewire:bill.notifications-list :bill="$bill"/>
+                            <livewire:bill.notifications-list :bill="$bill"/>
                         </div>
 
                     </div>
@@ -106,5 +119,5 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-vertical-layout>
 

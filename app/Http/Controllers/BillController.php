@@ -40,12 +40,12 @@ class BillController extends Controller
 
     public function store(Request $request)
     {
-        $bill = Bill::create( array_merge(['user_id' => \auth()->id(), 'bill_status' => 'created'],
+        $bill = Bill::create(array_merge(['user_id' => \auth()->id(), 'bill_status' => 'created'],
             $request->validate([
-            'customer_id'      => 'required|exists:customers,id',
-            'billing_date'    => 'required|date',
-            'bill_number'     => 'required|integer|min:1',
-        ])));
+                'customer_id'  => 'required|exists:customers,id',
+                'billing_date' => 'required|date',
+                'bill_number'  => 'required|integer|min:1',
+            ])));
 
         return redirect(route('bills.edit', $bill));
 
@@ -217,6 +217,12 @@ class BillController extends Controller
             'amount'       => ($bill->total('brutto') - $bill->paid()) * -1,
             'payment_date' => now(),
         ]);
+    }
+
+
+    public function download(Bill $bill)
+    {
+        return Storage::download($bill->document);
     }
 
 }
