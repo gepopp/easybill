@@ -19,13 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BillController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BillController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bill/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bill/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bill/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -268,14 +262,7 @@
       <workItem from="1616436284911" duration="13884000" />
       <workItem from="1616488725271" duration="5353000" />
       <workItem from="1616528557666" duration="807000" />
-      <workItem from="1616535813726" duration="906000" />
-    </task>
-    <task id="LOCAL-00024" summary="Rechungen v2">
-      <created>1609942607924</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1609942607924</updated>
+      <workItem from="1616535813726" duration="1154000" />
     </task>
     <task id="LOCAL-00025" summary="Rechungen v2">
       <created>1609942657880</created>
@@ -613,7 +600,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616492350615</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="wip">
+      <created>1616575053079</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1616575053080</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,9 +644,9 @@
     <MESSAGE value="add reminder notification to bill" />
     <MESSAGE value="update index table layout" />
     <MESSAGE value="at before send modal" />
-    <MESSAGE value="wip" />
     <MESSAGE value="debug bill notification" />
     <MESSAGE value="v2 wip" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2 wip" />
+    <MESSAGE value="wip" />
+    <option name="LAST_COMMIT_MESSAGE" value="wip" />
   </component>
 </project>
