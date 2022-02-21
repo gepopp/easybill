@@ -8,7 +8,8 @@
     'prefix'        => false,
     'step'          => false,
     'model'         => false,
-    'value'         => ''
+    'value'         => '',
+    'pattern'       => false,
 ])
 
 <div class="w-full mb-3 {{ $holderclass }}">
@@ -29,10 +30,13 @@
                name="{{ $name }}"
                value="{{ $value }}"
                @if($model)
-                    wire:model="{{ $model }}"
+               wire:model="{{ $model }}"
                @endif
                @if($step)
-                    step="{{ $step }}"
+               step="{{ $step }}"
+               @endif
+               @if($pattern)
+               pattern="{{ $pattern }}"
                @endif
         >
         @error("$name")<p class="text-xs leading-none text-red-500 pb-2">{{ $message }}</p>@enderror

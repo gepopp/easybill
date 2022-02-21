@@ -36,6 +36,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('customers', \App\Http\Controllers\CustomerController::class);
     Route::resource('products', \App\Http\Controllers\ProductController::class);
     Route::resource('paymentaccounts', \App\Models\PaymentAccount::class);
+    Route::resource('quotation', \App\Http\Controllers\QuotationController::class);
     Route::get('billsettings', '\App\Http\Controllers\BillSettingController@edit')->name('billsettings');
 });
 
@@ -48,4 +49,11 @@ Route::middleware(['auth:sanctum', 'verified', 'bill'])->group(function () {
     Route::get('bills/{bill}/document', '\App\Http\Controllers\BillController@document')->name('bills.document');
     Route::get('bills/{bill}/download', '\App\Http\Controllers\BillController@download')->name('bills.download');
 
+});
+
+Route::resource('lead', \App\Http\Controllers\LeadController::class)
+    ->middleware(['auth:sanctum', 'verified']);
+
+Route::get('mailtest', function (){
+   return view('newsletter.raw');
 });

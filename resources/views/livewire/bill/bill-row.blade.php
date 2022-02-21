@@ -8,7 +8,7 @@
     </td>
     <td x-data="{ highlight : 0, products : @entangle('products') }" x-init="$watch('products', (value) => console.log(value))" class="relative px-2">
         <input type="text"
-               class="@error('row.name') border-red-800 @else border-logo-primary @enderror appearance-none border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+               class="@error('row.name') border-red-800 @else border-logo-primary @enderror appearance-none border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
                wire:model.debounce.500ms="row.name"
                x-on:keydown.arrow-down="highlight = Math.min(products.length - 1, highlight + 1);"
                x-on:keydown.arrow-up="highlight = Math.max( 0, highlight - 1);"
@@ -28,13 +28,13 @@
     <td class="p-2">
         <input
             type="number"
-            class="@error('row.amount') border-red-800 @else border-logo-primary @enderror appearance-none border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+            class="@error('row.amount') border-red-800 @else border-logo-primary @enderror appearance-none border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
             wire:model="row.amount"
             step="0.01"
             pattern="[0-9]+([,\.][0-9]+)?">
     </td>
     <td class="p-2">
-        <select class="appearance-none @error('row.unit') border-red-800 @else border-logo-primary @enderror border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+        <select class="appearance-none @error('row.unit') border-red-800 @else border-logo-primary @enderror border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
                 wire:model="row.unit">
             <option value="Stück">Stück</option>
             <option value="Stunden">Stunden</option>
@@ -44,21 +44,21 @@
     </td>
     <td class="p-2">
         <input type="number"
-               class="appearance-none @error('row.netto') border-red-800 @else border-logo-primary @enderror  border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+               class="appearance-none @error('row.netto') border-red-800 @else border-logo-primary @enderror  border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
                wire:model="row.netto"
                step="0.01"
                pattern="[0-9]+([,\.][0-9]+)?">
     </td>
     <td align="right p-2">
         <input type="text"
-               class="appearance-none border-logo-primary border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full text-right"
+               class="appearance-none border-logo-primary border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full text-right"
                value="{{ $this->nettoTotal }}"
                disabled="disabled"/>
     </td>
 
     <td align="right" class="p-2">
         <input type="number"
-               class="appearance-none @error('row.vat') border-red-800 @else border-logo-primary @enderror border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+               class="appearance-none @error('row.vat') border-red-800 @else border-logo-primary @enderror border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
                wire:model="row.vat"
                step="0.01"
                pattern="[0-9]+([,\.][0-9]+)?">
@@ -66,7 +66,7 @@
 
     <td  align="right" class="p-2">
         <input type="text"
-               class="appearance-none border-logo-primary border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full text-right"
+               class="appearance-none border-logo-primary border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full text-right"
                value="{{ $this->bruttoTotal }}"
                disabled="disabled"/>
     </td>

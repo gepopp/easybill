@@ -143,8 +143,8 @@
                 </tr>
                 <tr class="border-b border-b-2">
                     <td></td>
-                    <td>
-                        <p class="text-xs pb-3">{{ $position->description }}</p>
+                    <td style="padding-left: 0.3cm">
+                        <p class="text-xs pb-3">{!! $position->description !!}</p>
                     </td>
                     <td></td>
                     <td></td>

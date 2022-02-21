@@ -1,99 +1,92 @@
-<x-app-layout>
+<x-vertical-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl leading-tight">
             {{ __('Neues Product') }}
         </h2>
     </x-slot>
+    <x-slot name="headerbutton">
+        <button onclick="document.getElementById('product-form').submit()" class="button-secondary">speichern</button>
+    </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5">
-
-                <form action="{{ route('products.store') }}" class="w-full" method="post">
+        <div class="max-w-screen-xl mx-auto px-8">
+            <div class="bg-white overflow-hidden shadow-xl p-5">
+                <form action="{{ route('products.store') }}" class="w-full" method="post" id="product-form">
                     @csrf
-
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">Bezeichnung</label>
-                            <input
-                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3
-                                leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('name') border-red-500 @enderror"
-                                id="name"
-                                name="name"
-                                value="{{ old('name') }}"
-                                type="text"
-                                required>
-                            @error('name')
-                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                            @enderror
+                            <x-input label="Prduktbezeichnung" name="name" value="{{ old('name') }}"></x-input>
                         </div>
                     </div>
 
 
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="netto">Nettopreis</label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded
-                                          py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('netto') border-red-500 @enderror"
-                                   id="netto"
-                                   name="netto"
-                                   value="{{ old('netto') }}"
-                                   type="number"
-                                   pattern="[0-9]+([,\.][0-9]+)?"
-                                   step="0.01"
-                                   required>
-                            @error('netto')
-                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                            @enderror
+                            <x-input label="Nettopreis"
+                                     type="number"
+                                     name="netto"
+                                     value="{{ old('netto') }}"
+                                     pattern="[0-9]+([,\.][0-9]+)?"
+                                     step="0.01"></x-input>
                         </div>
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="unit">Einheit</label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3
-                                          px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('unit') border-red-500 @enderror"
-                                   id="unit"
-                                   name="unit"
-                                   value="{{ old('unit') }}"
-                                   type="text"
-                                   required>
-                            @error('unit')
-                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                            @enderror
+                            <x-input label="Einheit" name="unit" value="{{ old('unit') }}"></x-input>
                         </div>
                         <div class="w-full md:w-1/3 px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="vat">MwSt. Satz</label>
-                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded
-                                    py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('vat') border-red-500 @enderror"
-                                   id="vat"
-                                   name="vat"
-                                   value="{{ old('vat') }}"
-                                   type="number"
-                                   pattern="[0-9]+([,\.][0-9]+)?"
-                                   step="0.01"
-                                   required>
-                            @error('vat')
-                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                            @enderror
+                            <x-input label="MwSt. Satz" type="number" name="vat" pattern="[0-9]+([,\.][0-9]+)?" step="0.01"></x-input>
                         </div>
                     </div>
+
+                    @push('styles')
+                        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+                    @endpush
+
+                    @push('scripts')
+                        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+                    @endpush
+
+
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3 mb-6 md:mb-0">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="description">Beschreibung</label>
-                            <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded
-                                          py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 @error('description') border-red-500 @enderror"
-                                      id="description"
-                                      name="description">
-                                {{ old('description') }}
-                            </textarea>
-                            @error('description')
-                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                            @enderror
+                            <x-jet-label for="headertext" value="{{ __('Beschreibung') }}"/>
+                            <div id="productdescription">
+                                {!! old('description') !!}
+                            </div>
                         </div>
                     </div>
-                    <button type="submit" class="w-full bg-green-300 text-center text-white py-3 px-4 rounded">speichern</button>
+                    <input type="hidden" name="description" id="description">
+            <script>
+                window.onload = function (){
+                    var editor = new Quill('#productdescription',
+                        {
+                            modules: {
+                                toolbar: [
+                                    [{ header: [1, 2, false] }],
+                                    ['bold', 'italic', 'underline'],
+                                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                ]
+                            },
+                            placeholder: '',
+                            theme: 'snow'  // or 'bubble'
+                        });
+
+                    editor.on('text-change', function(delta, oldDelta, source) {
+                        document.getElementById('description').value = editor.container.firstChild.innerHTML;
+                    });
+
+
+
+                }
+            </script>
+            <style>
+                #productdescription {
+                    height: 375px;
+                }
+            </style>
                 </form>
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-vertical-layout>
 
 

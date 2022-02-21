@@ -32,7 +32,7 @@
                         });
                       ">
 
-                    <input class="w-64 appearance-none border-logo-primary border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 text-left focus:outline-none"
+                    <input class="w-64 appearance-none border-logo-primary border p-1 px-3 bg-logo-gray text-gray-600 text-left focus:outline-none"
                            id="pick"
                            placeholder="Zeitraum wählen"
                            type="text"
@@ -51,7 +51,7 @@
                 <div>
                     <label for="draft" class="flex items-center">
                         <input type="checkbox"
-                               class="rounded-xl border border-double border-2 border-logo-primary text-logo-primary outline-none appearance-none w-4 h-4 bg-white rounded-full checked:bg-logo-primary checked:text-white"
+                               class="form-checkbox text-logo-primary rounded-none"
                                wire:model="search.stati"
                                id="draft"
                                value="draft">
@@ -62,7 +62,7 @@
                 <div>
                     <label for="generated" class="flex items-center">
                         <input type="checkbox"
-                               class="rounded-xl border border-double border-2 border-logo-primary text-logo-primary outline-none appearance-none w-4 h-4 bg-white rounded-full checked:bg-logo-primary checked:text-white"
+                               class="form-checkbox text-logo-primary rounded-none"
                                wire:model="search.stati"
                                id="generated"
                                value="generated">
@@ -73,7 +73,7 @@
                 <div>
                     <label for="sent" class="flex items-center">
                         <input type="checkbox"
-                               class="rounded-xl border border-double border-2 border-logo-primary text-logo-primary outline-none appearance-none w-4 h-4 bg-white rounded-full checked:bg-logo-primary checked:text-white"
+                               class="form-checkbox text-logo-primary rounded-none"
                                wire:model="search.stati"
                                id="sent"
                                value="sent">
@@ -84,7 +84,7 @@
                 <div>
                     <label for="paid" class="flex items-center">
                         <input type="checkbox"
-                               class="rounded-xl border border-double border-2 border-logo-primary text-logo-primary outline-none appearance-none w-4 h-4 bg-white rounded-full checked:bg-logo-primary checked:text-white"
+                               class="form-checkbox text-logo-primary rounded-none"
                                wire:model="search.stati"
                                id="paid"
                                value="paid">
@@ -95,7 +95,7 @@
                 <div>
                     <label for="overdue" class="flex items-center">
                         <input type="checkbox"
-                               class="rounded-xl border border-double border-2 border-logo-primary text-logo-primary outline-none appearance-none w-4 h-4 bg-white rounded-full checked:bg-logo-primary checked:text-white"
+                               class="form-checkbox text-logo-primary rounded-none"
                                wire:model="search.stati"
                                id="overdue"
                                value="overdue">
@@ -106,21 +106,31 @@
             </div>
         </div>
     </div>
-    <table class="w-full table-auto text-gray-800">
+    <table class="w-full table-striped table-auto text-gray-800 text-sm leading-tight">
         <thead>
         <tr>
+            <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider text-right">Datum</th>
             <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider">Nr.</th>
             <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider">Empfänger</th>
             <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider text-right">Netto</th>
             <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider text-right">Brutto</th>
             <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider text-right">Bezahlt</th>
             <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 tracking-wider">Status</th>
-            <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 tracking-wider text-right">Datum</th>
         </tr>
         </thead>
         <tbody>
         @forelse( $bills as $bill )
             <tr class="hover:bg-logo-gray">
+
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-right">
+                    <p>{{ \Carbon\Carbon::parse($bill->billing_date)->format('d.m.Y') }}</p>
+                    <p>
+                        <span class="text-xs @if($bill->bill_status == 'overdue') text-red-800 @endif">&nbsp;
+                        {{ \Carbon\Carbon::parse($bill->billing_date)->addDays($bill->respite)->format('d.m.Y') }}
+                        </span>
+                    </p>
+                </td>
+
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                     <a href="{{ route('bills.show', $bill) }}">
                         <p class="underline"> {{$bill->prefix}}{{ $bill->bill_number }}</p>
@@ -131,9 +141,10 @@
                         @endif
                     </a>
                 </td>
+
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                    <p class="font-semibold">{{ $bill->customer->first_name }} {{ $bill->customer->last_name }}</p>
-                    <p class="text-xs">{{ $bill->customer->company_name }}</p>
+                    <p class="font-semibold">{{ $bill->customer->fullname }}</p>
+                    <p class="text-xs">{{ $bill->customer->company->company_name ?? '' }}</p>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-right">
                     <p>{{ $bill->total('netto', 'euro') }}  </p>
@@ -152,16 +163,7 @@
                         <x-bill-status status="{{ $bill->bill_status }}"/>
                     </a>
                 </td>
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-right">
-                    <p>{{ \Carbon\Carbon::parse($bill->billing_date)->format('d.m.Y') }}</p>
-                    <p>
-                        <span class="text-xs @if($bill->bill_status == 'overdue') text-red-800 @endif">&nbsp;
-                        {{ \Carbon\Carbon::parse($bill->billing_date)->addDays($bill->respite)->format('d.m.Y') }}
-                        </span>
-                    </p>
-                </td>
             </tr>
-
         @empty
             <tr>
                 <td class=" px-4 py-2" colspan="5">Keine Rechnungen gefunden.</td>

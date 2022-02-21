@@ -1,4 +1,11 @@
-<x-app-layout>
+<x-vertical-layout>
+    @push('styles')
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    @endpush
+
+    @push('scripts')
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    @endpush
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('Rechung bearbeiten') }}
@@ -25,7 +32,7 @@
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5 px-20">
+            <div class="bg-white overflow-hidden shadow-xl p-5 px-20">
                 <div class="pt-24 flex justify-between">
                     <x-customer-address :customer="$bill->customer"/>
                     <div>
@@ -42,4 +49,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-vertical-layout>

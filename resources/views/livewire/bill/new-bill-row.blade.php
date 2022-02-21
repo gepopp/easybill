@@ -9,7 +9,7 @@
     <td class="p-2">
         <div class="relative" x-data="{ highlight : 0, products : {{ $this->searchProducts() }} }" x-init="$watch('products', (products) => console.log(products))">
             <input type="text"
-                   class="@error('row.name') border-red-800 @else border-logo-primary @enderror appearance-none border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+                   class="@error('row.name') border-red-800 @else border-logo-primary @enderror appearance-none border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
                    wire:model="row.name"
                    wire:keydown="searchProducts"
                    x-on:keydown.arrow-down="highlight = Math.min(products.length - 1, highlight + 1); console.log(highlight)"
@@ -37,13 +37,13 @@
     <td class="p-2">
         <input
             type="number"
-            class="@error('row.amount') border-red-800 @else border-logo-primary @enderror appearance-none border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+            class="@error('row.amount') border-red-800 @else border-logo-primary @enderror appearance-none border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
             wire:model.lazy="row.amount"
             pattern="[0-9]+([,\.][0-9]+)?">
     </td>
     <td class="p-2">
         <select type="text"
-               class="appearance-none @error('row.unit') border-red-800 @else border-logo-primary @enderror border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+               class="appearance-none @error('row.unit') border-red-800 @else border-logo-primary @enderror border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
                wire:model="row.unit">
             <option value="Stück">Stück</option>
             <option value="Stunden">Stunden</option>
@@ -53,24 +53,24 @@
     </td>
     <td class="p-2">
         <input type="number"
-               class="appearance-none @error('row.netto') border-red-800 @else border-logo-primary @enderror  border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+               class="appearance-none @error('row.netto') border-red-800 @else border-logo-primary @enderror  border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
                wire:model.lazy="row.netto"
                pattern="[0-9]+([,\.][0-9]+)?">
     </td>
     <td align="right" class="p-2">
         <input type="text"
-               class="appearance-none border-logo-primary border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full text-right"
+               class="appearance-none border-logo-primary border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full text-right"
                disabled="disabled"/>
     </td>
     <td align="right" class="p-2">
         <input type="number"
-               class="appearance-none @error('row.vat') border-red-800 @else border-logo-primary @enderror border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
+               class="appearance-none @error('row.vat') border-red-800 @else border-logo-primary @enderror border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full"
                wire:model.lazy="row.vat">
     </td>
 
     <td align="right" class="p-2">
         <input type="text"
-               class="appearance-none border-logo-primary border rounded-xl p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full text-right"
+               class="appearance-none border-logo-primary border  p-1 px-3 bg-logo-gray text-gray-600 focus:outline-none w-full text-right"
                disabled="disabled"/>
     </td>
     <td align="right" valign="top" class="p-2">

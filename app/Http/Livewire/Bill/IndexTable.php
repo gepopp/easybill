@@ -68,10 +68,4 @@ class IndexTable extends Component
                 ->paginate(15),
         ]);
     }
-
-
-//    public function paginationView()
-//    {
-//        return 'livewire.pagination-de';
-//    }
 }

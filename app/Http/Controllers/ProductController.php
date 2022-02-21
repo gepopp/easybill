@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('product.index')->with(['products' => Product::all()]);
+        return view('product.index')->with(['products' => Product::paginate(10)]);
     }
 
     /**

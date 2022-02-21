@@ -19,6 +19,6 @@
 ])
 
 <span class="relative inline-block px-3 py-1 font-semibold leading-normal pb-2 w-full text-center">
-    <span class="{{ $stats[$status]}} absolute inset-0 opacity-75 rounded-full w-full h-full"></span>
+    <span class="{{ $stats[$status]}} absolute inset-0 opacity-75 w-full h-full"></span>
     <span class="relative text-xs text-white">{{ $translation[$status] }}</span>
 </span>
