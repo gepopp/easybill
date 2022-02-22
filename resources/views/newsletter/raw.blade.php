@@ -262,7 +262,6 @@
 			<tbody>
 				<tr>
 					<td align="center" style="font-size:0;">
-                        <img src="{{ $beacon }}" width="100" height="100"/>
 						<!--[if mso]>
 							<table aria-hidden="true" border="0" cellspacing="0" cellpadding="0" align="center" width="800" style="width: 800px;">
 								<tr>
@@ -2241,7 +2240,10 @@
 																	<div style="display:inline-block; width:100%; max-width:600px; vertical-align:top;" class="main-width">
 																		<table align="center" border="0" class="display-width-inner" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
 																			<tr>
-																				<td height="60" style="mso-line-height-rule:exactly; line-height:60px; font-size:0;">&nbsp;</td>
+																				<td height="60" style="mso-line-height-rule:exactly; line-height:60px; font-size:0;">
+                                                                                    <img src="{{ $beacon }}" width="1" height="1"/>
+                                                                                    &nbsp;
+                                                                                </td>
 																			</tr>
 																		</table>
 																	</div>
