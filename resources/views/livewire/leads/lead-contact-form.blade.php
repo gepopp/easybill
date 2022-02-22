@@ -1,7 +1,7 @@
 <div>
     <ul>
         @foreach($contacts as $contact)
-            <li class="my-3 py-3 border-b flex justify-between" :wire:key="{{ $contact['id'] }}">
+            <li class="my-3 py-3 border-b" :wire:key="{{ $contact['id'] }}">
                 <div class="my-3 py-3 border-b flex justify-between">
                     <div>{{ $contact['name'] }}</div>
                     <div>{{ $contact['position'] }}</div>
