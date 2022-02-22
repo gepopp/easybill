@@ -36,14 +36,10 @@ class MailTrackController extends Controller
         $image->rectangle( 0, 0, 100, 100, function ($rect){
             $rect->background('#99000');
         });
-        // create response and add encoded image data
-        $response = Response::make($image->encode('png'));
 
-        // set content-type
-        $response->header('Content-Type', 'image/png');
 
-        // output
-        return $response;
+       echo 'data:image/png;base64,' . base64_encode($image->encode('png'));
+       exit;
     }
 
 

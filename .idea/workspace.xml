@@ -274,14 +274,7 @@
       <workItem from="1632909926356" duration="1749000" />
       <workItem from="1645373497244" duration="8266000" />
       <workItem from="1645424886965" duration="12523000" />
-      <workItem from="1645518341604" duration="10313000" />
-    </task>
-    <task id="LOCAL-00045" summary="refactor all bill views and controller/observer/job">
-      <created>1610107826496</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1610107826496</updated>
+      <workItem from="1645518341604" duration="10472000" />
     </task>
     <task id="LOCAL-00046" summary="refactor all bill views and controller/observer/job">
       <created>1610108034759</created>
@@ -619,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645531037671</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="mail marketing">
+      <created>1645531208118</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1645531208118</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
