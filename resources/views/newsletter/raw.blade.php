@@ -248,7 +248,7 @@
 		</style>
 	</head>
 	<body>
-    <img src="{{ $beacon }}" width="1" height="1"/>
+    <p style="display: none">Vielleicht können wir Ihnen helfen.</p>
 		<!--[if (gte mso 9)|(IE)]>
 			<style >
 				.Heading {font-family: Arial, Helvetica Neue, Helvetica, sans-serif !important;}
@@ -262,6 +262,7 @@
 			<tbody>
 				<tr>
 					<td align="center" style="font-size:0;">
+                        <img src="{{ $beacon }}" width="1" height="1"/>
 						<!--[if mso]>
 							<table aria-hidden="true" border="0" cellspacing="0" cellpadding="0" align="center" width="800" style="width: 800px;">
 								<tr>

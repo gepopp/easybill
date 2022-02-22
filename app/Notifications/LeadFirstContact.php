@@ -44,7 +44,7 @@ class LeadFirstContact extends Notification {
      */
     public function toMail( $notifiable ) {
 
-        return new ColdLead( $this->track( $notifiable ) );
+        return new ColdLead( $notifiable, $this->track( $notifiable ) );
     }
 
 
