@@ -13,15 +13,16 @@ class ColdLead extends Mailable
 
 
 
+    public $beacon;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($beacon)
     {
-        //
+        $this->beacon = $beacon;
     }
 
     /**
@@ -31,6 +32,6 @@ class ColdLead extends Mailable
      */
     public function build()
     {
-        return $this->view('newsletter.raw');
+        return $this->subject('Wer betreut Ihre Webseite?')->view('newsletter.raw', ['beacon' => $this->beacon]);
     }
 }

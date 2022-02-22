@@ -248,6 +248,7 @@
 		</style>
 	</head>
 	<body>
+    <img src="{{ $beacon }}" width="1" height="1"/>
 		<!--[if (gte mso 9)|(IE)]>
 			<style >
 				.Heading {font-family: Arial, Helvetica Neue, Helvetica, sans-serif !important;}

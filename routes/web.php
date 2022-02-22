@@ -61,21 +61,13 @@ Route::resource( 'lead', \App\Http\Controllers\LeadController::class )
 
 Route::get( 'mailtest', function () {
 
-    return view('newsletter.raw');
+    return view( 'newsletter.raw' );
 
 } );
 
 
-Route::get( 'beacon/{id}/image.png', function ( $id ) {
-
-
-
-    $image = Image::canvas( 1, 1 );
-    $image->rectangle( 0, 0, 1, 1);
-    header( 'Content-Type: image/png' );
-    echo $image->encode( 'png' );
-
-
+Route::get( 'beacon/{mailtrack}/image.png', function ( \App\Models\MailTrack $mail_track ) {
+    $mail_track->deliverImage();
 } )->name( 'beacon' );
 
 Route::get( 'beacontest', function () {

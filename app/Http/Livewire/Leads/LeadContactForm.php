@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Leads;
 use App\Models\Lead;
 use Livewire\Component;
 use App\Models\LeadContact;
+use App\Notifications\LeadFirstContact;
 
 
 
@@ -92,6 +93,15 @@ class LeadContactForm extends Component {
 
     }
 
+
+
+    public function sendFirstContact(LeadContact $contact){
+
+
+        $contact->notify(new LeadFirstContact());
+
+
+    }
 
 
 

@@ -16,8 +16,9 @@ class CreateMailTracksTable extends Migration
         Schema::create('mail_tracks', function (Blueprint $table) {
             $table->id();
             $table->morphs('recipient');
+            $table->string('mail_name');
             $table->timestamp('first_opened')->nullable();
-            $table->integer('opens');
+            $table->integer('opens')->default(0);
             $table->timestamps();
         });
     }
