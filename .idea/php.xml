@@ -133,13 +133,13 @@
       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
       <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
-      <path value="$PROJECT_DIR$/vendor/flynsarmy/db-blade-compiler" />
       <path value="$PROJECT_DIR$/vendor/wpb/string-blade-compiler" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/vendor/campaignmonitor/createsend-php" />
       <path value="$PROJECT_DIR$/vendor/predis/predis" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
