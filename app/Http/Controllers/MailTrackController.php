@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MailTrack;
 use Illuminate\Http\Request;
 use Intervention\Image\Image;
+use Illuminate\Support\Facades\Log;
 
 
 
@@ -13,6 +14,9 @@ class MailTrackController extends Controller
 
 
     public function track(MailTrack $mail_track){
+
+        Log::info(dump($mail_track));
+
 
 //        if ( ! $mail_track->first_opened ) {
 //            $mail_track->first_opened = \Carbon\Carbon::now();

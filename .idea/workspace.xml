@@ -23,6 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="mail marketing">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MailTrackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MailTrackController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -273,14 +274,7 @@
       <workItem from="1632909926356" duration="1749000" />
       <workItem from="1645373497244" duration="8266000" />
       <workItem from="1645424886965" duration="12523000" />
-      <workItem from="1645518341604" duration="7768000" />
-    </task>
-    <task id="LOCAL-00033" summary="addeed order scope &quot;billing_date&quot; to bills Model">
-      <created>1610012177257</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1610012177257</updated>
+      <workItem from="1645518341604" duration="7923000" />
     </task>
     <task id="LOCAL-00034" summary="addeed order scope &quot;billing_date&quot; to bills Model">
       <created>1610012286395</created>
@@ -618,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645528251421</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="mail marketing">
+      <created>1645528480433</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1645528480433</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
