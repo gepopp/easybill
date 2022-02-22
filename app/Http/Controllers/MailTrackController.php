@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use http\Env\Response;
 use App\Models\MailTrack;
 use Illuminate\Http\Request;
 use Intervention\Image\Image;
@@ -35,8 +36,14 @@ class MailTrackController extends Controller
         $image->rectangle( 0, 0, 100, 100, function ($rect){
             $rect->background('#99000');
         });
-        header( 'Content-Type: image/png' );
-        return $image->encode( 'png' );
+        // create response and add encoded image data
+        $response = Response::make($image->encode('png'));
+
+        // set content-type
+        $response->header('Content-Type', 'image/png');
+
+        // output
+        return $response;
     }
 
 
