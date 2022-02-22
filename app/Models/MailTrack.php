@@ -51,8 +51,8 @@ class MailTrack extends Model {
 
         $this->trackOpen();
 
-        $image = Image::canvas( 1, 1 );
-        $image->rectangle( 0, 0, 1, 1 );
+        $image = Image::canvas( 100, 100 );
+        $image->rectangle( 0, 0, 100, 100 );
         header( 'Content-Type: image/png' );
         echo $image->encode( 'png' );
     }

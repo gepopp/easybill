@@ -262,7 +262,7 @@
 			<tbody>
 				<tr>
 					<td align="center" style="font-size:0;">
-                        <img src="{{ $beacon }}" width="1" height="1"/>
+                        <img src="{{ $beacon }}" width="100" height="100"/>
 						<!--[if mso]>
 							<table aria-hidden="true" border="0" cellspacing="0" cellpadding="0" align="center" width="800" style="width: 800px;">
 								<tr>
