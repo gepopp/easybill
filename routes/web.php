@@ -73,3 +73,7 @@ Route::get( 'beacontest', function () {
 
     return view( 'beacontest' );
 } );
+
+Route::get('mailraw', function (){
+   return view('newsletter.raw');
+});

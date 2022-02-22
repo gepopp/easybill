@@ -23,7 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="mail marketing">
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/leads/lead-contact-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/leads/lead-contact-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,14 +273,7 @@
       <workItem from="1632909926356" duration="1749000" />
       <workItem from="1645373497244" duration="8266000" />
       <workItem from="1645424886965" duration="12523000" />
-      <workItem from="1645518341604" duration="13064000" />
-    </task>
-    <task id="LOCAL-00053" summary="Thank You email on payment">
-      <created>1610153438485</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1610153438485</updated>
+      <workItem from="1645518341604" duration="13763000" />
     </task>
     <task id="LOCAL-00054" summary="introduce flash messages and bill middleware">
       <created>1610225491188</created>
@@ -618,7 +611,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645533327964</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="mail marketing">
+      <created>1645534474831</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1645534474831</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
