@@ -36,7 +36,7 @@ class MailTrackController extends Controller
             $rect->background('#99000');
         });
         header( 'Content-Type: image/png' );
-        echo $image->encode( 'png' );
+        return $image->encode( 'png' );
     }
 
 
