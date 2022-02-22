@@ -21,6 +21,7 @@ class MailTrackController extends Controller
         $mail_track->save();
 
 
+        $this->deliverImage();
     }
 
 
