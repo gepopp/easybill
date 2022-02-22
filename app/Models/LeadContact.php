@@ -14,9 +14,16 @@ class LeadContact extends Model
     protected $guarded = [];
 
 
+    protected $with = ['mails'];
+
 
     public function lead(){
         return $this->belongsTo(Lead::class);
+    }
+
+
+    public function mails(){
+        return $this->morphMany(MailTrack::class, 'recipient');
     }
 
 
