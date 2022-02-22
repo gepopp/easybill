@@ -75,5 +75,5 @@ Route::get( 'beacontest', function () {
 } );
 
 Route::get('mailraw', function (){
-   return view('newsletter.raw');
+   return view('newsletter.raw', ['beacon' => '#']);
 });
