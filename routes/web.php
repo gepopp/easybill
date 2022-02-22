@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 
@@ -66,7 +67,10 @@ Route::get( 'mailtest', function () {
 } );
 
 
-Route::get( 'beacon/{mailtrack}/image.png', [ \App\Http\Controllers\MailTrackController::class, 'track'])->name( 'beacon' );
+//Route::get( 'beacon/{mailtrack}/image.png', [ \App\Http\Controllers\MailTrackController::class, 'track'])->name( 'beacon' );
+Route::get( 'beacon/{mailtrack}/image.png',function (){
+    Log::info('im called');
+})->name( 'beacon' );
 
 Route::get( 'beacontest', function () {
 
