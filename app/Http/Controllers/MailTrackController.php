@@ -15,7 +15,7 @@ class MailTrackController extends Controller
 
     public function track( $mail_track ){
 
-       $track = MailTrack::get($mail_track);
+       $track = MailTrack::find($mail_track);
 
 
         if ( ! $track->first_opened ) {
