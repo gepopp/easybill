@@ -70,7 +70,7 @@ Route::get( 'mailtest', function () {
 //Route::get( 'beacon/{mailtrack}/image.png', [ \App\Http\Controllers\MailTrackController::class, 'track'])->name( 'beacon' );
 Route::get( 'beacon/{mailtrack}/image.png', function ( $mail_track ) {
 
-    Log::info( $mail_track );
+    Log::info( 'something' );
 } )->name( 'beacon' );
 
 Route::get( 'beacontest', function () {
