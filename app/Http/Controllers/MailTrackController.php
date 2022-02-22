@@ -13,16 +13,16 @@ class MailTrackController extends Controller
 {
 
 
-    public function track(MailTrack $mail_track){
+    public function track( $mail_track ){
 
-        Log::info($mail_track);
+       $track = MailTrack::get($mail_track);
 
 
-//        if ( ! $mail_track->first_opened ) {
-//            $mail_track->first_opened = \Carbon\Carbon::now();
-//        }
-        $mail_track->opens ++;
-        $mail_track->save();
+        if ( ! $track->first_opened ) {
+            $track->first_opened = \Carbon\Carbon::now();
+        }
+        $track->opens ++;
+        $track->save();
 
 
         $this->deliverImage();
