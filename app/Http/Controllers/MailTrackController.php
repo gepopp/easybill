@@ -26,15 +26,7 @@ class MailTrackController extends Controller
         $track->save();
 
 
-        $this->deliverImage();
+        return response()->file( public_path('images/pixel.png'), ['Content-Type' => 'image/png']);
     }
-
-
-    protected function deliverImage(){
-
-        return response()->file( public_path('images/pixel.png'));
-
-    }
-
 
 }
