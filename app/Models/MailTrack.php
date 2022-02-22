@@ -33,29 +33,4 @@ class MailTrack extends Model {
 
 
 
-    public function trackOpen() {
-
-        if ( ! $this->first_opened ) {
-            $this->first_opened = \Carbon\Carbon::now();
-        }
-        $this->opens ++;
-        $this->save();
-
-    }
-
-
-
-
-
-    public function deliverImage() {
-
-        $this->trackOpen();
-
-        $image = Image::canvas( 100, 100 );
-        $image->rectangle( 0, 0, 100, 100 );
-        header( 'Content-Type: image/png' );
-        echo $image->encode( 'png' );
-    }
-
-
 }

@@ -66,12 +66,7 @@ Route::get( 'mailtest', function () {
 } );
 
 
-Route::get( 'beacon/{mailtrack}/image.png', function ( \App\Models\MailTrack $mail_track ) {
-
-    dd('test');
-
-    $mail_track->deliverImage();
-} )->name( 'beacon' );
+Route::get( 'beacon/{mailtrack}/image.png', [ \App\Http\Controllers\MailTrackController::class, 'track'])->name( 'beacon' );
 
 Route::get( 'beacontest', function () {
 
