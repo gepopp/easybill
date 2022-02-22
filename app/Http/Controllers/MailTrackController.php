@@ -32,14 +32,8 @@ class MailTrackController extends Controller
 
     protected function deliverImage(){
 
-        $image = Image::canvas( 100, 100 );
-        $image->rectangle( 0, 0, 100, 100, function ($rect){
-            $rect->background('#99000');
-        });
+        return fopen(asset('images/pixel.png'), r);
 
-
-       echo 'data:image/png;base64,' . base64_encode($image->encode('png'));
-       exit;
     }
 
 
