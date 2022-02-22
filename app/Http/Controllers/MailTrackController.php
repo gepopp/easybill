@@ -32,7 +32,7 @@ class MailTrackController extends Controller
 
     protected function deliverImage(){
 
-        return fopen(asset('images/pixel.png'), r);
+        return response()->file( public_path('images/pixel.png'));
 
     }
 
