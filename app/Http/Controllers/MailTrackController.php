@@ -14,9 +14,9 @@ class MailTrackController extends Controller
 
     public function track(MailTrack $mail_track){
 
-        if ( ! $mail_track->first_opened ) {
-            $mail_track->first_opened = \Carbon\Carbon::now();
-        }
+//        if ( ! $mail_track->first_opened ) {
+//            $mail_track->first_opened = \Carbon\Carbon::now();
+//        }
         $mail_track->opens ++;
         $mail_track->save();
 
