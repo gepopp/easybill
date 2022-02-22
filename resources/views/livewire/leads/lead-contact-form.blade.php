@@ -23,7 +23,7 @@
                 <ul>
                     @foreach($contact['mails'] as $email)
                         <li class="my-3 py-3 border-b flex justify-between">
-                            <div>{{ $mail['mail_name'] }}</div>
+                            <div>{{ $email['mail_name'] }}</div>
                             <div>{{ $email['opens'] }}</div>
                             <div>{{ $email['first_opened'] }}</div>
                         </li>
