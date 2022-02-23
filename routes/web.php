@@ -69,10 +69,6 @@ Route::get( 'mailtest', function () {
 
 Route::get( 'beacon/{mailtrack}/image.png', '\App\Http\Controllers\MailTrackController@track')->name( 'beacon' );
 
-Route::get( 'beacontest', function () {
-
-    return view( 'beacontest' );
-} );
 
 Route::get('mailraw', function (){
    return view('newsletter.raw', ['beacon' => '#']);

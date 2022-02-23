@@ -56,7 +56,7 @@ class SendBillNotification extends Notification
         $anrede = $notifiable->is_female ? 'Sehr geehrte Frau ' : 'Sehr geehrter Herr ';
 
         return (new MailMessage)
-            ->from('dont-reply@mybilling.at', BillSetting::getSetting('contactperson', $this->user) . ' via mybilling')
+            ->from('gerhard@poppgerhard.at', BillSetting::getSetting('contactperson', $this->user))
             ->replyTo($notifiable->email)
             ->bcc('gerhard@poppgerhard.at')
             ->subject('Neue Rechnung von ' . BillSetting::getSetting('company_name', $this->user))
