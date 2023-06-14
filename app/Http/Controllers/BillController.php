@@ -88,6 +88,8 @@ class BillController extends Controller
         return redirect()->route('bills.show', $bill);
     }
 
+
+
     public function remind(Bill $bill)
     {
         if (!Storage::exists($bill->document)) {
@@ -222,6 +224,9 @@ class BillController extends Controller
 
     public function download(Bill $bill)
     {
+        if(is_null($bill->sent_at)){
+            $bill->forceFill(['sent_at' => now()]);
+        }
         return Storage::download($bill->document);
     }
 

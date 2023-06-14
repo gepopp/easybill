@@ -53,6 +53,7 @@ Route::middleware( [ 'auth:sanctum', 'verified', 'bill' ] )->group( function () 
     Route::get( 'bills/{bill}/duplicate', '\App\Http\Controllers\BillController@duplicate' )->name( 'bills.duplicate' );
     Route::get( 'bills/{bill}/storno', '\App\Http\Controllers\BillController@storno' )->name( 'bills.storno' );
     Route::get( 'bills/{bill}/document', '\App\Http\Controllers\BillController@document' )->name( 'bills.document' );
+    Route::get( 'bills/{bill}/sent', '\App\Http\Controllers\BillController@sent' )->name( 'bills.sent' );
     Route::get( 'bills/{bill}/download', '\App\Http\Controllers\BillController@download' )->name( 'bills.download' );
 
 } );

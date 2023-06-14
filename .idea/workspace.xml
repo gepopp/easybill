@@ -3,28 +3,15 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="mail marketing">
+    <list default="true" id="c46c387a-132d-41fa-b15e-813fbe61cf52" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/SendBillNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/SendBillNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BillController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BillController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +19,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -47,6 +34,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
@@ -59,7 +49,6 @@
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/vendor/opis/closure" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
       <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
       <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
@@ -74,7 +63,6 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
-      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
       <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
       <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
       <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
@@ -95,7 +83,6 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/version" />
       <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
       <path value="$PROJECT_DIR$/vendor/sebastian/type" />
-      <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
       <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
       <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
       <path value="$PROJECT_DIR$/vendor/brick/math" />
@@ -104,10 +91,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
-      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/symfony/routing" />
-      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
-      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
@@ -125,7 +109,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
@@ -139,26 +122,18 @@
       <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition" />
-      <path value="$PROJECT_DIR$/vendor/mobiledetect/mobiledetectlib" />
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
-      <path value="$PROJECT_DIR$/vendor/laravel/fortify" />
       <path value="$PROJECT_DIR$/vendor/laravel/jetstream" />
       <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
       <path value="$PROJECT_DIR$/vendor/laravel/framework" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
-      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
       <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/filp/whoops" />
-      <path value="$PROJECT_DIR$/vendor/pragmarx/google2fa" />
-      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
       <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
       <path value="$PROJECT_DIR$/vendor/jenssegers/agent" />
-      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
-      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
-      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/vendor/asm89/stack-cors" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
@@ -171,8 +146,6 @@
       <path value="$PROJECT_DIR$/vendor/league/flysystem-aws-s3-v3" />
       <path value="$PROJECT_DIR$/vendor/mtdowling/jmespath.php" />
       <path value="$PROJECT_DIR$/vendor/aws/aws-sdk-php" />
-      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
-      <path value="$PROJECT_DIR$/vendor/laravel-lang/lang" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
       <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
       <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
@@ -187,482 +160,52 @@
       <path value="$PROJECT_DIR$/vendor/campaignmonitor/createsend-php" />
       <path value="$PROJECT_DIR$/vendor/predis/predis" />
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/aws/aws-crt-php" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/league/config" />
+      <path value="$PROJECT_DIR$/vendor/laravel/serializable-closure" />
+      <path value="$PROJECT_DIR$/vendor/dflydev/dot-access-data" />
+      <path value="$PROJECT_DIR$/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/vendor/nette/schema" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/laravel-lang/lang" />
+      <path value="$PROJECT_DIR$/vendor/pragmarx/google2fa" />
+      <path value="$PROJECT_DIR$/vendor/mobiledetect/mobiledetectlib" />
+      <path value="$PROJECT_DIR$/vendor/laravel/fortify" />
     </include_path>
   </component>
-  <component name="ProjectId" id="1jL5ctXA68zZf3FxB0EpiDtEC5X" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2MHTjbfg811ucZ8pYBLaPG4EfiI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\gerha\PhpstormProjects\easybill\public\images" />
-      <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\views\lead" />
-      <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\views\quotation" />
-      <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\views\layouts" />
-      <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\lang" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\views\mail" />
-      <recent name="C:\Users\gerha\PhpstormProjects\easybill\resources\views\livewire\bill" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner scope="XML" />
-      <method v="2" />
-    </configuration>
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "true",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7efd5b03-a0ba-4abb-8ffd-25caf1693899" name="Default Changelist" comment="" />
-      <created>1603570613709</created>
+      <changelist id="c46c387a-132d-41fa-b15e-813fbe61cf52" name="Changes" comment="" />
+      <created>1677423643878</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1603570613709</updated>
-      <workItem from="1603570614729" duration="25959000" />
-      <workItem from="1603742820660" duration="18167000" />
-      <workItem from="1604517749867" duration="2391000" />
-      <workItem from="1604597637551" duration="151000" />
-      <workItem from="1604605978905" duration="1629000" />
-      <workItem from="1606154440094" duration="1046000" />
-      <workItem from="1609232195824" duration="2095000" />
-      <workItem from="1609524646520" duration="129481000" />
-      <workItem from="1609841956963" duration="208320000" />
-      <workItem from="1610364573757" duration="10792000" />
-      <workItem from="1610434134579" duration="1018000" />
-      <workItem from="1610476420838" duration="17886000" />
-      <workItem from="1610549350626" duration="7471000" />
-      <workItem from="1610601888874" duration="19800000" />
-      <workItem from="1610791044042" duration="1202000" />
-      <workItem from="1611136449034" duration="12382000" />
-      <workItem from="1611577036184" duration="15000" />
-      <workItem from="1611686411658" duration="9211000" />
-      <workItem from="1611776306995" duration="841000" />
-      <workItem from="1611777252531" duration="2480000" />
-      <workItem from="1612006670594" duration="32000" />
-      <workItem from="1612037563427" duration="98000" />
-      <workItem from="1612332012025" duration="1430000" />
-      <workItem from="1612457701542" duration="608000" />
-      <workItem from="1616049766272" duration="1964000" />
-      <workItem from="1616138628576" duration="5545000" />
-      <workItem from="1616228616117" duration="1926000" />
-      <workItem from="1616230560525" duration="15982000" />
-      <workItem from="1616436284911" duration="13884000" />
-      <workItem from="1616488725271" duration="5353000" />
-      <workItem from="1616528557666" duration="807000" />
-      <workItem from="1616535813726" duration="22386000" />
-      <workItem from="1626123559175" duration="14000" />
-      <workItem from="1626123957003" duration="757000" />
-      <workItem from="1632909926356" duration="1749000" />
-      <workItem from="1645373497244" duration="8266000" />
-      <workItem from="1645424886965" duration="12523000" />
-      <workItem from="1645518341604" duration="14544000" />
-      <workItem from="1645548086033" duration="744000" />
-      <workItem from="1645606191634" duration="678000" />
+      <updated>1677423643878</updated>
+      <workItem from="1677423644968" duration="80000" />
+      <workItem from="1677424035179" duration="3630000" />
+      <workItem from="1677435206156" duration="12000" />
+      <workItem from="1686726458004" duration="96000" />
     </task>
-    <task id="LOCAL-00057" summary="introduce flash messages and bill middleware">
-      <created>1610230572878</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1610230572878</updated>
-    </task>
-    <task id="LOCAL-00058" summary="introduce flash messages and bill middleware">
-      <created>1610230758722</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1610230758722</updated>
-    </task>
-    <task id="LOCAL-00059" summary="introduce flash messages and bill middleware">
-      <created>1610230805455</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1610230805455</updated>
-    </task>
-    <task id="LOCAL-00060" summary="introduce flash messages and bill middleware">
-      <created>1610230942024</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1610230942024</updated>
-    </task>
-    <task id="LOCAL-00061" summary="introduce flash messages and bill middleware">
-      <created>1610232101784</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1610232101784</updated>
-    </task>
-    <task id="LOCAL-00062" summary="update bills table and filters">
-      <created>1610288667847</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1610288667847</updated>
-    </task>
-    <task id="LOCAL-00063" summary="update bills table and filters">
-      <created>1610289250852</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1610289250852</updated>
-    </task>
-    <task id="LOCAL-00064" summary="update bills table and filters">
-      <created>1610290195426</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1610290195426</updated>
-    </task>
-    <task id="LOCAL-00065" summary="add reminder notification to bill">
-      <created>1610388906858</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1610388906858</updated>
-    </task>
-    <task id="LOCAL-00066" summary="update index table layout">
-      <created>1610389297710</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1610389297710</updated>
-    </task>
-    <task id="LOCAL-00067" summary="at before send modal">
-      <created>1610523553456</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1610523553457</updated>
-    </task>
-    <task id="LOCAL-00068" summary="at before send modal">
-      <created>1610525613622</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1610525613622</updated>
-    </task>
-    <task id="LOCAL-00069" summary="wip">
-      <created>1612332462813</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1612332462814</updated>
-    </task>
-    <task id="LOCAL-00070" summary="debug bill notification">
-      <created>1612332663947</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1612332663947</updated>
-    </task>
-    <task id="LOCAL-00071" summary="v2 wip">
-      <created>1616491374911</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1616491374911</updated>
-    </task>
-    <task id="LOCAL-00072" summary="v2 wip">
-      <created>1616492350615</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1616492350615</updated>
-    </task>
-    <task id="LOCAL-00073" summary="wip">
-      <created>1616575053079</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1616575053080</updated>
-    </task>
-    <task id="LOCAL-00074" summary="wip">
-      <created>1616575323800</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1616575323801</updated>
-    </task>
-    <task id="LOCAL-00075" summary="mail marketing">
-      <created>1645432933202</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1645432933203</updated>
-    </task>
-    <task id="LOCAL-00076" summary="mail marketing">
-      <created>1645518995185</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1645518995185</updated>
-    </task>
-    <task id="LOCAL-00077" summary="mail marketing">
-      <created>1645526118431</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1645526118431</updated>
-    </task>
-    <task id="LOCAL-00078" summary="mail marketing">
-      <created>1645527248609</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1645527248609</updated>
-    </task>
-    <task id="LOCAL-00079" summary="mail marketing">
-      <created>1645527685018</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1645527685018</updated>
-    </task>
-    <task id="LOCAL-00080" summary="mail marketing">
-      <created>1645528119630</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1645528119630</updated>
-    </task>
-    <task id="LOCAL-00081" summary="mail marketing">
-      <created>1645528251421</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1645528251421</updated>
-    </task>
-    <task id="LOCAL-00082" summary="mail marketing">
-      <created>1645528480433</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1645528480433</updated>
-    </task>
-    <task id="LOCAL-00083" summary="mail marketing">
-      <created>1645528640062</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1645528640062</updated>
-    </task>
-    <task id="LOCAL-00084" summary="mail marketing">
-      <created>1645528751781</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1645528751781</updated>
-    </task>
-    <task id="LOCAL-00085" summary="mail marketing">
-      <created>1645528848344</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1645528848344</updated>
-    </task>
-    <task id="LOCAL-00086" summary="mail marketing">
-      <created>1645528966422</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1645528966422</updated>
-    </task>
-    <task id="LOCAL-00087" summary="mail marketing">
-      <created>1645529166446</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1645529166446</updated>
-    </task>
-    <task id="LOCAL-00088" summary="mail marketing">
-      <created>1645529301998</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1645529301998</updated>
-    </task>
-    <task id="LOCAL-00089" summary="mail marketing">
-      <created>1645529657983</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1645529657983</updated>
-    </task>
-    <task id="LOCAL-00090" summary="mail marketing">
-      <created>1645529931527</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1645529931527</updated>
-    </task>
-    <task id="LOCAL-00091" summary="mail marketing">
-      <created>1645530795511</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1645530795511</updated>
-    </task>
-    <task id="LOCAL-00092" summary="mail marketing">
-      <created>1645530926445</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1645530926445</updated>
-    </task>
-    <task id="LOCAL-00093" summary="mail marketing">
-      <created>1645531037671</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1645531037671</updated>
-    </task>
-    <task id="LOCAL-00094" summary="mail marketing">
-      <created>1645531208118</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1645531208118</updated>
-    </task>
-    <task id="LOCAL-00095" summary="mail marketing">
-      <created>1645531367481</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1645531367481</updated>
-    </task>
-    <task id="LOCAL-00096" summary="mail marketing">
-      <created>1645531553068</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1645531553068</updated>
-    </task>
-    <task id="LOCAL-00097" summary="mail marketing">
-      <created>1645531683931</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1645531683931</updated>
-    </task>
-    <task id="LOCAL-00098" summary="mail marketing">
-      <created>1645531829757</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1645531829757</updated>
-    </task>
-    <task id="LOCAL-00099" summary="mail marketing">
-      <created>1645531947865</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1645531947865</updated>
-    </task>
-    <task id="LOCAL-00100" summary="mail marketing">
-      <created>1645533142845</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1645533142845</updated>
-    </task>
-    <task id="LOCAL-00101" summary="mail marketing">
-      <created>1645533327964</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1645533327964</updated>
-    </task>
-    <task id="LOCAL-00102" summary="mail marketing">
-      <created>1645534474831</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1645534474831</updated>
-    </task>
-    <task id="LOCAL-00103" summary="mail marketing">
-      <created>1645537821789</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1645537821789</updated>
-    </task>
-    <task id="LOCAL-00104" summary="mail marketing">
-      <created>1645537986779</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1645537986779</updated>
-    </task>
-    <task id="LOCAL-00105" summary="mail marketing">
-      <created>1645548216140</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1645548216140</updated>
-    </task>
-    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CHECK_NEW_TODO" value="false" />
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="initial commit" />
-    <MESSAGE value="massive update" />
-    <MESSAGE value="update customer create" />
-    <MESSAGE value="install analytics" />
-    <MESSAGE value="Rechungen v2" />
-    <MESSAGE value="added duplicate &amp;&amp; storno to bill" />
-    <MESSAGE value="addeed order scope &quot;billing_date&quot; to bills Model" />
-    <MESSAGE value="debug bill edit layout" />
-    <MESSAGE value="refactor all bill views and controller/observer/job" />
-    <MESSAGE value="Thank You email on payment" />
-    <MESSAGE value="introduce flash messages and bill middleware" />
-    <MESSAGE value="update bills table and filters" />
-    <MESSAGE value="add reminder notification to bill" />
-    <MESSAGE value="update index table layout" />
-    <MESSAGE value="at before send modal" />
-    <MESSAGE value="debug bill notification" />
-    <MESSAGE value="v2 wip" />
-    <MESSAGE value="wip" />
-    <MESSAGE value="mail marketing" />
-    <option name="LAST_COMMIT_MESSAGE" value="mail marketing" />
   </component>
 </project>
